@@ -1,0 +1,5 @@
+{"date": "2026-03-08", "task": "电商_商品详情页埋点", "feedback": "用户确认无修改", "status": "success"}
+{"date": "2026-03-09", "task": "网约车_叫车流程埋点", "feedback": "用户指出a级命名应为ride_booking而非ride", "status": "corrected"}
+{"date": "2026-03-10", "task": "Robotaxi_预约流程埋点", "feedback": "新增robotaxi_booking模块", "status": "success"}
+{"date": "2026-03-11", "task": "智能座舱_语音助手埋点", "feedback": "用户指出空调应归为车控ivi_cockpit，非ivi_entertainment", "status": "corrected"}
+{"date": "2026-03-11", "task": "智能座舱_导航埋点埋点", "feedback": "用户指出ADAS功能应独立为ivi_adas模块", "status": "corrected"}
