@@ -1,0 +1,49 @@
+{
+  "image_file": "9.png",
+  "summary": "图片展示了PRD中的两部分内容：上半部分是“口令匹配”相关逻辑，明确列出了触发时机、配置规则、车型/人群匹配、素材ID、HM素材、HMLSug、权益玩法、信息兜底等处理项；下半部分是“3.3.4 权益模块”，说明权益模块在营销平台作为券池能力，包含奖品配置与运营管理两类能力，并配有“权益汇兑”流程图，文中还提到打车券与商品券相关发放说明。",
+  "pages": [
+    "口令匹配",
+    "权益模块",
+    "权益管理",
+    "运营管理"
+  ],
+  "key_metrics": [],
+  "flow_hints": [
+    "用户触发口令后进入口令匹配流程",
+    "口令匹配会按配置规则判断可用口令组",
+    "口令可用性会结合车型和人群信息判断",
+    "匹配成功后返回对应素材或文案信息",
+    "命中权益活动类Action后进入权益模块发奖流程",
+    "权益模块支持权益查询、配置与发放",
+    "运营管理按规则为指定用户发放对应权益"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "口令匹配",
+      "element_name": "资源展示素材",
+      "position": "口令匹配结果",
+      "element_type": "展示",
+      "description": "口令匹配成功后返回对应资源展示素材",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "口令匹配",
+      "element_name": "HM素材",
+      "position": "口令匹配结果",
+      "element_type": "展示",
+      "description": "命中条件后返回HM相关素材内容",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "口令匹配",
+      "element_name": "HMLSug文案",
+      "position": "口令匹配结果",
+      "element_type": "展示",
+      "description": "根据判断结果返回对应LSug文案",
+      "has_exposure_value": true,
+      "is_actionable": false
+    }
+  ]
+}

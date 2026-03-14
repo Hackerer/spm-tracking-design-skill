@@ -1,0 +1,4009 @@
+{
+  "requirement_name": "Robotaxi 智能车控核心控制能力",
+  "business_line": "robotaxi",
+  "terminal_domain": "cabin_hmi",
+  "business_capability": "vehicle_control",
+  "summary": "Robotaxi 智能座舱需要提供一套核心、易用的车控能力，覆盖空调与座椅、屏幕亮度、语音助手音量和媒体音量等高频控制能力。本需求里真正新增的页面只有空调控制页；桌面页底部导航栏承载一组固定的快捷控制与快捷入口，亮度和音量调节属于桌面 Dock 快捷操作，不单独视为新页面。车控能力在行程内发生，需要同时支持触屏和语音两种交互方式，并关注功能使用率、用户干预率和交互方式占比。",
+  "related_pages": [],
+  "page_flows": [
+    {
+      "flow_name": "核心业务链路",
+      "steps": [
+        {
+          "page_name_zh": "桌面",
+          "page_name_en": "desktop",
+          "page_id": "desktop_desktop",
+          "action": "进入桌面页",
+          "notes": "座舱桌面页，底部导航栏中承载空调、亮度、媒体和就近停车等快捷控制入口。"
+        },
+        {
+          "page_name_zh": "桌面",
+          "page_name_en": "desktop",
+          "page_id": "desktop_desktop",
+          "action": "通过桌面底部导航栏触发空调、亮度、音量或媒体快捷操作",
+          "notes": "座舱桌面页，底部导航栏中承载空调、亮度、媒体和就近停车等快捷控制入口。"
+        },
+        {
+          "page_name_zh": "空调控制页",
+          "page_name_en": "climate_control",
+          "page_id": "vehicle_control_climate_control",
+          "action": "点击空调开关进入空调控制页",
+          "notes": "空调、风量、送风模式、车窗和座椅加热的主控制页面。"
+        },
+        {
+          "page_name_zh": "空调控制页",
+          "page_name_en": "climate_control",
+          "page_id": "vehicle_control_climate_control",
+          "action": "在空调控制页调节温度、风量、送风模式、车窗和座椅加热",
+          "notes": "空调、风量、送风模式、车窗和座椅加热的主控制页面。"
+        },
+        {
+          "page_name_zh": "桌面",
+          "page_name_en": "desktop",
+          "page_id": "desktop_desktop",
+          "action": "在桌面页通过 Dock 快捷操作调节亮度、阅读灯、语音助手音量、媒体音量或静音",
+          "notes": "座舱桌面页，底部导航栏中承载空调、亮度、媒体和就近停车等快捷控制入口。"
+        },
+        {
+          "page_name_zh": "桌面",
+          "page_name_en": "desktop",
+          "page_id": "desktop_desktop",
+          "action": "通过桌面底部导航栏触发空调、亮度、音量或媒体快捷控制",
+          "notes": "座舱桌面页，底部导航栏中承载空调、亮度、媒体和就近停车等快捷控制入口。"
+        }
+      ],
+      "has_rollback": false,
+      "rollback_from_page_id": "",
+      "rollback_to_page_id": "",
+      "rollback_trigger": "",
+      "rollback_notes": ""
+    }
+  ],
+  "pages": [
+    {
+      "a_zh": "桌面",
+      "a_en": "desktop",
+      "page_name_zh": "桌面",
+      "page_name_en": "desktop",
+      "page_id": "desktop_desktop",
+      "description": "座舱桌面页，底部导航栏中承载空调、亮度、媒体和就近停车等快捷控制入口。",
+      "regions": [
+        {
+          "c_zh": "底部导航栏",
+          "c_en": "bottom_navigation",
+          "c_support_exposure": true,
+          "positions": [
+            {
+              "d_zh": "空调开关",
+              "d_en": "ac_on_off",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“空调开关”和位置“bottom_navigation”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            },
+            {
+              "d_zh": "返回桌面",
+              "d_en": "back_home",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“返回桌面”和位置“bottom_navigation”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            },
+            {
+              "d_zh": "亮度降低",
+              "d_en": "brightness_down",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "brightness_level",
+                  "param_name_zh": "亮度值",
+                  "data_type": "number",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "range": {
+                      "min": 0,
+                      "max": 100
+                    }
+                  },
+                  "description": "屏幕亮度滑动后的亮度百分比。",
+                  "source_reason": "根据交互元素映射规则自动推荐"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“亮度降低”和位置“bottom_navigation”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            },
+            {
+              "d_zh": "亮度调节入口",
+              "d_en": "brightness_set_entrance",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“亮度调节入口”和位置“bottom_navigation”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            },
+            {
+              "d_zh": "亮度升高",
+              "d_en": "brightness_up",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "brightness_level",
+                  "param_name_zh": "亮度值",
+                  "data_type": "number",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "range": {
+                      "min": 0,
+                      "max": 100
+                    }
+                  },
+                  "description": "屏幕亮度滑动后的亮度百分比。",
+                  "source_reason": "根据交互元素映射规则自动推荐"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“亮度升高”和位置“bottom_navigation”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            },
+            {
+              "d_zh": "媒体下一个",
+              "d_en": "media_next",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“媒体下一个”和位置“bottom_navigation”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            },
+            {
+              "d_zh": "媒体播放暂停",
+              "d_en": "media_play_pause",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“媒体播放暂停”和位置“bottom_navigation”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            },
+            {
+              "d_zh": "就近停车入口",
+              "d_en": "nearby_parking_entrance",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“就近停车入口”和位置“bottom_navigation”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            },
+            {
+              "d_zh": "音量调节入口",
+              "d_en": "volume_set_entrance",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“音量调节入口”和位置“bottom_navigation”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            }
+          ]
+        },
+        {
+          "c_zh": "亮度面板区",
+          "c_en": "brightness_panel",
+          "c_support_exposure": true,
+          "positions": [
+            {
+              "d_zh": "阅读灯开关",
+              "d_en": "reading_light_switch",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“阅读灯开关”和位置“brightness_panel”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "block_only",
+              "exposure_reason": "当前元素由区块曝光统一覆盖，无需单独配置坑位曝光。"
+            },
+            {
+              "d_zh": "屏幕亮度滑动条",
+              "d_en": "brightness_slider",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "brightness_level",
+                  "param_name_zh": "亮度值",
+                  "data_type": "number",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "range": {
+                      "min": 0,
+                      "max": 100
+                    }
+                  },
+                  "description": "屏幕亮度滑动后的亮度百分比。",
+                  "source_reason": "根据交互元素映射规则自动推荐"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“屏幕亮度滑动条”和位置“brightness_panel”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "block_only",
+              "exposure_reason": "当前元素由区块曝光统一覆盖，无需单独配置坑位曝光。"
+            }
+          ]
+        },
+        {
+          "c_zh": "音量面板区",
+          "c_en": "volume_panel",
+          "c_support_exposure": true,
+          "positions": [
+            {
+              "d_zh": "语音助手音量滑动条",
+              "d_en": "assistant_volume_slider",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "volume_level",
+                  "param_name_zh": "音量值",
+                  "data_type": "number",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "range": {
+                      "min": 0,
+                      "max": 100
+                    }
+                  },
+                  "description": "音量滑动后的目标音量值。",
+                  "source_reason": "根据交互元素映射规则自动推荐"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“语音助手音量滑动条”和位置“volume_panel”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "block_only",
+              "exposure_reason": "当前元素由区块曝光统一覆盖，无需单独配置坑位曝光。"
+            },
+            {
+              "d_zh": "媒体音量滑动条",
+              "d_en": "media_volume_slider",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "volume_level",
+                  "param_name_zh": "音量值",
+                  "data_type": "number",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "range": {
+                      "min": 0,
+                      "max": 100
+                    }
+                  },
+                  "description": "音量滑动后的目标音量值。",
+                  "source_reason": "根据交互元素映射规则自动推荐"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“媒体音量滑动条”和位置“volume_panel”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "block_only",
+              "exposure_reason": "当前元素由区块曝光统一覆盖，无需单独配置坑位曝光。"
+            },
+            {
+              "d_zh": "媒体静音按钮",
+              "d_en": "mute_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“媒体静音按钮”和位置“volume_panel”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "block_only",
+              "exposure_reason": "当前元素由区块曝光统一覆盖，无需单独配置坑位曝光。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "a_zh": "智能车控",
+      "a_en": "vehicle_control",
+      "page_name_zh": "空调控制页",
+      "page_name_en": "climate_control",
+      "page_id": "vehicle_control_climate_control",
+      "description": "空调、风量、送风模式、车窗和座椅加热的主控制页面。",
+      "regions": [
+        {
+          "c_zh": "座椅加热区",
+          "c_en": "seat_heating_controls",
+          "c_support_exposure": false,
+          "positions": [
+            {
+              "d_zh": "副驾座椅加热按钮",
+              "d_en": "passenger_seat_heating_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“副驾座椅加热”和位置“seat_heating_controls”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            },
+            {
+              "d_zh": "左后座椅加热按钮",
+              "d_en": "rear_left_seat_heating_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“左后座椅加热”和位置“seat_heating_controls”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            },
+            {
+              "d_zh": "右后座椅加热按钮",
+              "d_en": "rear_right_seat_heating_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“右后座椅加热”和位置“seat_heating_controls”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            }
+          ]
+        },
+        {
+          "c_zh": "车窗控制区",
+          "c_en": "window_controls",
+          "c_support_exposure": false,
+          "positions": [
+            {
+              "d_zh": "关窗按钮",
+              "d_en": "close_window_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“关窗按钮”和位置“window_controls”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            },
+            {
+              "d_zh": "透气按钮",
+              "d_en": "ventilation_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“透气按钮”和位置“window_controls”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            }
+          ]
+        },
+        {
+          "c_zh": "空调总控区",
+          "c_en": "climate_power",
+          "c_support_exposure": false,
+          "positions": [
+            {
+              "d_zh": "空调电源按钮",
+              "d_en": "climate_power_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“空调电源按钮”和位置“climate_power”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            }
+          ]
+        },
+        {
+          "c_zh": "送风模式区",
+          "c_en": "airflow_modes",
+          "c_support_exposure": false,
+          "positions": [
+            {
+              "d_zh": "吹头模式按钮",
+              "d_en": "airflow_head_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“吹头模式”和位置“airflow_modes”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            },
+            {
+              "d_zh": "吹脚模式按钮",
+              "d_en": "airflow_foot_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“吹脚模式”和位置“airflow_modes”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            },
+            {
+              "d_zh": "吹窗模式按钮",
+              "d_en": "airflow_window_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“吹窗模式”和位置“airflow_modes”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            }
+          ]
+        },
+        {
+          "c_zh": "风量调节区",
+          "c_en": "fan_speed_controls",
+          "c_support_exposure": false,
+          "positions": [
+            {
+              "d_zh": "风量减小按钮",
+              "d_en": "fan_decrease_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "fan_level",
+                  "param_name_zh": "风量档位",
+                  "data_type": "number",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "range": {
+                      "min": 1,
+                      "max": 5
+                    }
+                  },
+                  "description": "风量调节后的档位值。",
+                  "source_reason": "根据交互元素映射规则自动推荐"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“风量减小按钮”和位置“fan_speed_controls”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            },
+            {
+              "d_zh": "风量增大按钮",
+              "d_en": "fan_increase_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "fan_level",
+                  "param_name_zh": "风量档位",
+                  "data_type": "number",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "range": {
+                      "min": 1,
+                      "max": 5
+                    }
+                  },
+                  "description": "风量调节后的档位值。",
+                  "source_reason": "根据交互元素映射规则自动推荐"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“风量增大按钮”和位置“fan_speed_controls”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            }
+          ]
+        },
+        {
+          "c_zh": "语音推荐词区",
+          "c_en": "voice_suggestions",
+          "c_support_exposure": true,
+          "positions": [
+            {
+              "d_zh": "推荐词按钮",
+              "d_en": "suggestion_btn",
+              "position_type": "ordered",
+              "order_level": "level_1",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "有点冷",
+              "biz_type_en": "feeling_cold",
+              "params": [
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端条件公共分析需求自动补充"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“你好东东，有点冷”和位置“voice_suggestions”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            },
+            {
+              "d_zh": "推荐词按钮",
+              "d_en": "suggestion_btn",
+              "position_type": "ordered",
+              "order_level": "level_1",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "右后座椅加热",
+              "biz_type_en": "rear_seat_heating",
+              "params": [
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端条件公共分析需求自动补充"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“你好东东，打开右后座椅加热”和位置“voice_suggestions”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            },
+            {
+              "d_zh": "推荐词按钮",
+              "d_en": "suggestion_btn",
+              "position_type": "ordered",
+              "order_level": "level_1",
+              "d_support_click": true,
+              "d_support_exposure": true,
+              "biz_type_zh": "风小一点",
+              "biz_type_en": "lower_wind",
+              "params": [
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端条件公共分析需求自动补充"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“你好东东，风小一点”和位置“voice_suggestions”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "position",
+              "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。"
+            }
+          ]
+        },
+        {
+          "c_zh": "温度调节区",
+          "c_en": "temperature_controls",
+          "c_support_exposure": false,
+          "positions": [
+            {
+              "d_zh": "温度降低按钮",
+              "d_en": "temperature_decrease_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "temperature_value",
+                  "param_name_zh": "目标温度",
+                  "data_type": "number",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "range": {
+                      "min": 18,
+                      "max": 32
+                    }
+                  },
+                  "description": "空调调节后的目标温度值。",
+                  "source_reason": "根据交互元素映射规则自动推荐"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“温度降低按钮”和位置“temperature_controls”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            },
+            {
+              "d_zh": "温度升高按钮",
+              "d_en": "temperature_increase_btn",
+              "position_type": "fixed",
+              "order_level": "none",
+              "d_support_click": true,
+              "d_support_exposure": false,
+              "biz_type_zh": "",
+              "biz_type_en": "",
+              "params": [
+                {
+                  "param_name": "temperature_value",
+                  "param_name_zh": "目标温度",
+                  "data_type": "number",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "range": {
+                      "min": 18,
+                      "max": 32
+                    }
+                  },
+                  "description": "空调调节后的目标温度值。",
+                  "source_reason": "根据交互元素映射规则自动推荐"
+                },
+                {
+                  "param_name": "user_pin",
+                  "param_name_zh": "用户PIN",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 100
+                    }
+                  },
+                  "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "order_id",
+                  "param_name_zh": "订单ID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "vid",
+                  "param_name_zh": "车辆VID",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆唯一VID标识",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "car_city",
+                  "param_name_zh": "运营城市",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "车辆当前运营城市",
+                  "source_reason": "根据业务线公共分析需求自动补充"
+                },
+                {
+                  "param_name": "env",
+                  "param_name_zh": "环境",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 50
+                    }
+                  },
+                  "description": "当前行为发生的环境标识，例如 cabin_hmi",
+                  "source_reason": "根据终端公共分析需求自动补充"
+                },
+                {
+                  "param_name": "click_type",
+                  "param_name_zh": "触发方式",
+                  "data_type": "string",
+                  "required": true,
+                  "enum_values": [
+                    "touch",
+                    "voice"
+                  ],
+                  "validation_rules": {
+                    "enum": [
+                      "touch",
+                      "voice"
+                    ]
+                  },
+                  "description": "区分用户通过触屏还是语音触发当前主动行为事件",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                },
+                {
+                  "param_name": "reco_sug",
+                  "param_name_zh": "推荐Sug词",
+                  "data_type": "array_string",
+                  "required": false,
+                  "enum_values": [],
+                  "validation_rules": {
+                    "length": {
+                      "min": 1,
+                      "max": 20
+                    }
+                  },
+                  "description": "事件触发时携带的推荐sug词列表，例如 sug词1,sug词2",
+                  "source_reason": "根据终端主动行为公共分析需求自动补充"
+                }
+              ],
+              "notes": "由元素“温度升高按钮”和位置“temperature_controls”自动推断",
+              "user_actionability": "actionable",
+              "exposure_decision": "none",
+              "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

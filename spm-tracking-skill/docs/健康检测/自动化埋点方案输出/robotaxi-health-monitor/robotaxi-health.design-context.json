@@ -1,0 +1,585 @@
+{
+  "requirement_name": "Robotaxi 健康监测功能",
+  "business_line": "robotaxi",
+  "terminal_domain": "cabin_hmi",
+  "business_capability": "health_monitor",
+  "source_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma",
+  "summary": "基于健康监测 Figma 导出目录的设计增强信息，主要用于补充真实页面结构、弹窗和结果页单指标卡。",
+  "flow_hints": [
+    "进入健康监测启动页",
+    "阅读协议并开启健康监测",
+    "进入教学引导页",
+    "进入检测准备页",
+    "进入监测过程页",
+    "检测中可能弹出退出确认弹窗",
+    "进入报告生成页",
+    "进入结果报告页"
+  ],
+  "assets": [
+    {
+      "file_name": "【PRD】健康监测-量产车A.html",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/【PRD】健康监测-量产车A.html",
+      "asset_type": "html_export",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "2.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/2.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "3.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/3.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "08.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/08.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "130.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/130.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "132.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/132.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "133.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/133.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "134.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/134.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "135.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/135.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "144.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/144.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "145.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/145.png",
+      "asset_type": "modal_image",
+      "page_name_candidate": "协议详情弹窗",
+      "page_type_candidate": "modal",
+      "description": "设计稿展示知情同意书正文与不同意/同意并继续操作。",
+      "confidence": 0.93
+    },
+    {
+      "file_name": "146.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/146.png",
+      "asset_type": "modal_image",
+      "page_name_candidate": "隐私政策弹窗",
+      "page_type_candidate": "modal",
+      "description": "设计稿展示隐私政策正文与不同意/同意并继续操作。",
+      "confidence": 0.93
+    },
+    {
+      "file_name": "148.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/148.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "结果报告页",
+      "page_type_candidate": "page",
+      "description": "设计稿明确展示综合评分、生理指标单卡、心理指标单卡以及右侧推广位。",
+      "confidence": 0.97
+    },
+    {
+      "file_name": "报告生成页-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/报告生成页-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "报告生成页.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/报告生成页.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "报告生成页",
+      "page_type_candidate": "page",
+      "description": "设计稿明确展示生成中主状态区与右侧科普内容区。",
+      "confidence": 0.94
+    },
+    {
+      "file_name": "背景-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/背景-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "背景.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/背景.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "检测中-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/检测中-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "检测中.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/检测中.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "监测过程页",
+      "page_type_candidate": "page",
+      "description": "设计稿明确展示监测进度主面板和右侧健康科普内容区。",
+      "confidence": 0.94
+    },
+    {
+      "file_name": "交互主流程.jpg",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/交互主流程.jpg",
+      "asset_type": "flow_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.95
+    },
+    {
+      "file_name": "提示-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/提示-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "提示.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/健康检测figma/提示.png",
+      "asset_type": "modal_image",
+      "page_name_candidate": "退出确认弹窗",
+      "page_type_candidate": "modal",
+      "description": "设计稿明确展示关闭按钮和退出/坚持一下两个操作。",
+      "confidence": 0.95
+    }
+  ],
+  "pages": [
+    {
+      "page_name": "协议详情弹窗",
+      "page_type": "modal",
+      "page_path_candidate": "/health-monitor/agreement-detail",
+      "description": "设计稿展示知情同意书正文与不同意/同意并继续操作。",
+      "confidence": 0.93,
+      "source_assets": [
+        "145.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "操作弹窗区",
+          "region_name_en": "modal_actions",
+          "region_type": "actions",
+          "position_candidate": "modal_actions",
+          "description": "协议弹窗底部操作区。",
+          "elements": [
+            {
+              "element_name": "不同意按钮",
+              "element_type": "button",
+              "description": "关闭协议弹窗并取消勾选。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "confidence": 0.95
+            },
+            {
+              "element_name": "同意并继续按钮",
+              "element_type": "button",
+              "description": "关闭协议弹窗并保持勾选。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "confidence": 0.95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "隐私政策弹窗",
+      "page_type": "modal",
+      "page_path_candidate": "/health-monitor/privacy-policy",
+      "description": "设计稿展示隐私政策正文与不同意/同意并继续操作。",
+      "confidence": 0.93,
+      "source_assets": [
+        "146.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "操作弹窗区",
+          "region_name_en": "modal_actions",
+          "region_type": "actions",
+          "position_candidate": "modal_actions",
+          "description": "隐私弹窗底部操作区。",
+          "elements": [
+            {
+              "element_name": "不同意按钮",
+              "element_type": "button",
+              "description": "关闭隐私弹窗并取消勾选。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "confidence": 0.95
+            },
+            {
+              "element_name": "同意并继续按钮",
+              "element_type": "button",
+              "description": "关闭隐私弹窗并保持勾选。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "confidence": 0.95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "结果报告页",
+      "page_type": "page",
+      "page_path_candidate": "/health-monitor/report-result",
+      "description": "设计稿明确展示综合评分、生理指标单卡、心理指标单卡以及右侧推广位。",
+      "confidence": 0.97,
+      "source_assets": [
+        "148.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "结果总览区",
+          "region_name_en": "result_summary",
+          "region_type": "summary",
+          "position_candidate": "result_summary",
+          "description": "展示综合评分与总体结论。",
+          "elements": [
+            {
+              "element_name": "总评分区",
+              "element_type": "display_panel",
+              "description": "展示综合评分与恢复建议。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.95
+            }
+          ]
+        },
+        {
+          "region_name_zh": "生理指标区",
+          "region_name_en": "physiological_metrics",
+          "region_type": "metrics",
+          "position_candidate": "physiological_metrics",
+          "description": "左侧展示生理指标单卡。",
+          "elements": [
+            {
+              "element_name": "窦性心律指标卡",
+              "element_type": "display_card",
+              "description": "展示窦性心律结果。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.94
+            },
+            {
+              "element_name": "室上性早搏指标卡",
+              "element_type": "display_card",
+              "description": "展示室上性早搏结果。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.94
+            },
+            {
+              "element_name": "心率指标卡",
+              "element_type": "display_card",
+              "description": "展示心率结果。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.94
+            }
+          ]
+        },
+        {
+          "region_name_zh": "心理指标区",
+          "region_name_en": "mental_metrics",
+          "region_type": "metrics",
+          "position_candidate": "mental_metrics",
+          "description": "中间区域展示心理维度指标单卡。",
+          "elements": [
+            {
+              "element_name": "能量指标卡",
+              "element_type": "display_card",
+              "description": "展示能量结果。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.94
+            },
+            {
+              "element_name": "压力指标卡",
+              "element_type": "display_card",
+              "description": "展示压力结果。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.94
+            },
+            {
+              "element_name": "负面情绪指标卡",
+              "element_type": "display_card",
+              "description": "展示负面情绪结果。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.94
+            },
+            {
+              "element_name": "效率指标卡",
+              "element_type": "display_card",
+              "description": "展示效率结果。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.94
+            }
+          ]
+        },
+        {
+          "region_name_zh": "右侧推广区",
+          "region_name_en": "right_promo",
+          "region_type": "promo",
+          "position_candidate": "right_promo",
+          "description": "右侧展示营销 banner 和二维码。",
+          "elements": [
+            {
+              "element_name": "营销Banner",
+              "element_type": "card",
+              "description": "展示右侧营销banner。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "confidence": 0.95
+            },
+            {
+              "element_name": "二维码卡片",
+              "element_type": "display_card",
+              "description": "展示下单二维码。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "报告生成页",
+      "page_type": "page",
+      "page_path_candidate": "/health-monitor/report-generating",
+      "description": "设计稿明确展示生成中主状态区与右侧科普内容区。",
+      "confidence": 0.94,
+      "source_assets": [
+        "报告生成页.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "报告生成区",
+          "region_name_en": "generating_panel",
+          "region_type": "status",
+          "position_candidate": "generating_panel",
+          "description": "左侧展示报告生成中的主状态。",
+          "elements": [
+            {
+              "element_name": "报告生成动效",
+              "element_type": "status_visual",
+              "description": "展示报告生成中的动效与文案。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.96
+            }
+          ]
+        },
+        {
+          "region_name_zh": "科普内容区",
+          "region_name_en": "science_content",
+          "region_type": "content",
+          "position_candidate": "science_content",
+          "description": "右侧展示报告生成期间的健康科普内容。",
+          "elements": [
+            {
+              "element_name": "健康科普卡片",
+              "element_type": "display_card",
+              "description": "展示报告生成过程中的科普内容。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "监测过程页",
+      "page_type": "page",
+      "page_path_candidate": "/health-monitor/monitoring",
+      "description": "设计稿明确展示监测进度主面板和右侧健康科普内容区。",
+      "confidence": 0.94,
+      "source_assets": [
+        "检测中.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "监测面板区",
+          "region_name_en": "monitoring_panel",
+          "region_type": "status",
+          "position_candidate": "monitoring_panel",
+          "description": "左侧主监测区域，显示进度、人体轮廓和不要移动提示。",
+          "elements": [
+            {
+              "element_name": "监测进度区",
+              "element_type": "display_panel",
+              "description": "展示监测百分比、人体轮廓与不要移动提示。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.96
+            }
+          ]
+        },
+        {
+          "region_name_zh": "科普内容区",
+          "region_name_en": "science_content",
+          "region_type": "content",
+          "position_candidate": "science_content",
+          "description": "右侧展示健康科普图文内容。",
+          "elements": [
+            {
+              "element_name": "健康科普卡片",
+              "element_type": "display_card",
+              "description": "展示监测过程中的健康科普内容。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "confidence": 0.92
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "退出确认弹窗",
+      "page_type": "modal",
+      "page_path_candidate": "/health-monitor/exit-confirm",
+      "description": "设计稿明确展示关闭按钮和退出/坚持一下两个操作。",
+      "confidence": 0.95,
+      "source_assets": [
+        "提示.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "弹窗关闭区",
+          "region_name_en": "modal_close",
+          "region_type": "actions",
+          "position_candidate": "modal_close",
+          "description": "弹窗右上角关闭控件。",
+          "elements": [
+            {
+              "element_name": "关闭按钮",
+              "element_type": "icon_button",
+              "description": "关闭退出确认弹窗。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "confidence": 0.96
+            }
+          ]
+        },
+        {
+          "region_name_zh": "操作弹窗区",
+          "region_name_en": "modal_actions",
+          "region_type": "actions",
+          "position_candidate": "modal_actions",
+          "description": "退出确认弹窗底部操作区。",
+          "elements": [
+            {
+              "element_name": "退出按钮",
+              "element_type": "button",
+              "description": "中断监测并退出。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "confidence": 0.96
+            },
+            {
+              "element_name": "坚持一下按钮",
+              "element_type": "button",
+              "description": "继续完成监测。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "confidence": 0.96
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "unclassified_assets": [
+    "2.png",
+    "3.png",
+    "08.png",
+    "130.png",
+    "132.png",
+    "133.png",
+    "134.png",
+    "135.png",
+    "144.png",
+    "报告生成页-1.png",
+    "背景-1.png",
+    "背景.png",
+    "检测中-1.png",
+    "交互主流程.jpg",
+    "提示-1.png"
+  ]
+}

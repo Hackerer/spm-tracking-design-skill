@@ -1,0 +1,776 @@
+[
+  {
+    "image_file": "1.png",
+    "summary": "这是一张PRD文档截图，当前页面重点展示了“1.3 覆盖车型”和“2. 需求概述”内容。图中明确可见：该需求区分多种车型/版本覆盖情况，并在需求概述中给出了需求背景、需求价值、产品主张、评价指标。左侧目录还能确认文档后续包含功能清单、详细流程、原型图、权限说明、数据需求和埋点说明等章节。",
+    "pages": [
+      "APP端",
+      "HMI端",
+      "智能车载",
+      "量产车A版本"
+    ],
+    "key_metrics": [
+      "用户互动率",
+      "权益核爆率"
+    ],
+    "flow_hints": [
+      "该需求存在车型/版本覆盖差异，覆盖范围按车型或版本区分。",
+      "文档后续明确存在APP端流程。",
+      "文档后续明确存在HMI端流程。",
+      "HMI端流程至少区分“智能车载”和“量产车A版本”两类形态。"
+    ],
+    "interactive_elements": [],
+    "notes": [
+      "截图内容以PRD说明文档为主，未展示具体产品界面，因此无法从本图确认明确的前端交互控件。",
+      "覆盖车型表中可见的列包含：GXR、小马、GXR改装车、量产车A、英文版、商务接待。"
+    ]
+  },
+  {
+    "image_file": "2.png",
+    "summary": "图片展示的是PRD的“3. 需求详述”页，包含“3.1 功能清单”“3.2 业务流程图”“3.3 功能需求”。功能清单按APP端、HMI端、口令模块、权益模块、相关新闻需求等模块展开，明确提到口令常驻入口、口令说明层、彩蛋入口、彩蛋展现、权益展现、权益领取、口令注册/匹配、奖品管理、活动管理、首页推荐、语音触发等能力；下方有一张业务流程图；再往下进入“3.3.1 APP端”，可见APP端核心职责是为用户介绍口令彩蛋功能，并提供每次乘车彩蛋的固定入口。",
+    "pages": [
+      "等待接驾页",
+      "行程中页",
+      "HMI首页",
+      "口令说明层",
+      "彩蛋展现态",
+      "权益展现态",
+      "首页推荐容器",
+      "APP端"
+    ],
+    "key_metrics": [],
+    "flow_hints": [
+      "APP端在等待接驾页及行程中页提供口令彩蛋常驻入口",
+      "用户点击常驻入口后，进入口令说明层，查看口令、活动规则和奖品资格说明",
+      "HMI首页提供彩蛋入口，可支持主动触发",
+      "用户登录后可看到彩蛋展现内容",
+      "用户触发彩蛋后可看到权益展现，并继续进行权益领取",
+      "口令模块包含口令注册配置、订单阶段的口令匹配及对应Action执行",
+      "权益模块包含奖品注册、奖品发放、活动创建、策略判断与活动记录",
+      "相关推荐会把口令彩蛋内容推送到首页推荐列表中展现",
+      "语音能力可识别口令词并拉起彩蛋，且支持后续权益领取交互"
+    ],
+    "interactive_elements": [
+      {
+        "page_name": "等待接驾页/行程中页",
+        "element_name": "口令常驻入口",
+        "position": "页面固定位置",
+        "element_type": "展示",
+        "description": "APP端固定展示的口令彩蛋入口",
+        "has_exposure_value": true,
+        "is_actionable": true
+      },
+      {
+        "page_name": "口令说明层",
+        "element_name": "口令说明层",
+        "position": "常驻入口点击后弹出",
+        "element_type": "展示",
+        "description": "展示口令、活动规则及奖品资格说明",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "HMI首页",
+        "element_name": "彩蛋入口",
+        "position": "首页多入口位置",
+        "element_type": "展示",
+        "description": "HMI首页提供的彩蛋触发入口",
+        "has_exposure_value": true,
+        "is_actionable": true
+      },
+      {
+        "page_name": "彩蛋展现态",
+        "element_name": "彩蛋展现内容",
+        "position": "彩蛋页面/展现区域",
+        "element_type": "展示",
+        "description": "用户登录后看到的彩蛋对象或内容",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "权益展现态",
+        "element_name": "权益展现内容",
+        "position": "权益展示区域",
+        "element_type": "展示",
+        "description": "用户触发彩蛋后展示的权益内容",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "权益展现态",
+        "element_name": "权益领取",
+        "position": "权益展示后链路",
+        "element_type": "按钮",
+        "description": "用户在权益展示后继续领取权益",
+        "has_exposure_value": false,
+        "is_actionable": true
+      },
+      {
+        "page_name": "首页推荐容器",
+        "element_name": "口令彩蛋推荐内容",
+        "position": "首页推荐列表",
+        "element_type": "展示",
+        "description": "推荐引擎分发后的口令彩蛋内容展示位",
+        "has_exposure_value": true,
+        "is_actionable": true
+      },
+      {
+        "page_name": "语音交互态",
+        "element_name": "口令词识别触发",
+        "position": "语音入口",
+        "element_type": "输入框",
+        "description": "通过语音识别口令词并打开彩蛋",
+        "has_exposure_value": false,
+        "is_actionable": true
+      }
+    ],
+    "notes": [
+      "图片分辨率有限，个别功能简述中的细粒度措辞无法完全辨清；以上仅保留截图中可确认的页面、流程和元素信息。"
+    ]
+  },
+  {
+    "image_file": "3.png",
+    "summary": "该图是 PRD 的“3.3 功能需求 > 3.3.1 APP端”截图，围绕“口令彩蛋”展示了 3 个功能项：口令教学动效、口令常驻入口、口令说明弹层。图中明确说明了 APP 端核心曝光目标是向用户介绍口令彩蛋能力，并提供每次乘车彩蛋的固定入口；同时给出了教学动效的频控与展现时机、常驻入口的展示页面与点击后行为，以及说明半弹层的内容构成和关闭方式。",
+    "pages": [
+      "等待接驾页",
+      "行程中页面",
+      "口令说明半弹层"
+    ],
+    "key_metrics": [
+      "APP端核心曝光为口令彩蛋功能介绍与固定入口曝光",
+      "口令教学动效针对单用户限展示 3 次，次数可配置",
+      "口令常驻入口在等待接驾页和行程中页面展示"
+    ],
+    "flow_hints": [
+      "用户进入相关页面后，若满足条件可先看到口令教学动效",
+      "教学动效需在页面完整曝光后触发；若有浮窗或弹层干扰则暂不展示，干扰消失后再展示",
+      "教学动效播放期间若被其他弹层打断，页面恢复完整曝光后可继续播放",
+      "若命中教学动效，常驻入口在动效播放完成后展示；若未命中动效，则直接展示常驻入口",
+      "用户订单匹配成功后会查询口令词；若成功获取则展示入口，未获取则不展示",
+      "用户点击行程卡片左上角的口令入口后，在 APP 内拉起活动说明半弹层",
+      "口令说明半弹层由今日口令、活动说明、奖品预告三部分组成",
+      "用户点击半弹层右上角关闭按钮或弹层外区域后，半弹层收起"
+    ],
+    "interactive_elements": [
+      {
+        "page_name": "等待接驾页/行程中页面",
+        "element_name": "口令教学动效",
+        "position": "页面内口令卡片区域",
+        "element_type": "展示",
+        "description": "用于介绍口令彩蛋能力的教学动效，页面完整曝光后按频控规则展示",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "等待接驾页/行程中页面",
+        "element_name": "口令常驻入口",
+        "position": "行程卡片左上角",
+        "element_type": "展示",
+        "description": "乘车过程中的固定口令入口，展示今日口令标签或引导信息，点击后进入说明半弹层",
+        "has_exposure_value": true,
+        "is_actionable": true
+      },
+      {
+        "page_name": "口令说明半弹层",
+        "element_name": "今日口令",
+        "position": "半弹层内容区",
+        "element_type": "展示",
+        "description": "展示当前用户可参与的今日口令信息",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "口令说明半弹层",
+        "element_name": "奖品预告",
+        "position": "半弹层内容区",
+        "element_type": "展示",
+        "description": "展示活动奖品预告信息",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "口令说明半弹层",
+        "element_name": "关闭按钮",
+        "position": "半弹层右上角",
+        "element_type": "按钮",
+        "description": "点击后关闭口令说明半弹层",
+        "has_exposure_value": false,
+        "is_actionable": true
+      }
+    ],
+    "notes": [
+      "图中“页面文案”列给出了教学动效和说明半弹层的示例文案；口令常驻入口对应文案列为“无”。"
+    ]
+  },
+  {
+    "image_file": "4.png",
+    "summary": "该图是 PRD 中“3.3.2 HMI端”页面的一部分，主要描述口令彩蛋在 HMI 侧的 3 个环节：彩蛋入口、彩蛋展现、权益展现。表格中可确认有页面原型示意、功能逻辑说明，以及少量页面文案说明；逻辑里明确提到首页入口挂件、说出口令触发全屏彩蛋、以及权益内容展示。",
+    "pages": [
+      "彩蛋入口",
+      "彩蛋展现",
+      "权益展现",
+      "首页页面",
+      "应用页面"
+    ],
+    "key_metrics": [],
+    "flow_hints": [
+      "用户上车后，首页会出现口令彩蛋入口挂件/展示位。",
+      "用户在首页或应用上层页面说出口令后，会触发全屏口令彩蛋展现。",
+      "彩蛋展现后，会进入权益相关内容的展示环节。",
+      "图中明确提到彩蛋/权益展示存在被打断或中断的处理逻辑，涉及首页、应用页、熄屏等场景。"
+    ],
+    "interactive_elements": [
+      {
+        "page_name": "彩蛋入口",
+        "element_name": "口令彩蛋入口挂件",
+        "position": "首页主内容区域",
+        "element_type": "展示",
+        "description": "用户上车后出现的彩蛋入口展示位，用于承接后续口令彩蛋触发",
+        "has_exposure_value": true
+      },
+      {
+        "page_name": "彩蛋展现",
+        "element_name": "全屏口令彩蛋",
+        "position": "页面中部",
+        "element_type": "展示",
+        "description": "用户说出口令后出现的全屏彩蛋展示内容",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "权益展现",
+        "element_name": "权益内容展示区",
+        "position": "页面下半区",
+        "element_type": "卡片",
+        "description": "彩蛋触发后承接展示的权益内容区域，图中以多卡片形式呈现",
+        "has_exposure_value": true
+      }
+    ],
+    "notes": [
+      "截图可明确识别到“彩蛋入口/彩蛋展现/权益展现”三类页面或状态，但具体按钮文案和部分细节规则在图中清晰度有限，未纳入。"
+    ]
+  },
+  {
+    "image_file": "5.png",
+    "summary": "截图展示了“口令彩蛋”需求中的两个功能段：`权益展现`与`权益领取`。权益展现页会在行程开始后由HMI请求口令/权益模块获取命中的权益信息，并按权益类型展示商品/券类信息；用户需在最多三份权益中三选一。权益领取页支持点击或语音领取，领取后已选权益卡片放大并左移，其他权益消失，右侧根据权益类型展示对应二维码与引导文案；异常情况下存在统一兜底页或不可领取提示。",
+    "pages": [
+      "权益展现",
+      "权益领取",
+      "统一兜底页面",
+      "权益领取已领取状态"
+    ],
+    "key_metrics": [],
+    "flow_hints": [
+      "行程开始后，HMI请求口令模块/权益模块，获取本次行程命中的权益信息。",
+      "权益展现页最多展示三份权益，用户需在三份权益中三选一领取。",
+      "用户可通过点击或语音指定权益进行领取。",
+      "领取某项权益后，已选权益卡片放大并平移至左侧，另外两项权益自动消失。",
+      "权益领取后，右侧区域会根据权益类型展示对应二维码及引导文案。",
+      "用户领取完成后再次触发彩蛋，会直接进入已领取状态页面。",
+      "若权益信息获取失败、未命中或超时，会展示统一兜底页面。",
+      "若权益不足三张，则按实际可展示的权益数量进行展示。",
+      "若权益不可领，会展示“活动太火爆啦，优惠券已发完，换一个福利试试吧”类提示。"
+    ],
+    "interactive_elements": [
+      {
+        "page_name": "权益展现",
+        "element_name": "权益卡片展示位",
+        "position": "页面中部",
+        "element_type": "展示",
+        "description": "展示可领取的权益内容，截图说明最多可同时出现三张，按不同权益类型展示图片、名称、价格/券说明等信息。",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "权益展现",
+        "element_name": "选择按钮",
+        "position": "每张权益卡片下方",
+        "element_type": "按钮",
+        "description": "每张权益卡片对应一个“选择”按钮，用于领取所选权益。",
+        "has_exposure_value": false,
+        "is_actionable": true
+      },
+      {
+        "page_name": "权益领取",
+        "element_name": "已领取权益卡片",
+        "position": "页面左侧",
+        "element_type": "展示",
+        "description": "用户领取后保留并突出展示已选权益卡片，卡片增加“已领取”标识，数字角标及领取按钮消失。",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "权益领取",
+        "element_name": "订单物流二维码",
+        "position": "页面右侧",
+        "element_type": "展示",
+        "description": "当用户领取实物商品后，右侧展示订单物流二维码及引导文案。",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "权益领取",
+        "element_name": "商品商详二维码",
+        "position": "页面右侧",
+        "element_type": "展示",
+        "description": "当用户领取商品券后，右侧展示订单商品商详页二维码及引导文案。",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "权益领取",
+        "element_name": "打车二维码",
+        "position": "页面右侧",
+        "element_type": "展示",
+        "description": "当用户领取打车券后，右侧展示打车二维码及引导文案。",
+        "has_exposure_value": true,
+        "is_actionable": false
+      }
+    ],
+    "notes": [
+      "截图中部分标题与文案较小，仅保留了图片中能明确辨认的信息。"
+    ]
+  },
+  {
+    "image_file": "6.png",
+    "summary": "该图展示了“口令彩蛋”需求中的三个页面/状态：彩蛋入口、彩蛋展现、权益展现。彩蛋入口在页面内以右侧悬浮入口形式出现，并给出了多种入口展示示意；点击入口后进入彩蛋展现；随后有权益展现弹层/页面，用于展示权益内容。右侧文案栏可确认入口页与权益页存在标题、副标题、按钮等文案配置说明。",
+    "pages": [
+      "彩蛋入口",
+      "彩蛋展现",
+      "权益展现"
+    ],
+    "key_metrics": [],
+    "flow_hints": [
+      "页面内出现彩蛋入口悬浮展示位",
+      "用户点击彩蛋入口后进入彩蛋展现",
+      "彩蛋展现后进入权益展现弹层/页面",
+      "入口在不同页面状态下存在多种展示样式"
+    ],
+    "interactive_elements": [
+      {
+        "page_name": "彩蛋入口",
+        "element_name": "彩蛋入口悬浮入口",
+        "position": "页面右侧悬浮区",
+        "element_type": "图标",
+        "description": "页面内悬浮展示的彩蛋入口，点击后进入彩蛋流程",
+        "has_exposure_value": true,
+        "is_actionable": true
+      },
+      {
+        "page_name": "彩蛋展现",
+        "element_name": "彩蛋展现弹层",
+        "position": "页面中央",
+        "element_type": "展示",
+        "description": "彩蛋触发后的中心动效/弹层展示位",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "权益展现",
+        "element_name": "权益展现弹层",
+        "position": "页面底部弹窗区域",
+        "element_type": "展示",
+        "description": "用于承载权益内容的弹窗展示区域",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "权益展现",
+        "element_name": "权益卡片区",
+        "position": "弹窗主体区域",
+        "element_type": "卡片",
+        "description": "权益展现弹窗内并列展示的权益内容卡片区域",
+        "has_exposure_value": true,
+        "is_actionable": false
+      }
+    ]
+  },
+  {
+    "image_file": "7.png",
+    "summary": "截图展示了“口令彩蛋”需求中的两块能力说明：`权益展现`与`权益领取`。图中明确给出了对应页面示意、功能逻辑、部分系统/异常说明，以及页面文案要素。`权益展现`包含页面层级与数字人层级两种展现层级；`权益领取`表现为领取弹层/卡片样式，并包含关闭、轮播切换、跳转APP等说明。",
+    "pages": [
+      "权益展现",
+      "权益领取",
+      "页面层级",
+      "数字人层级"
+    ],
+    "key_metrics": [
+      "权益展现按订屏维度触发",
+      "权益展现支持页面层级与数字人层级",
+      "权益领取包含8语音文案与8语言文案",
+      "权益领取后支持轮播展示下一张权益"
+    ],
+    "flow_hints": [
+      "行程内触发权益发放后，展示权益展现内容",
+      "权益展现可按页面层级或数字人层级透出",
+      "用户进入权益领取态后，可看到领取卡片/弹层",
+      "用户领取一张权益后，卡片切换并继续展示剩余权益",
+      "用户可点击关闭按钮关闭领取展示",
+      "部分权益支持点击后跳转对应APP或服务页面",
+      "异常情况下展示兜底提示文案，稍后再试"
+    ],
+    "interactive_elements": [
+      {
+        "page_name": "权益展现",
+        "element_name": "权益卡片",
+        "position": "页面中部",
+        "element_type": "展示",
+        "description": "用于展示权益内容的卡片区域，图中体现为权益展现的核心展示位",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "权益领取",
+        "element_name": "权益领取卡片",
+        "position": "页面左侧中部",
+        "element_type": "卡片",
+        "description": "用户进入领取态后展示的权益卡片，可承载领取与后续跳转信息",
+        "has_exposure_value": true,
+        "is_actionable": true
+      },
+      {
+        "page_name": "权益领取",
+        "element_name": "关闭按钮",
+        "position": "权益卡片右上角",
+        "element_type": "按钮",
+        "description": "用于关闭权益领取展示",
+        "has_exposure_value": false,
+        "is_actionable": true
+      },
+      {
+        "page_name": "权益领取",
+        "element_name": "APP入口",
+        "position": "权益卡片右侧",
+        "element_type": "按钮",
+        "description": "部分权益支持点击后跳转对应APP，如图中文案示例包含美团、饿了么等",
+        "has_exposure_value": false,
+        "is_actionable": true
+      },
+      {
+        "page_name": "权益领取",
+        "element_name": "服务入口",
+        "position": "权益卡片下方操作区",
+        "element_type": "按钮",
+        "description": "部分权益支持点击后进入对应服务或工具能力",
+        "has_exposure_value": false,
+        "is_actionable": true
+      }
+    ],
+    "notes": [
+      "截图底部还出现“3.3.3 口令模块”标题及HMI系统能力说明，但未展开到具体页面元素，因此未纳入页面与元素清单。",
+      "部分文案较小，仅保留截图中能够明确确认的信息，不补充未在图中清晰表达的流程或字段。"
+    ]
+  },
+  {
+    "image_file": "8.png",
+    "summary": "该图是“口令模块”PRD说明页，重点描述了口令模块定位、口令生成/配置的基础规则、口令动作注册所需字段，以及“口令配置”的前置校验与规则控制。图中明确提到口令模块承载品牌用户向智控座舱系统及Action关联的能力；口令生成支持按配置维度生成口令，订单口令生成后可为具体订单配置领取口令的Action。页面主体还列出了口令描述、口令类型、口令动作、APP入口文案、APP弹窗素材、HMI显式/隐式素材、HMI sug、HMI标签、生效类型、生效时间、关联Action类型、具体关联Action、支持车型、支持人群、注册人、注册时间等配置字段。",
+    "pages": [
+      "口令模块",
+      "口令配置"
+    ],
+    "key_metrics": [],
+    "flow_hints": [
+      "注册口令动作时，需要录入口令描述、口令类型、口令动作、素材、生效规则、关联Action、适用车型和人群等信息",
+      "口令生成支持按配置维度生成口令",
+      "订单口令生成后，需要针对具体订单配置口令领取对应的Action",
+      "创建口令时会同步校验车型与人群的全关系映射",
+      "用户听到订单口令配置任务后，前端或接口会校验该订单是否可匹配口令配置"
+    ],
+    "interactive_elements": [
+      {
+        "page_name": "口令模块",
+        "element_name": "APP入口文案",
+        "position": "APP入口",
+        "element_type": "展示",
+        "description": "APP行程卡片入口的配置文案字段",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "口令模块",
+        "element_name": "APP弹窗素材",
+        "position": "APP弹窗",
+        "element_type": "展示",
+        "description": "APP使用弹窗时对应的展示素材字段",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "口令模块",
+        "element_name": "HMI显式素材",
+        "position": "HMI显式口令侧",
+        "element_type": "展示",
+        "description": "推荐提示口令词时使用的显式素材字段",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "口令模块",
+        "element_name": "HMI隐式素材",
+        "position": "HMI隐式口令侧",
+        "element_type": "展示",
+        "description": "推荐提示口令词时使用的隐式素材字段",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "口令模块",
+        "element_name": "HMI sug",
+        "position": "HMI建议区",
+        "element_type": "展示",
+        "description": "推荐提示口令词时使用的智能Sug字段",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "口令模块",
+        "element_name": "HMI标签",
+        "position": "HMI标签区",
+        "element_type": "展示",
+        "description": "权益提醒类展示所使用的标签字段",
+        "has_exposure_value": true,
+        "is_actionable": false
+      }
+    ],
+    "notes": [
+      "该图为规则与字段定义页，不是前台页面原型图；可确认的是模块、配置项和流程约束，无法确认具体界面布局与按钮样式。"
+    ]
+  },
+  {
+    "image_file": "9.png",
+    "summary": "图片展示了PRD中的两部分内容：上半部分是“口令匹配”相关逻辑，明确列出了触发时机、配置规则、车型/人群匹配、素材ID、HM素材、HMLSug、权益玩法、信息兜底等处理项；下半部分是“3.3.4 权益模块”，说明权益模块在营销平台作为券池能力，包含奖品配置与运营管理两类能力，并配有“权益汇兑”流程图，文中还提到打车券与商品券相关发放说明。",
+    "pages": [
+      "口令匹配",
+      "权益模块",
+      "权益管理",
+      "运营管理"
+    ],
+    "key_metrics": [],
+    "flow_hints": [
+      "用户触发口令后进入口令匹配流程",
+      "口令匹配会按配置规则判断可用口令组",
+      "口令可用性会结合车型和人群信息判断",
+      "匹配成功后返回对应素材或文案信息",
+      "命中权益活动类Action后进入权益模块发奖流程",
+      "权益模块支持权益查询、配置与发放",
+      "运营管理按规则为指定用户发放对应权益"
+    ],
+    "interactive_elements": [
+      {
+        "page_name": "口令匹配",
+        "element_name": "资源展示素材",
+        "position": "口令匹配结果",
+        "element_type": "展示",
+        "description": "口令匹配成功后返回对应资源展示素材",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "口令匹配",
+        "element_name": "HM素材",
+        "position": "口令匹配结果",
+        "element_type": "展示",
+        "description": "命中条件后返回HM相关素材内容",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "口令匹配",
+        "element_name": "HMLSug文案",
+        "position": "口令匹配结果",
+        "element_type": "展示",
+        "description": "根据判断结果返回对应LSug文案",
+        "has_exposure_value": true,
+        "is_actionable": false
+      }
+    ]
+  },
+  {
+    "image_file": "10.png",
+    "summary": "该图是PRD中“3.4 相关需求”页，当前可确认包含“3.4.1 推荐需求”“3.4.2 运营需求”“3.4.3 数据需求”三部分。其中推荐需求下有业务流程图和产品要求；产品要求文字可辨识到内容涉及“内容召回”“内容插入”以及“HMI侧”处理。数据需求表中能直接识别出多项与APP首页、HMI首页入口及弹窗/触发相关的曝光或触发指标。",
+    "pages": [
+      "APP首页",
+      "APP首页弹窗",
+      "HMI首页",
+      "推荐悬浮窗"
+    ],
+    "key_metrics": [
+      "APP首页入口曝光次数",
+      "APP首页弹窗曝光次数",
+      "HMI首页入口曝光次数",
+      "HMI新建触发次数"
+    ],
+    "flow_hints": [
+      "该页明确将需求拆分为推荐需求、运营需求、数据需求三部分",
+      "推荐需求部分包含一张跨角色/跨环节的业务流程图",
+      "产品要求中可确认存在内容召回、内容插入、HMI侧处理等环节",
+      "数据需求明确要求统计APP首页入口、APP首页弹窗、HMI首页入口等曝光数据",
+      "数据需求中可确认存在HMI侧新建/触发相关统计"
+    ],
+    "interactive_elements": [
+      {
+        "page_name": "APP首页",
+        "element_name": "首页入口",
+        "position": "首页主区域",
+        "element_type": "展示",
+        "description": "数据需求表中明确有APP首页入口曝光统计，说明该入口具备独立曝光价值",
+        "has_exposure_value": true,
+        "is_actionable": true
+      },
+      {
+        "page_name": "APP首页弹窗",
+        "element_name": "首页弹窗",
+        "position": "弹窗层",
+        "element_type": "展示",
+        "description": "数据需求表中明确有APP首页弹窗曝光统计，说明该弹窗具备独立曝光价值",
+        "has_exposure_value": true,
+        "is_actionable": false
+      },
+      {
+        "page_name": "HMI首页",
+        "element_name": "首页入口",
+        "position": "首页主区域",
+        "element_type": "展示",
+        "description": "数据需求表中明确有HMI首页入口曝光统计，说明该入口具备独立曝光价值",
+        "has_exposure_value": true,
+        "is_actionable": true
+      },
+      {
+        "page_name": "推荐悬浮窗",
+        "element_name": "悬浮入口",
+        "position": "悬浮区域",
+        "element_type": "展示",
+        "description": "从数据需求表可确认存在推荐悬浮入口相关统计，说明该悬浮入口是独立展示位",
+        "has_exposure_value": true,
+        "is_actionable": true
+      }
+    ],
+    "notes": [
+      "截图分辨率有限，业务流程图中的多数节点文案无法稳定辨认；以上仅保留画面中可直接确认的信息。"
+    ]
+  },
+  {
+    "image_file": "11.png",
+    "summary": "该图为 PRD 中“3.4.3 数据需求”表格，包含三列：指标名称、业务含义、详细指标说明。图中明确给出了口令彩蛋相关的数据指标方向，覆盖 APP/HMI 彩蛋入口曝光、弹层曝光、权益曝光/领取/核销、彩蛋播放与完播、用户互动率，以及语音意图触发次数等，并补充了部分指标的口径说明，如曝光定义、点击触发、按总成交或行程维度去重、按券类型拆分等。",
+    "pages": [
+      "APP预置卡片彩蛋入口",
+      "APP预置卡片彩蛋弹层",
+      "HMI彩蛋入口",
+      "规则弹层",
+      "推荐页",
+      "排行圈",
+      "行程结束页",
+      "首页",
+      "二级应用页",
+      "HMI侧入口"
+    ],
+    "key_metrics": [
+      "APP彩蛋入口曝光数",
+      "APP彩蛋弹层曝光数",
+      "HMI彩蛋入口曝光数",
+      "HMI彩蛋播放数",
+      "权益曝光次数",
+      "权益领取数",
+      "权益核销数",
+      "彩蛋曝光率",
+      "用户互动率",
+      "彩蛋完播率",
+      "权益领取率",
+      "权益核销率",
+      "语音意图触发次数"
+    ],
+    "flow_hints": [
+      "用户进入 APP 预置卡片彩蛋入口后可产生入口曝光",
+      "用户看到 APP 彩蛋规则弹层后可产生弹层曝光",
+      "用户从排行圈、推荐页或行程结束页入口进入彩蛋链路",
+      "用户可通过首页语音或二级应用页语音触发口令彩蛋相关流程",
+      "彩蛋播放后进入权益展示阶段",
+      "权益展示后存在领取行为",
+      "权益领取后存在核销行为",
+      "部分指标按总成交或行程维度去重统计",
+      "部分权益数据按券类型拆分统计，至少包含打车券、商品券、实物券"
+    ],
+    "interactive_elements": [
+      {
+        "page_name": "APP预置卡片彩蛋入口",
+        "element_name": "彩蛋入口",
+        "position": "APP预置卡片区域",
+        "element_type": "展示",
+        "description": "彩蛋入口有独立曝光统计",
+        "has_exposure_value": true
+      },
+      {
+        "page_name": "APP预置卡片彩蛋弹层",
+        "element_name": "规则弹层",
+        "position": "弹层区域",
+        "element_type": "展示",
+        "description": "规则弹层有独立曝光统计",
+        "has_exposure_value": true
+      },
+      {
+        "page_name": "HMI彩蛋入口",
+        "element_name": "彩蛋入口",
+        "position": "HMI入口区域",
+        "element_type": "展示",
+        "description": "HMI 彩蛋入口有独立曝光统计",
+        "has_exposure_value": true
+      },
+      {
+        "page_name": "推荐页",
+        "element_name": "彩蛋入口",
+        "position": "推荐页入口位",
+        "element_type": "展示",
+        "description": "推荐页入口同时统计曝光与点击触发次数",
+        "has_exposure_value": true,
+        "is_actionable": true
+      },
+      {
+        "page_name": "排行圈",
+        "element_name": "彩蛋入口",
+        "position": "排行圈入口位",
+        "element_type": "展示",
+        "description": "排行圈入口同时统计曝光与点击触发次数",
+        "has_exposure_value": true,
+        "is_actionable": true
+      },
+      {
+        "page_name": "行程结束页",
+        "element_name": "去彩蛋入口",
+        "position": "行程结束页入口位",
+        "element_type": "展示",
+        "description": "行程结束页存在去彩蛋入口曝光统计",
+        "has_exposure_value": true
+      },
+      {
+        "page_name": "首页",
+        "element_name": "语音入口",
+        "position": "首页语音入口区域",
+        "element_type": "输入框",
+        "description": "首页语音入口会统计语音触发次数，并区分彩蛋推荐有无等情形",
+        "has_exposure_value": false,
+        "is_actionable": true
+      },
+      {
+        "page_name": "二级应用页",
+        "element_name": "语音入口",
+        "position": "二级应用页语音入口区域",
+        "element_type": "输入框",
+        "description": "二级应用页语音入口会统计语音触发次数",
+        "has_exposure_value": false,
+        "is_actionable": true
+      },
+      {
+        "page_name": "权益弹层",
+        "element_name": "权益展示",
+        "position": "权益展示区域",
+        "element_type": "展示",
+        "description": "彩蛋成功激发完成后，权益完全展示会单独统计曝光",
+        "has_exposure_value": true,
+        "is_actionable": false
+      }
+    ],
+    "notes": [
+      "该图是数据需求表，不是页面设计稿；页面名与元素名仅采用表格中明确出现的入口、弹层、页面或展示位描述。",
+      "个别左侧指标名称在截图中清晰度有限，但不影响确认其所属主题：曝光、播放、领取、核销、互动、完播、语音触发。"
+    ]
+  }
+]

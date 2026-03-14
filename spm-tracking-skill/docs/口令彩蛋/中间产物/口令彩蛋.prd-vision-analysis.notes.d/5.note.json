@@ -1,0 +1,81 @@
+{
+  "image_file": "5.png",
+  "summary": "截图展示了“口令彩蛋”需求中的两个功能段：`权益展现`与`权益领取`。权益展现页会在行程开始后由HMI请求口令/权益模块获取命中的权益信息，并按权益类型展示商品/券类信息；用户需在最多三份权益中三选一。权益领取页支持点击或语音领取，领取后已选权益卡片放大并左移，其他权益消失，右侧根据权益类型展示对应二维码与引导文案；异常情况下存在统一兜底页或不可领取提示。",
+  "pages": [
+    "权益展现",
+    "权益领取",
+    "统一兜底页面",
+    "权益领取已领取状态"
+  ],
+  "key_metrics": [],
+  "flow_hints": [
+    "行程开始后，HMI请求口令模块/权益模块，获取本次行程命中的权益信息。",
+    "权益展现页最多展示三份权益，用户需在三份权益中三选一领取。",
+    "用户可通过点击或语音指定权益进行领取。",
+    "领取某项权益后，已选权益卡片放大并平移至左侧，另外两项权益自动消失。",
+    "权益领取后，右侧区域会根据权益类型展示对应二维码及引导文案。",
+    "用户领取完成后再次触发彩蛋，会直接进入已领取状态页面。",
+    "若权益信息获取失败、未命中或超时，会展示统一兜底页面。",
+    "若权益不足三张，则按实际可展示的权益数量进行展示。",
+    "若权益不可领，会展示“活动太火爆啦，优惠券已发完，换一个福利试试吧”类提示。"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "权益展现",
+      "element_name": "权益卡片展示位",
+      "position": "页面中部",
+      "element_type": "展示",
+      "description": "展示可领取的权益内容，截图说明最多可同时出现三张，按不同权益类型展示图片、名称、价格/券说明等信息。",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "权益展现",
+      "element_name": "选择按钮",
+      "position": "每张权益卡片下方",
+      "element_type": "按钮",
+      "description": "每张权益卡片对应一个“选择”按钮，用于领取所选权益。",
+      "has_exposure_value": false,
+      "is_actionable": true
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "已领取权益卡片",
+      "position": "页面左侧",
+      "element_type": "展示",
+      "description": "用户领取后保留并突出展示已选权益卡片，卡片增加“已领取”标识，数字角标及领取按钮消失。",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "订单物流二维码",
+      "position": "页面右侧",
+      "element_type": "展示",
+      "description": "当用户领取实物商品后，右侧展示订单物流二维码及引导文案。",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "商品商详二维码",
+      "position": "页面右侧",
+      "element_type": "展示",
+      "description": "当用户领取商品券后，右侧展示订单商品商详页二维码及引导文案。",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "打车二维码",
+      "position": "页面右侧",
+      "element_type": "展示",
+      "description": "当用户领取打车券后，右侧展示打车二维码及引导文案。",
+      "has_exposure_value": true,
+      "is_actionable": false
+    }
+  ],
+  "notes": [
+    "截图中部分标题与文案较小，仅保留了图片中能明确辨认的信息。"
+  ]
+}

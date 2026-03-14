@@ -1,0 +1,20 @@
+{
+  "mode": "task_design_enhanced",
+  "requirement_context_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/中间产物/无麦k歌.requirement-context.json",
+  "design_dir_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma",
+  "design_overrides_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/中间产物/无麦k歌.design-overrides.json",
+  "intermediate_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/中间产物",
+  "output_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输出",
+  "artifacts": {
+    "requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/中间产物/无麦k歌.requirement-context.json",
+    "design_overrides_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/中间产物/无麦k歌.design-overrides.json",
+    "design_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/中间产物/无麦k歌.design-context.json",
+    "merged_requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/中间产物/无麦k歌.merged.requirement-context.json",
+    "requirement_input_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/中间产物/无麦k歌.draft.requirement-input.json",
+    "requirement_plan_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输出/无麦k歌.generated.requirement-plan.json",
+    "requirement_plan_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输出/无麦k歌.generated.requirement-plan.md",
+    "test_scenarios_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输出/无麦k歌.generated.test-scenarios.md",
+    "validation_report_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输出/无麦k歌.generated.validation-report.json",
+    "validation_report_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输出/无麦k歌.generated.validation-report.md"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "image_file": "3.png",
+  "summary": "该图是 PRD 的“3.3 功能需求 > 3.3.1 APP端”截图，围绕“口令彩蛋”展示了 3 个功能项：口令教学动效、口令常驻入口、口令说明弹层。图中明确说明了 APP 端核心曝光目标是向用户介绍口令彩蛋能力，并提供每次乘车彩蛋的固定入口；同时给出了教学动效的频控与展现时机、常驻入口的展示页面与点击后行为，以及说明半弹层的内容构成和关闭方式。",
+  "pages": [
+    "等待接驾页",
+    "行程中页面",
+    "口令说明半弹层"
+  ],
+  "key_metrics": [
+    "APP端核心曝光为口令彩蛋功能介绍与固定入口曝光",
+    "口令教学动效针对单用户限展示 3 次，次数可配置",
+    "口令常驻入口在等待接驾页和行程中页面展示"
+  ],
+  "flow_hints": [
+    "用户进入相关页面后，若满足条件可先看到口令教学动效",
+    "教学动效需在页面完整曝光后触发；若有浮窗或弹层干扰则暂不展示，干扰消失后再展示",
+    "教学动效播放期间若被其他弹层打断，页面恢复完整曝光后可继续播放",
+    "若命中教学动效，常驻入口在动效播放完成后展示；若未命中动效，则直接展示常驻入口",
+    "用户订单匹配成功后会查询口令词；若成功获取则展示入口，未获取则不展示",
+    "用户点击行程卡片左上角的口令入口后，在 APP 内拉起活动说明半弹层",
+    "口令说明半弹层由今日口令、活动说明、奖品预告三部分组成",
+    "用户点击半弹层右上角关闭按钮或弹层外区域后，半弹层收起"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "等待接驾页/行程中页面",
+      "element_name": "口令教学动效",
+      "position": "页面内口令卡片区域",
+      "element_type": "展示",
+      "description": "用于介绍口令彩蛋能力的教学动效，页面完整曝光后按频控规则展示",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "等待接驾页/行程中页面",
+      "element_name": "口令常驻入口",
+      "position": "行程卡片左上角",
+      "element_type": "展示",
+      "description": "乘车过程中的固定口令入口，展示今日口令标签或引导信息，点击后进入说明半弹层",
+      "has_exposure_value": true,
+      "is_actionable": true
+    },
+    {
+      "page_name": "口令说明半弹层",
+      "element_name": "今日口令",
+      "position": "半弹层内容区",
+      "element_type": "展示",
+      "description": "展示当前用户可参与的今日口令信息",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "口令说明半弹层",
+      "element_name": "奖品预告",
+      "position": "半弹层内容区",
+      "element_type": "展示",
+      "description": "展示活动奖品预告信息",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "口令说明半弹层",
+      "element_name": "关闭按钮",
+      "position": "半弹层右上角",
+      "element_type": "按钮",
+      "description": "点击后关闭口令说明半弹层",
+      "has_exposure_value": false,
+      "is_actionable": true
+    }
+  ],
+  "notes": [
+    "图中“页面文案”列给出了教学动效和说明半弹层的示例文案；口令常驻入口对应文案列为“无”。"
+  ]
+}

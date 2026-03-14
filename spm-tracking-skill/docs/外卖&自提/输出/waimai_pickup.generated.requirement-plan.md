@@ -1,0 +1,388 @@
+# SPM埋点方案文档
+
+## 1. 需求概览
+
+### 1.1 需求名称
+
+Robotaxi 外卖自提交易能力
+
+### 1.2 需求摘要
+
+Robotaxi 智能座舱在行程内承载外卖与到店自提交易能力，用户可通过语音或触屏完成导购、商品确认、规格选择、地址确认、结算支付和订单查看。该能力需要明确区分外卖与自提两种履约方式，并在座舱场景下关注推荐词、商品卡点击、结算转化、支付成功和订单查看等关键行为。
+
+### 1.3 涉及页面
+
+| 页面中文 | 页面英文 | page_id | 说明 |
+| --- | --- | --- | --- |
+| 首页 | home | takeaway_pickup_home | 座舱首页中的外卖自提推荐入口与订单挂件承载页。 |
+| 商品列表页 | product_list | takeaway_pickup_product_list | 展示门店与推荐商品的列表页，支持换一批和快捷下单。 |
+| 商品确认页 | item_confirm | takeaway_pickup_item_confirm | 单商品确认页，支持快捷切换热饮或切换自提。 |
+| 多品确认页 | multi_item_confirm | takeaway_pickup_multi_item_confirm | 多商品确认页，支持统一支付和快捷切换履约方式。 |
+| 规格页 | spec_select | takeaway_pickup_spec_select | 商品规格和数量选择页。 |
+| 地址确认页 | address_confirm | takeaway_pickup_address_confirm | 新增或确认收货地址的页面。 |
+| 地址修改页 | address_edit | takeaway_pickup_address_edit | 修改收货人、手机号或详细地址的页面。 |
+| 结算页 | checkout | takeaway_pickup_checkout | 展示商品、配送、价格和支付方式，并触发去支付。 |
+| 支付中页 | paying | takeaway_pickup_paying | 支付处理中的状态反馈页。 |
+| 支付成功页 | pay_success | takeaway_pickup_pay_success | 支付成功后的结果页，支持查看订单和继续推荐。 |
+| 订单详情页 | order_detail | takeaway_pickup_order_detail | 展示取餐码、订单状态、地址和商品明细。 |
+| 声纹开通弹窗 | voiceprint_open | takeaway_pickup_voiceprint_open | 支付前提示用户开通声纹支付的弹窗。 |
+
+## 2. 整体SPM树形结构
+
+```text
+A: 外卖自提 / takeaway_pickup
+├── B: 首页 / home (takeaway_pickup_home)
+    ├── C: 首页推荐词区 / home_suggestions
+        ├── D: 推荐词按钮 / suggestion_btn (周边外卖/nearby_takeaway)
+        └── D: 推荐词按钮 / suggestion_btn (推荐咖啡/recommend_coffee)
+    └── C: 首页订单卡片区 / home_order_card
+        └── D: 订单卡片 / order_card
+├── B: 商品列表页 / product_list (takeaway_pickup_product_list)
+    ├── C: 顶部固定区域 / fixed_top
+        └── D: 返回按钮 / back
+    ├── C: 商品列表区 / product_list
+        └── D: 商品卡片 / card
+    ├── C: 列表快捷操作区 / list_actions
+        ├── D: 换一批按钮 / refresh_batch
+        └── D: 快捷下单按钮 / quick_order_btn
+    └── C: 门店头部区 / store_header
+        └── D: 门店头部卡片 / store_summary_card
+├── B: 商品确认页 / item_confirm (takeaway_pickup_item_confirm)
+    ├── C: 商品确认区 / product_confirm
+        └── D: 商品确认卡片 / confirm_card
+    ├── C: 确认快捷操作区 / confirm_actions
+        ├── D: 切换热饮按钮 / switch_hot_btn
+        └── D: 切换自提按钮 / switch_self_pickup_btn
+    └── C: 底部固定区域 / fixed_bottom
+        └── D: 去支付按钮 / pay_btn
+├── B: 多品确认页 / multi_item_confirm (takeaway_pickup_multi_item_confirm)
+    ├── C: 商品确认区 / product_confirm
+        └── D: 商品确认卡片 / confirm_item_card
+    ├── C: 确认快捷操作区 / confirm_actions
+        ├── D: 切换热饮按钮 / switch_hot_btn
+        └── D: 切换自提按钮 / switch_self_pickup_btn
+    └── C: 底部固定区域 / fixed_bottom
+        └── D: 去支付按钮 / pay_btn
+├── B: 规格页 / spec_select (takeaway_pickup_spec_select)
+    ├── C: 规格选择区 / spec_options
+        └── D: 规格选项 / spec_option
+    └── C: 底部固定区域 / fixed_bottom
+        └── D: 确认规格按钮 / confirm_spec_btn
+├── B: 地址确认页 / address_confirm (takeaway_pickup_address_confirm)
+    ├── C: 地址表单区 / address_form
+        └── D: 地址卡片 / address_card
+    ├── C: 地址操作区 / address_actions
+        ├── D: 改收货人按钮 / edit_receiver_btn
+        ├── D: 改手机号按钮 / edit_phone_btn
+        └── D: 改地址按钮 / edit_address_btn
+    └── C: 底部固定区域 / fixed_bottom
+        └── D: 确认地址按钮 / confirm_address_btn
+├── B: 地址修改页 / address_edit (takeaway_pickup_address_edit)
+    └── C: 地址表单区 / address_form
+        └── D: 地址卡片 / address_card
+├── B: 结算页 / checkout (takeaway_pickup_checkout)
+    ├── C: 结算信息区 / settlement_panel
+        └── D: 地址卡片 / address_card
+    ├── C: 支付方式区 / payment_section
+        └── D: 支付方式入口 / payment_method_entry
+    ├── C: 底部固定区域 / fixed_bottom
+        └── D: 去支付按钮 / pay_btn
+    └── C: 商品确认区 / product_confirm
+        └── D: 商品确认卡片 / confirm_card
+├── B: 支付中页 / paying (takeaway_pickup_paying)
+    └── C: 支付状态区 / payment_status
+        └── D: 支付中状态 / paying_status
+├── B: 支付成功页 / pay_success (takeaway_pickup_pay_success)
+    ├── C: 结果操作区 / result_actions
+        ├── D: 查看订单按钮 / view_order_btn
+        └── D: 继续推荐按钮 / recommend_food_btn
+    └── C: 支付状态区 / payment_status
+        └── D: 支付成功状态 / pay_success_status
+├── B: 订单详情页 / order_detail (takeaway_pickup_order_detail)
+    ├── C: 详情操作区 / detail_actions
+        └── D: 继续推荐按钮 / recommend_food_btn
+    └── C: 结算信息区 / settlement_panel
+        └── D: 订单卡片 / order_card
+└── B: 声纹开通弹窗 / voiceprint_open (takeaway_pickup_voiceprint_open)
+    ├── C: 弹窗正文区 / modal_body
+        └── D: 知情同意书链接 / agreement_link
+    ├── C: 操作弹窗区 / modal_actions
+        ├── D: 暂不按钮 / skip_btn
+        └── D: 开通声纹支付按钮 / enable_voiceprint_btn
+    └── C: 弹窗关闭区 / modal_close
+        └── D: 关闭按钮 / close_btn
+```
+
+## 3. 分页面埋点方案
+
+### 首页 / home
+
+- page_id: takeaway_pickup_home
+- 页面说明: 座舱首页中的外卖自提推荐入口与订单挂件承载页。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 首页推荐词区 / home_suggestions | 推荐词按钮 / suggestion_btn (周边外卖/nearby_takeaway) | 顺序坑位 | level_1 | 是 | 坑位曝光 | 点击 | 周边外卖 / nearby_takeaway |
+| 首页推荐词区 / home_suggestions | 推荐词按钮 / suggestion_btn (推荐咖啡/recommend_coffee) | 顺序坑位 | level_1 | 是 | 坑位曝光 | 点击 | 推荐咖啡 / recommend_coffee |
+| 首页订单卡片区 / home_order_card | 订单卡片 / order_card | 固定坑位 | none | 是 | 区块覆盖 | 点击 | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 首页推荐词区 / home_suggestions | - | 区块曝光 | takeaway_pickup.home.home_suggestions | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 首页推荐词区 / home_suggestions | 推荐词按钮 / suggestion_btn (周边外卖/nearby_takeaway) | 坑位曝光 | takeaway_pickup.home.home_suggestions.suggestion_btn(nearby_takeaway) | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 首页推荐词区 / home_suggestions | 推荐词按钮 / suggestion_btn (周边外卖/nearby_takeaway) | 坑位点击 | takeaway_pickup.home.home_suggestions.suggestion_btn(nearby_takeaway) | reco_sug(array_string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填) |
+| 首页推荐词区 / home_suggestions | 推荐词按钮 / suggestion_btn (推荐咖啡/recommend_coffee) | 坑位曝光 | takeaway_pickup.home.home_suggestions.suggestion_btn(recommend_coffee) | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 首页推荐词区 / home_suggestions | 推荐词按钮 / suggestion_btn (推荐咖啡/recommend_coffee) | 坑位点击 | takeaway_pickup.home.home_suggestions.suggestion_btn(recommend_coffee) | reco_sug(array_string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填) |
+| 首页订单卡片区 / home_order_card | - | 区块曝光 | takeaway_pickup.home.home_order_card | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 首页订单卡片区 / home_order_card | 订单卡片 / order_card | 坑位点击 | takeaway_pickup.home.home_order_card.order_card | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+
+### 商品列表页 / product_list
+
+- page_id: takeaway_pickup_product_list
+- 页面说明: 展示门店与推荐商品的列表页，支持换一批和快捷下单。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 顶部固定区域 / fixed_top | 返回按钮 / back | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 商品列表区 / product_list | 商品卡片 / card | 顺序坑位 | level_1 | 是 | 坑位曝光 | 点击 | - |
+| 列表快捷操作区 / list_actions | 换一批按钮 / refresh_batch | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 列表快捷操作区 / list_actions | 快捷下单按钮 / quick_order_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 门店头部区 / store_header | 门店头部卡片 / store_summary_card | 固定坑位 | none | 是 | 区块覆盖 | - | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 顶部固定区域 / fixed_top | 返回按钮 / back | 坑位点击 | takeaway_pickup.product_list.fixed_top.back | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填)<br/>delivery_type(string, 选填) |
+| 商品列表区 / product_list | - | 区块曝光 | takeaway_pickup.product_list.product_list | delivery_type(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 商品列表区 / product_list | 商品卡片 / card | 坑位曝光 | takeaway_pickup.product_list.product_list.card | shop_id(string, 选填)<br/>sku_id(string, 必填)<br/>delivery_type(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 商品列表区 / product_list | 商品卡片 / card | 坑位点击 | takeaway_pickup.product_list.product_list.card | shop_id(string, 选填)<br/>sku_id(string, 必填)<br/>delivery_type(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 列表快捷操作区 / list_actions | 换一批按钮 / refresh_batch | 坑位点击 | takeaway_pickup.product_list.list_actions.refresh_batch | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填)<br/>delivery_type(string, 选填) |
+| 列表快捷操作区 / list_actions | 快捷下单按钮 / quick_order_btn | 坑位点击 | takeaway_pickup.product_list.list_actions.quick_order_btn | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填)<br/>delivery_type(string, 选填) |
+| 门店头部区 / store_header | - | 区块曝光 | takeaway_pickup.product_list.store_header | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>delivery_type(string, 选填) |
+
+### 商品确认页 / item_confirm
+
+- page_id: takeaway_pickup_item_confirm
+- 页面说明: 单商品确认页，支持快捷切换热饮或切换自提。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 商品确认区 / product_confirm | 商品确认卡片 / confirm_card | 固定坑位 | none | 是 | 区块覆盖 | - | - |
+| 确认快捷操作区 / confirm_actions | 切换热饮按钮 / switch_hot_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 确认快捷操作区 / confirm_actions | 切换自提按钮 / switch_self_pickup_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 底部固定区域 / fixed_bottom | 去支付按钮 / pay_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 商品确认区 / product_confirm | - | 区块曝光 | takeaway_pickup.item_confirm.product_confirm | delivery_type(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 确认快捷操作区 / confirm_actions | 切换热饮按钮 / switch_hot_btn | 坑位点击 | takeaway_pickup.item_confirm.confirm_actions.switch_hot_btn | spec(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填)<br/>delivery_type(string, 选填) |
+| 确认快捷操作区 / confirm_actions | 切换自提按钮 / switch_self_pickup_btn | 坑位点击 | takeaway_pickup.item_confirm.confirm_actions.switch_self_pickup_btn | delivery_type(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 底部固定区域 / fixed_bottom | 去支付按钮 / pay_btn | 坑位点击 | takeaway_pickup.item_confirm.fixed_bottom.pay_btn | delivery_type(string, 选填)<br/>price(number, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+
+### 多品确认页 / multi_item_confirm
+
+- page_id: takeaway_pickup_multi_item_confirm
+- 页面说明: 多商品确认页，支持统一支付和快捷切换履约方式。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 商品确认区 / product_confirm | 商品确认卡片 / confirm_item_card | 顺序坑位 | level_1 | 是 | 坑位曝光 | - | - |
+| 确认快捷操作区 / confirm_actions | 切换热饮按钮 / switch_hot_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 确认快捷操作区 / confirm_actions | 切换自提按钮 / switch_self_pickup_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 底部固定区域 / fixed_bottom | 去支付按钮 / pay_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 商品确认区 / product_confirm | - | 区块曝光 | takeaway_pickup.multi_item_confirm.product_confirm | delivery_type(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 商品确认区 / product_confirm | 商品确认卡片 / confirm_item_card | 坑位曝光 | takeaway_pickup.multi_item_confirm.product_confirm.confirm_item_card | shop_id(string, 选填)<br/>sku_id(string, 必填)<br/>delivery_type(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 确认快捷操作区 / confirm_actions | 切换热饮按钮 / switch_hot_btn | 坑位点击 | takeaway_pickup.multi_item_confirm.confirm_actions.switch_hot_btn | spec(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填)<br/>delivery_type(string, 选填) |
+| 确认快捷操作区 / confirm_actions | 切换自提按钮 / switch_self_pickup_btn | 坑位点击 | takeaway_pickup.multi_item_confirm.confirm_actions.switch_self_pickup_btn | delivery_type(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 底部固定区域 / fixed_bottom | 去支付按钮 / pay_btn | 坑位点击 | takeaway_pickup.multi_item_confirm.fixed_bottom.pay_btn | delivery_type(string, 选填)<br/>price(number, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+
+### 规格页 / spec_select
+
+- page_id: takeaway_pickup_spec_select
+- 页面说明: 商品规格和数量选择页。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 规格选择区 / spec_options | 规格选项 / spec_option | 顺序坑位 | level_2 | 否 | 坑位曝光 | 点击 | - |
+| 底部固定区域 / fixed_bottom | 确认规格按钮 / confirm_spec_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 规格选择区 / spec_options | 规格选项 / spec_option | 坑位曝光 | takeaway_pickup.spec_select.spec_options.spec_option | spec(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 规格选择区 / spec_options | 规格选项 / spec_option | 坑位点击 | takeaway_pickup.spec_select.spec_options.spec_option | spec(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 底部固定区域 / fixed_bottom | 确认规格按钮 / confirm_spec_btn | 坑位点击 | takeaway_pickup.spec_select.fixed_bottom.confirm_spec_btn | spec(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+
+### 地址确认页 / address_confirm
+
+- page_id: takeaway_pickup_address_confirm
+- 页面说明: 新增或确认收货地址的页面。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 地址表单区 / address_form | 地址卡片 / address_card | 固定坑位 | none | 是 | 区块覆盖 | - | - |
+| 地址操作区 / address_actions | 改收货人按钮 / edit_receiver_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 地址操作区 / address_actions | 改手机号按钮 / edit_phone_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 地址操作区 / address_actions | 改地址按钮 / edit_address_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 底部固定区域 / fixed_bottom | 确认地址按钮 / confirm_address_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 地址表单区 / address_form | - | 区块曝光 | takeaway_pickup.address_confirm.address_form | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 地址操作区 / address_actions | 改收货人按钮 / edit_receiver_btn | 坑位点击 | takeaway_pickup.address_confirm.address_actions.edit_receiver_btn | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 地址操作区 / address_actions | 改手机号按钮 / edit_phone_btn | 坑位点击 | takeaway_pickup.address_confirm.address_actions.edit_phone_btn | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 地址操作区 / address_actions | 改地址按钮 / edit_address_btn | 坑位点击 | takeaway_pickup.address_confirm.address_actions.edit_address_btn | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 底部固定区域 / fixed_bottom | 确认地址按钮 / confirm_address_btn | 坑位点击 | takeaway_pickup.address_confirm.fixed_bottom.confirm_address_btn | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+
+### 地址修改页 / address_edit
+
+- page_id: takeaway_pickup_address_edit
+- 页面说明: 修改收货人、手机号或详细地址的页面。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 地址表单区 / address_form | 地址卡片 / address_card | 固定坑位 | none | 是 | 区块覆盖 | - | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 地址表单区 / address_form | - | 区块曝光 | takeaway_pickup.address_edit.address_form | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+
+### 结算页 / checkout
+
+- page_id: takeaway_pickup_checkout
+- 页面说明: 展示商品、配送、价格和支付方式，并触发去支付。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 结算信息区 / settlement_panel | 地址卡片 / address_card | 固定坑位 | none | 是 | 区块覆盖 | - | - |
+| 支付方式区 / payment_section | 支付方式入口 / payment_method_entry | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 底部固定区域 / fixed_bottom | 去支付按钮 / pay_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 商品确认区 / product_confirm | 商品确认卡片 / confirm_card | 固定坑位 | none | 是 | 区块覆盖 | - | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 结算信息区 / settlement_panel | - | 区块曝光 | takeaway_pickup.checkout.settlement_panel | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>delivery_type(string, 选填) |
+| 支付方式区 / payment_section | 支付方式入口 / payment_method_entry | 坑位点击 | takeaway_pickup.checkout.payment_section.payment_method_entry | payment_method(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填)<br/>delivery_type(string, 选填) |
+| 底部固定区域 / fixed_bottom | 去支付按钮 / pay_btn | 坑位点击 | takeaway_pickup.checkout.fixed_bottom.pay_btn | delivery_type(string, 选填)<br/>price(number, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 商品确认区 / product_confirm | - | 区块曝光 | takeaway_pickup.checkout.product_confirm | delivery_type(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+
+### 支付中页 / paying
+
+- page_id: takeaway_pickup_paying
+- 页面说明: 支付处理中的状态反馈页。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 支付状态区 / payment_status | 支付中状态 / paying_status | 固定坑位 | none | 是 | 区块覆盖 | - | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 支付状态区 / payment_status | - | 区块曝光 | takeaway_pickup.paying.payment_status | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+
+### 支付成功页 / pay_success
+
+- page_id: takeaway_pickup_pay_success
+- 页面说明: 支付成功后的结果页，支持查看订单和继续推荐。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 结果操作区 / result_actions | 查看订单按钮 / view_order_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 结果操作区 / result_actions | 继续推荐按钮 / recommend_food_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 支付状态区 / payment_status | 支付成功状态 / pay_success_status | 固定坑位 | none | 是 | 区块覆盖 | - | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 结果操作区 / result_actions | 查看订单按钮 / view_order_btn | 坑位点击 | takeaway_pickup.pay_success.result_actions.view_order_btn | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 结果操作区 / result_actions | 继续推荐按钮 / recommend_food_btn | 坑位点击 | takeaway_pickup.pay_success.result_actions.recommend_food_btn | reco_sug(array_string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填) |
+| 支付状态区 / payment_status | - | 区块曝光 | takeaway_pickup.pay_success.payment_status | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+
+### 订单详情页 / order_detail
+
+- page_id: takeaway_pickup_order_detail
+- 页面说明: 展示取餐码、订单状态、地址和商品明细。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 详情操作区 / detail_actions | 继续推荐按钮 / recommend_food_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+| 结算信息区 / settlement_panel | 订单卡片 / order_card | 固定坑位 | none | 是 | 区块覆盖 | 点击 | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 详情操作区 / detail_actions | 继续推荐按钮 / recommend_food_btn | 坑位点击 | takeaway_pickup.order_detail.detail_actions.recommend_food_btn | reco_sug(array_string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>delivery_type(string, 选填) |
+| 结算信息区 / settlement_panel | - | 区块曝光 | takeaway_pickup.order_detail.settlement_panel | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>delivery_type(string, 选填) |
+| 结算信息区 / settlement_panel | 订单卡片 / order_card | 坑位点击 | takeaway_pickup.order_detail.settlement_panel.order_card | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填)<br/>delivery_type(string, 选填) |
+
+### 声纹开通弹窗 / voiceprint_open
+
+- page_id: takeaway_pickup_voiceprint_open
+- 页面说明: 支付前提示用户开通声纹支付的弹窗。
+
+#### 录入单元
+
+| C | D | 坑位类型 | 顺序层级 | C曝光 | 曝光策略 | D点击 | biz_type |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 弹窗正文区 / modal_body | 知情同意书链接 / agreement_link | 固定坑位 | none | 是 | 区块覆盖 | 点击 | - |
+| 操作弹窗区 / modal_actions | 暂不按钮 / skip_btn | 固定坑位 | none | 是 | 区块覆盖 | 点击 | - |
+| 操作弹窗区 / modal_actions | 开通声纹支付按钮 / enable_voiceprint_btn | 固定坑位 | none | 是 | 区块覆盖 | 点击 | - |
+| 弹窗关闭区 / modal_close | 关闭按钮 / close_btn | 固定坑位 | none | 否 | 不需要 | 点击 | - |
+
+#### 事件与参数
+
+| C | D | 事件 | target_spm | 参数 |
+| --- | --- | --- | --- | --- |
+| 弹窗正文区 / modal_body | - | 区块曝光 | takeaway_pickup.voiceprint_open.modal_body | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 弹窗正文区 / modal_body | 知情同意书链接 / agreement_link | 坑位点击 | takeaway_pickup.voiceprint_open.modal_body.agreement_link | agreement_type(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 操作弹窗区 / modal_actions | - | 区块曝光 | takeaway_pickup.voiceprint_open.modal_actions | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填) |
+| 操作弹窗区 / modal_actions | 暂不按钮 / skip_btn | 坑位点击 | takeaway_pickup.voiceprint_open.modal_actions.skip_btn | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 操作弹窗区 / modal_actions | 开通声纹支付按钮 / enable_voiceprint_btn | 坑位点击 | takeaway_pickup.voiceprint_open.modal_actions.enable_voiceprint_btn | user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+| 弹窗关闭区 / modal_close | 关闭按钮 / close_btn | 坑位点击 | takeaway_pickup.voiceprint_open.modal_close.close_btn | monitor_id(string, 选填)<br/>user_pin(string, 必填)<br/>order_id(string, 必填)<br/>vid(string, 必填)<br/>car_city(string, 必填)<br/>env(string, 必填)<br/>click_type(string, 必填)<br/>reco_sug(array_string, 选填) |
+
+
+## 4. 主数据沉淀建议
+
+当前方案未产生新的主数据沉淀建议。

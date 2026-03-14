@@ -1,0 +1,269 @@
+{
+  "file_name": "彩蛋.png",
+  "page_name": "口令彩蛋活动流程",
+  "page_type": "flow",
+  "description": "设计稿展示了口令彩蛋从活动页入口、点击彩蛋、三选一卡片弹窗、奖励结果弹窗到回流活动页的完整流程，并包含“新蛋已打开”的快捷分支。",
+  "flow_hints": [
+    "活动页存在常规入口态与背景弹窗态两种起始状态。",
+    "用户点击活动页中的彩蛋入口后，进入彩蛋选择弹窗。",
+    "彩蛋选择弹窗内包含多个奖品/彩蛋卡位，支持逐个点击选择。",
+    "选择后进入奖励结果弹窗，结果形态至少包含二维码分享态和已开奖励态。",
+    "奖励结果关闭或完成后回流至活动页。",
+    "底部还存在从活动页直接进入已开奖励结果弹窗的分支。"
+  ],
+  "regions": [
+    {
+      "region_name_zh": "活动页入口区",
+      "region_name_en": "Entry Activity Area",
+      "region_type": "content",
+      "position_candidate": "left / upper-left and lower-left",
+      "description": "流程左侧的活动主页面集合，承载彩蛋入口、背景弹窗态以及新蛋已打开的回流状态。",
+      "elements": [
+        {
+          "element_name": "口令彩蛋活动主页面",
+          "element_type": "display_panel",
+          "position_candidate": "upper-left",
+          "description": "蓝色主视觉活动页，作为主流程起点。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.88
+        },
+        {
+          "element_name": "彩蛋入口按钮",
+          "element_type": "button",
+          "position_candidate": "within upper-left activity page lower area",
+          "description": "活动页内用于触发彩蛋玩法的主入口按钮/热点区域。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.8
+        },
+        {
+          "element_name": "背景弹窗态活动页",
+          "element_type": "display_panel",
+          "position_candidate": "left-middle",
+          "description": "活动页叠加背景提示或弱弹窗后的状态，用于承接另一种入口曝光。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.71
+        },
+        {
+          "element_name": "新蛋已打开活动页",
+          "element_type": "status_visual",
+          "position_candidate": "lower-left",
+          "description": "活动页在已开蛋后的状态页或回流态，用于区分用户当前进度。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.76
+        }
+      ]
+    },
+    {
+      "region_name_zh": "彩蛋触发与选择区",
+      "region_name_en": "Egg Trigger and Selection Area",
+      "region_type": "actions",
+      "position_candidate": "center-left to center",
+      "description": "用户点击入口后进入的过渡态与核心选择弹窗区域，是本流程最关键的交互区。",
+      "elements": [
+        {
+          "element_name": "点击彩蛋过渡态",
+          "element_type": "status_visual",
+          "position_candidate": "center-left",
+          "description": "点击彩蛋后的模糊/高亮过渡页面，用于表现已触发彩蛋机制。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.74
+        },
+        {
+          "element_name": "彩蛋选择弹窗",
+          "element_type": "display_panel",
+          "position_candidate": "center-upper",
+          "description": "中央弹窗，承载多个可选彩蛋/奖品卡位。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.92
+        },
+        {
+          "element_name": "奖品卡位一",
+          "element_type": "card",
+          "position_candidate": "within selection popup left",
+          "description": "弹窗内左侧奖品/彩蛋卡片，可点击选择。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "element_name": "奖品卡位二",
+          "element_type": "card",
+          "position_candidate": "within selection popup center",
+          "description": "弹窗内中间奖品/彩蛋卡片，可点击选择。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "element_name": "奖品卡位三",
+          "element_type": "card",
+          "position_candidate": "within selection popup right",
+          "description": "弹窗内右侧奖品/彩蛋卡片，可点击选择。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.9
+        },
+        {
+          "element_name": "弹窗关闭按钮",
+          "element_type": "icon_button",
+          "position_candidate": "within selection popup top-right",
+          "description": "用于关闭彩蛋选择弹窗并返回上层页面。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.78
+        }
+      ]
+    },
+    {
+      "region_name_zh": "开奖结果与分享区",
+      "region_name_en": "Reward Result and Share Area",
+      "region_type": "promo",
+      "position_candidate": "center-right",
+      "description": "用户完成选择后的结果承接区域，包含分享二维码态和已开奖励态两种主要结果。",
+      "elements": [
+        {
+          "element_name": "二维码奖励弹窗",
+          "element_type": "display_panel",
+          "position_candidate": "upper-right of center",
+          "description": "展示奖励结果并附带二维码的结果弹窗。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.88
+        },
+        {
+          "element_name": "二维码展示区",
+          "element_type": "status_visual",
+          "position_candidate": "within QR reward popup right",
+          "description": "用于承载二维码内容，主要用于曝光和后续扫码传播。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.86
+        },
+        {
+          "element_name": "奖励卡展示位",
+          "element_type": "display_card",
+          "position_candidate": "within reward popup left",
+          "description": "结果弹窗内展示当前开出的奖励卡片。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.84
+        },
+        {
+          "element_name": "分享/邀请操作按钮",
+          "element_type": "button",
+          "position_candidate": "within QR reward popup lower area",
+          "description": "结果弹窗内用于分享、邀请或继续传播的主操作按钮。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.73
+        },
+        {
+          "element_name": "已开奖励结果弹窗",
+          "element_type": "display_panel",
+          "position_candidate": "center-right lower",
+          "description": "不带二维码的已开奖励结果态，用于展示奖励结果或状态文案。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.83
+        }
+      ]
+    },
+    {
+      "region_name_zh": "完成回流区",
+      "region_name_en": "Completion Return Area",
+      "region_type": "summary",
+      "position_candidate": "far-right and lower-center",
+      "description": "流程末端的回流页面与底部直达结果分支，用于形成完整闭环。",
+      "elements": [
+        {
+          "element_name": "回流活动页",
+          "element_type": "display_panel",
+          "position_candidate": "far-right",
+          "description": "用户完成弹窗操作后返回的活动页状态。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.82
+        },
+        {
+          "element_name": "结果关闭返回操作",
+          "element_type": "button",
+          "position_candidate": "from result popup to return page",
+          "description": "关闭结果弹窗并返回活动页的操作入口。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.68
+        },
+        {
+          "element_name": "新蛋已打开直达结果分支",
+          "element_type": "display_card",
+          "position_candidate": "lower-center",
+          "description": "从活动页直接进入结果弹窗的快捷分支节点，用于已开蛋用户快速查看结果。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.72
+        }
+      ]
+    }
+  ],
+  "confidence": 0.8
+}

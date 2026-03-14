@@ -1,0 +1,20 @@
+{
+  "mode": "task_design_enhanced",
+  "requirement_context_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/中间产物/口令彩蛋.requirement-context.json",
+  "design_dir_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/输入/口令彩蛋figma",
+  "design_overrides_path": null,
+  "intermediate_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/中间产物",
+  "output_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/输出",
+  "artifacts": {
+    "requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/中间产物/口令彩蛋.requirement-context.json",
+    "design_overrides_json": null,
+    "design_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/中间产物/口令彩蛋.design-context.json",
+    "merged_requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/中间产物/口令彩蛋.merged.requirement-context.json",
+    "requirement_input_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/中间产物/口令彩蛋.draft.requirement-input.json",
+    "requirement_plan_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/输出/口令彩蛋.generated.requirement-plan.json",
+    "requirement_plan_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/输出/口令彩蛋.generated.requirement-plan.md",
+    "test_scenarios_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/输出/口令彩蛋.generated.test-scenarios.md",
+    "validation_report_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/输出/口令彩蛋.generated.validation-report.json",
+    "validation_report_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/输出/口令彩蛋.generated.validation-report.md"
+  }
+}

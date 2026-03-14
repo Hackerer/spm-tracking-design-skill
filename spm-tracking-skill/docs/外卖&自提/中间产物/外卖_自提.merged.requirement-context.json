@@ -1,0 +1,341 @@
+{
+  "requirement_name": "未命名需求",
+  "business_background": "",
+  "pages": [
+    {
+      "page_name": "结算页",
+      "page_path": "/takeaway-pickup/checkout",
+      "description": "订单结算和支付确认页面。"
+    },
+    {
+      "page_name": "支付中页",
+      "page_path": "/takeaway-pickup/paying",
+      "description": "支付处理中状态页。"
+    },
+    {
+      "page_name": "支付成功页",
+      "page_path": "/takeaway-pickup/pay-success",
+      "description": "支付成功结果页。"
+    },
+    {
+      "page_name": "商品确认页",
+      "page_path": "/takeaway-pickup/item-confirm",
+      "description": "单品确认和快捷改配页面。"
+    },
+    {
+      "page_name": "订单详情页",
+      "page_path": "/takeaway-pickup/order-detail",
+      "description": "订单详情和取餐码页面。"
+    },
+    {
+      "page_name": "多品确认页",
+      "page_path": "/takeaway-pickup/multi-item-confirm",
+      "description": "多商品确认和统一支付页面。"
+    },
+    {
+      "page_name": "规格页",
+      "page_path": "/takeaway-pickup/spec-select",
+      "description": "商品规格选择页面。"
+    },
+    {
+      "page_name": "商品列表页",
+      "page_path": "/takeaway-pickup/product-list",
+      "description": "导购阶段的门店和商品列表页。"
+    },
+    {
+      "page_name": "声纹开通弹窗",
+      "page_path": "/takeaway-pickup/voiceprint-open",
+      "description": "支付前的声纹开通弹窗。"
+    },
+    {
+      "page_name": "首页",
+      "page_path": "/takeaway-pickup/home",
+      "description": "首页展示外卖自提推荐词入口。"
+    },
+    {
+      "page_name": "地址确认页",
+      "page_path": "/takeaway-pickup/address-confirm",
+      "description": "新增或确认收货地址页面。"
+    },
+    {
+      "page_name": "地址修改页",
+      "page_path": "/takeaway-pickup/address-edit",
+      "description": "地址信息修改成功后的页面状态。"
+    }
+  ],
+  "key_metrics": [],
+  "core_flow_steps": [
+    "进入首页",
+    "从首页推荐词进入商品列表页",
+    "进入商品列表页",
+    "选择商品进入商品确认页",
+    "进入结算页并点击去支付按钮",
+    "进入支付中页",
+    "进入支付成功页",
+    "进入订单详情页"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "结算页",
+      "element_name": "商品确认卡片",
+      "position": "product_confirm",
+      "element_type": "卡片",
+      "description": "展示商品图片、规格、数量和价格。"
+    },
+    {
+      "page_name": "结算页",
+      "element_name": "地址卡片",
+      "position": "settlement_panel",
+      "element_type": "卡片",
+      "description": "展示当前配送地址和履约方式。"
+    },
+    {
+      "page_name": "结算页",
+      "element_name": "支付方式入口",
+      "position": "payment_section",
+      "element_type": "按钮",
+      "description": "查看或切换当前支付方式。"
+    },
+    {
+      "page_name": "结算页",
+      "element_name": "去支付按钮",
+      "position": "fixed_bottom",
+      "element_type": "按钮",
+      "description": "提交支付请求。"
+    },
+    {
+      "page_name": "支付中页",
+      "element_name": "支付中状态",
+      "position": "payment_status",
+      "element_type": "展示",
+      "description": "展示支付处理中的状态反馈。"
+    },
+    {
+      "page_name": "支付成功页",
+      "element_name": "支付成功状态",
+      "position": "payment_status",
+      "element_type": "展示",
+      "description": "展示支付成功状态和订单摘要。"
+    },
+    {
+      "page_name": "支付成功页",
+      "element_name": "查看订单按钮",
+      "position": "result_actions",
+      "element_type": "按钮",
+      "description": "进入订单详情页。"
+    },
+    {
+      "page_name": "支付成功页",
+      "element_name": "推荐终点附近的美食",
+      "position": "result_actions",
+      "element_type": "按钮",
+      "description": "继续推荐终点附近商品。"
+    },
+    {
+      "page_name": "商品确认页",
+      "element_name": "商品确认卡片",
+      "position": "product_confirm",
+      "element_type": "卡片",
+      "description": "展示商品图片、规格、价格和数量。"
+    },
+    {
+      "page_name": "商品确认页",
+      "element_name": "换成热的按钮",
+      "position": "confirm_actions",
+      "element_type": "按钮",
+      "description": "切换为热饮规格。"
+    },
+    {
+      "page_name": "商品确认页",
+      "element_name": "换成自提按钮",
+      "position": "confirm_actions",
+      "element_type": "按钮",
+      "description": "切换为到店自提。"
+    },
+    {
+      "page_name": "商品确认页",
+      "element_name": "OK付款按钮",
+      "position": "fixed_bottom",
+      "element_type": "按钮",
+      "description": "确认当前商品并进入支付。"
+    },
+    {
+      "page_name": "订单详情页",
+      "element_name": "订单卡片",
+      "position": "settlement_panel",
+      "element_type": "卡片",
+      "description": "展示取餐码、订单状态和商品内容。"
+    },
+    {
+      "page_name": "订单详情页",
+      "element_name": "推荐终点附近的美食",
+      "position": "detail_actions",
+      "element_type": "按钮",
+      "description": "继续推荐终点附近商品。"
+    },
+    {
+      "page_name": "多品确认页",
+      "element_name": "多商品确认卡片",
+      "position": "product_confirm",
+      "element_type": "卡片",
+      "description": "展示多商品及其规格价格。"
+    },
+    {
+      "page_name": "多品确认页",
+      "element_name": "换成热的按钮",
+      "position": "confirm_actions",
+      "element_type": "按钮",
+      "description": "批量切换为热饮规格。"
+    },
+    {
+      "page_name": "多品确认页",
+      "element_name": "换成自提省2元按钮",
+      "position": "confirm_actions",
+      "element_type": "按钮",
+      "description": "切换到自提方式并提示优惠。"
+    },
+    {
+      "page_name": "多品确认页",
+      "element_name": "OK付款按钮",
+      "position": "fixed_bottom",
+      "element_type": "按钮",
+      "description": "确认多商品并进入支付。"
+    },
+    {
+      "page_name": "规格页",
+      "element_name": "规格选项",
+      "position": "spec_options",
+      "element_type": "按钮",
+      "description": "切换规格、温度或数量。"
+    },
+    {
+      "page_name": "规格页",
+      "element_name": "确认规格按钮",
+      "position": "fixed_bottom",
+      "element_type": "按钮",
+      "description": "确认规格并返回商品确认链路。"
+    },
+    {
+      "page_name": "商品列表页",
+      "element_name": "门店头部卡片",
+      "position": "store_header",
+      "element_type": "卡片",
+      "description": "展示门店摘要信息。"
+    },
+    {
+      "page_name": "商品列表页",
+      "element_name": "店带品卡片",
+      "position": "product_list",
+      "element_type": "卡片",
+      "description": "选择某个商品进入确认或规格链路。"
+    },
+    {
+      "page_name": "商品列表页",
+      "element_name": "换一批按钮",
+      "position": "list_actions",
+      "element_type": "按钮",
+      "description": "刷新下一批推荐。"
+    },
+    {
+      "page_name": "商品列表页",
+      "element_name": "点第一个按钮",
+      "position": "list_actions",
+      "element_type": "按钮",
+      "description": "快捷选择当前列表的第一个商品。"
+    },
+    {
+      "page_name": "声纹开通弹窗",
+      "element_name": "关闭按钮",
+      "position": "modal_close",
+      "element_type": "图标",
+      "description": "关闭声纹开通弹窗。"
+    },
+    {
+      "page_name": "声纹开通弹窗",
+      "element_name": "相关协议链接",
+      "position": "modal_body",
+      "element_type": "链接",
+      "description": "查看声纹支付开通相关协议。"
+    },
+    {
+      "page_name": "声纹开通弹窗",
+      "element_name": "暂不按钮",
+      "position": "modal_actions",
+      "element_type": "按钮",
+      "description": "暂不启用声纹支付。"
+    },
+    {
+      "page_name": "声纹开通弹窗",
+      "element_name": "开通声纹支付按钮",
+      "position": "modal_actions",
+      "element_type": "按钮",
+      "description": "确认开通声纹支付。"
+    },
+    {
+      "page_name": "首页",
+      "element_name": "查看附近的外卖",
+      "position": "home_suggestions",
+      "element_type": "按钮",
+      "description": "进入外卖推荐链路。"
+    },
+    {
+      "page_name": "首页",
+      "element_name": "推荐咖啡",
+      "position": "home_suggestions",
+      "element_type": "按钮",
+      "description": "进入咖啡推荐链路。"
+    },
+    {
+      "page_name": "首页",
+      "element_name": "订单卡片",
+      "position": "home_order_card",
+      "element_type": "卡片",
+      "description": "展示取餐码、订单状态和商品列表。"
+    },
+    {
+      "page_name": "地址确认页",
+      "element_name": "地址卡片",
+      "position": "address_form",
+      "element_type": "卡片",
+      "description": "展示待确认地址信息。"
+    },
+    {
+      "page_name": "地址确认页",
+      "element_name": "改收货人按钮",
+      "position": "address_actions",
+      "element_type": "按钮",
+      "description": "修改收货人姓名。"
+    },
+    {
+      "page_name": "地址确认页",
+      "element_name": "改手机号按钮",
+      "position": "address_actions",
+      "element_type": "按钮",
+      "description": "修改手机号。"
+    },
+    {
+      "page_name": "地址确认页",
+      "element_name": "改地址按钮",
+      "position": "address_actions",
+      "element_type": "按钮",
+      "description": "修改详细地址。"
+    },
+    {
+      "page_name": "地址确认页",
+      "element_name": "确认地址按钮",
+      "position": "fixed_bottom",
+      "element_type": "按钮",
+      "description": "确认地址后回到结算链路。"
+    },
+    {
+      "page_name": "地址修改页",
+      "element_name": "地址卡片",
+      "position": "address_form",
+      "element_type": "卡片",
+      "description": "展示修改后的地址结果。"
+    }
+  ],
+  "business_line": "robotaxi",
+  "terminal_domain": "cabin_hmi",
+  "business_capability": "takeaway_pickup"
+}

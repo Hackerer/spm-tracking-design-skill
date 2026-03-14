@@ -1,0 +1,341 @@
+{
+  "requirement_name": "Robotaxi 健康监测功能",
+  "business_line": "robotaxi",
+  "terminal_domain": "cabin_hmi",
+  "business_capability": "health_monitor",
+  "business_background": "智能座舱通过高频、沉浸式的车内场景提供轻量化健康监测服务，目标是在行程中完成健康检测、输出报告并承接健康服务转化。当前需求覆盖性别选择、基础信息录入、监测启动、教学引导、检测准备、检测过程、报告生成、结果报告以及协议/退出等关键弹窗场景。",
+  "pages": [
+    {
+      "page_name": "性别选择页",
+      "page_path": "/health-monitor/gender-selection",
+      "description": "用户进入健康监测后的第一页，选择性别后进入基础信息录入。"
+    },
+    {
+      "page_name": "基础信息录入页",
+      "page_path": "/health-monitor/basic-info",
+      "description": "用户录入年龄、身高、体重，并点击开始检测。"
+    },
+    {
+      "page_name": "健康监测启动页",
+      "page_path": "/health-monitor/start",
+      "description": "展示健康监测价值介绍、协议勾选和一键开启按钮。"
+    },
+    {
+      "page_name": "协议详情弹窗",
+      "page_path": "/health-monitor/agreement-detail",
+      "description": "展示知情同意书内容，并提供不同意/同意并继续操作。"
+    },
+    {
+      "page_name": "隐私政策弹窗",
+      "page_path": "/health-monitor/privacy-policy",
+      "description": "展示隐私政策内容，并提供不同意/同意并继续操作。"
+    },
+    {
+      "page_name": "教学引导页",
+      "page_path": "/health-monitor/guide",
+      "description": "展示如何取出设备、如何双手持握的教学指引。"
+    },
+    {
+      "page_name": "检测准备页",
+      "page_path": "/health-monitor/prepare",
+      "description": "信号采集正常后展示准备状态，提示检测即将开始。"
+    },
+    {
+      "page_name": "监测过程页",
+      "page_path": "/health-monitor/monitoring",
+      "description": "展示监测进度、实时波形和健康科普内容。"
+    },
+    {
+      "page_name": "退出确认弹窗",
+      "page_path": "/health-monitor/exit-confirm",
+      "description": "用户中途退出时的挽留弹窗，提供退出和坚持一下两个选择。"
+    },
+    {
+      "page_name": "报告生成页",
+      "page_path": "/health-monitor/report-generating",
+      "description": "监测完成后展示报告生成中的等待页面与科普内容。"
+    },
+    {
+      "page_name": "结果报告页",
+      "page_path": "/health-monitor/report-result",
+      "description": "展示总评分、生理指标、心理指标，以及二维码和营销banner。"
+    }
+  ],
+  "key_metrics": [
+    "功能渗透率",
+    "使用完成率",
+    "监测启动点击率",
+    "结果报告页曝光率",
+    "右侧推广位曝光率"
+  ],
+  "core_flow_steps": [
+    "进入性别选择页",
+    "选择性别并进入基础信息录入页",
+    "填写年龄、身高、体重并进入健康监测启动页",
+    "勾选知情同意并点击一键开启健康守护按钮",
+    "进入教学引导页",
+    "完成双手持握进入检测准备页",
+    "进入监测过程页",
+    "生成报告并进入报告生成页",
+    "进入结果报告页",
+    "进入健康监测启动页",
+    "阅读协议并开启健康监测",
+    "进入检测准备页",
+    "检测中可能弹出退出确认弹窗",
+    "进入报告生成页"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "性别选择页",
+      "element_name": "男性选项",
+      "position": "gender_selector",
+      "element_type": "选项",
+      "description": "选择男性"
+    },
+    {
+      "page_name": "性别选择页",
+      "element_name": "女性选项",
+      "position": "gender_selector",
+      "element_type": "选项",
+      "description": "选择女性"
+    },
+    {
+      "page_name": "性别选择页",
+      "element_name": "下一步按钮",
+      "position": "fixed_bottom",
+      "element_type": "按钮",
+      "description": "确认性别后进入基础信息录入页"
+    },
+    {
+      "page_name": "基础信息录入页",
+      "element_name": "年龄选择器",
+      "position": "basic_info_form",
+      "element_type": "滚轮",
+      "description": "选择年龄"
+    },
+    {
+      "page_name": "基础信息录入页",
+      "element_name": "身高选择器",
+      "position": "basic_info_form",
+      "element_type": "滚轮",
+      "description": "选择身高"
+    },
+    {
+      "page_name": "基础信息录入页",
+      "element_name": "体重选择器",
+      "position": "basic_info_form",
+      "element_type": "滚轮",
+      "description": "选择体重"
+    },
+    {
+      "page_name": "基础信息录入页",
+      "element_name": "开始检测按钮",
+      "position": "fixed_bottom",
+      "element_type": "按钮",
+      "description": "录入基础信息后进入监测启动页"
+    },
+    {
+      "page_name": "健康监测启动页",
+      "element_name": "知情同意复选框",
+      "position": "agreement_bar",
+      "element_type": "复选框",
+      "description": "勾选后可开始监测"
+    },
+    {
+      "page_name": "健康监测启动页",
+      "element_name": "知情同意书链接",
+      "position": "agreement_bar",
+      "element_type": "链接",
+      "description": "打开知情同意书弹窗"
+    },
+    {
+      "page_name": "健康监测启动页",
+      "element_name": "隐私政策链接",
+      "position": "agreement_bar",
+      "element_type": "链接",
+      "description": "打开隐私政策弹窗"
+    },
+    {
+      "page_name": "健康监测启动页",
+      "element_name": "一键开启健康守护按钮",
+      "position": "start_panel",
+      "element_type": "按钮",
+      "description": "校验同意状态后进入教学引导页"
+    },
+    {
+      "page_name": "协议详情弹窗",
+      "element_name": "不同意按钮",
+      "position": "modal_actions",
+      "element_type": "按钮",
+      "description": "关闭协议弹窗并取消勾选"
+    },
+    {
+      "page_name": "协议详情弹窗",
+      "element_name": "同意并继续按钮",
+      "position": "modal_actions",
+      "element_type": "按钮",
+      "description": "关闭协议弹窗并保持勾选"
+    },
+    {
+      "page_name": "隐私政策弹窗",
+      "element_name": "不同意按钮",
+      "position": "modal_actions",
+      "element_type": "按钮",
+      "description": "关闭隐私政策弹窗并取消勾选"
+    },
+    {
+      "page_name": "隐私政策弹窗",
+      "element_name": "同意并继续按钮",
+      "position": "modal_actions",
+      "element_type": "按钮",
+      "description": "关闭隐私政策弹窗并保持勾选"
+    },
+    {
+      "page_name": "教学引导页",
+      "element_name": "引导卡片",
+      "position": "guide_content",
+      "element_type": "展示",
+      "description": "展示设备取出与持握引导"
+    },
+    {
+      "page_name": "检测准备页",
+      "element_name": "准备进度环",
+      "position": "prepare_status",
+      "element_type": "展示",
+      "description": "展示信号稳定进度和即将开始监测提示"
+    },
+    {
+      "page_name": "监测过程页",
+      "element_name": "监测进度区",
+      "position": "monitoring_panel",
+      "element_type": "展示",
+      "description": "展示监测百分比、波形和不要移动提示"
+    },
+    {
+      "page_name": "监测过程页",
+      "element_name": "健康科普卡片",
+      "position": "science_content",
+      "element_type": "卡片",
+      "description": "展示健康科普轮播内容"
+    },
+    {
+      "page_name": "退出确认弹窗",
+      "element_name": "退出按钮",
+      "position": "modal_actions",
+      "element_type": "按钮",
+      "description": "中断监测并退出"
+    },
+    {
+      "page_name": "退出确认弹窗",
+      "element_name": "坚持一下按钮",
+      "position": "modal_actions",
+      "element_type": "按钮",
+      "description": "继续完成监测"
+    },
+    {
+      "page_name": "报告生成页",
+      "element_name": "报告生成动效",
+      "position": "generating_panel",
+      "element_type": "展示",
+      "description": "展示报告生成中状态"
+    },
+    {
+      "page_name": "报告生成页",
+      "element_name": "健康科普卡片",
+      "position": "science_content",
+      "element_type": "卡片",
+      "description": "展示报告生成期间的科普内容"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "总评分区",
+      "position": "result_summary",
+      "element_type": "展示",
+      "description": "展示健康总分和总体结论"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "生理指标卡组",
+      "position": "physiological_metrics",
+      "element_type": "展示",
+      "description": "展示心率等生理指标"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "心理指标卡组",
+      "position": "mental_metrics",
+      "element_type": "展示",
+      "description": "展示能量、压力、情绪、效率等心理指标"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "二维码卡片",
+      "position": "right_promo",
+      "element_type": "展示",
+      "description": "展示报告二维码"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "营销Banner",
+      "position": "right_promo",
+      "element_type": "卡片",
+      "description": "展示右侧营销banner轮播"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "窦性心律指标卡",
+      "position": "physiological_metrics",
+      "element_type": "卡片",
+      "description": "展示窦性心律结果。"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "室上性早搏指标卡",
+      "position": "physiological_metrics",
+      "element_type": "卡片",
+      "description": "展示室上性早搏结果。"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "心率指标卡",
+      "position": "physiological_metrics",
+      "element_type": "卡片",
+      "description": "展示心率结果。"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "能量指标卡",
+      "position": "mental_metrics",
+      "element_type": "卡片",
+      "description": "展示能量结果。"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "压力指标卡",
+      "position": "mental_metrics",
+      "element_type": "卡片",
+      "description": "展示压力结果。"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "负面情绪指标卡",
+      "position": "mental_metrics",
+      "element_type": "卡片",
+      "description": "展示负面情绪结果。"
+    },
+    {
+      "page_name": "结果报告页",
+      "element_name": "效率指标卡",
+      "position": "mental_metrics",
+      "element_type": "卡片",
+      "description": "展示效率结果。"
+    },
+    {
+      "page_name": "退出确认弹窗",
+      "element_name": "关闭按钮",
+      "position": "modal_close",
+      "element_type": "图标",
+      "description": "关闭退出确认弹窗。"
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "requirement_name": "Robotaxi 无麦K歌",
+  "business_line": "robotaxi",
+  "terminal_domain": "cabin_hmi",
+  "business_capability": "karaoke",
+  "business_background": "无麦K歌是 Robotaxi 座舱娱乐能力之一，通过桌面唱吧磁贴进入，以无麦方案提供沉浸式 KTV 体验。用户可以通过语音引导、热门歌星、大家都爱唱和更多推荐等方式选歌，进入全屏播放器后完成演唱、喝彩、调音、切歌和待唱管理。需求同时覆盖桌面入口联动、账号透传、无麦扩声、点歌台、歌曲列表、播放器、中途退出和结尾推荐等核心场景。",
+  "pages": [
+    {
+      "page_name": "桌面页",
+      "page_path": "/home/desktop",
+      "description": "Robotaxi 桌面承载唱吧磁贴卡片，用户从桌面进入无麦K歌。"
+    },
+    {
+      "page_name": "点歌台首页",
+      "page_path": "/home/karaoke/index",
+      "description": "无麦K歌主入口页面，提供语音引导、热门歌星、大家都爱唱和更多推荐。"
+    },
+    {
+      "page_name": "热门歌星页",
+      "page_path": "/home/karaoke/singer",
+      "description": "按热门、华语男星、华语女星、国际歌手等分类浏览歌手并进入其歌曲集合。"
+    },
+    {
+      "page_name": "大家都爱唱页",
+      "page_path": "/home/karaoke/popular",
+      "description": "浏览热门单曲推荐，支持直接唱和加入待唱。"
+    },
+    {
+      "page_name": "更多推荐页",
+      "page_path": "/home/karaoke/recommendation",
+      "description": "按唱过的歌、抖音热歌、影视金曲、年代专属等主题浏览推荐歌曲。"
+    },
+    {
+      "page_name": "歌曲列表页",
+      "page_path": "/home/karaoke/song-list",
+      "description": "展示某位歌手或某个推荐主题下的歌曲列表，支持直接唱或加入待唱。"
+    },
+    {
+      "page_name": "语义歧义弹窗",
+      "page_path": "/home/karaoke/disambiguation",
+      "description": "当语音点歌命中多首歌曲或多个歌手时，弹出候选列表供用户进一步选择。"
+    },
+    {
+      "page_name": "播放器",
+      "page_path": "/home/karaoke/player",
+      "description": "进入沉浸式全屏演唱页，支持字幕、喝彩、原唱、调音、切歌和已点歌单管理。"
+    },
+    {
+      "page_name": "调音弹窗",
+      "page_path": "/home/karaoke/tuning",
+      "description": "在播放器内调节麦克风音量和媒体音量。"
+    },
+    {
+      "page_name": "已点歌单弹窗",
+      "page_path": "/home/karaoke/queue",
+      "description": "展示已点待唱歌曲列表，支持置顶、删除和直接播放。"
+    },
+    {
+      "page_name": "中途退出弹窗",
+      "page_path": "/home/karaoke/exit-confirm",
+      "description": "用户演唱中申请退出时的确认弹窗，支持继续唱或退出播放。"
+    },
+    {
+      "page_name": "结尾推荐弹层",
+      "page_path": "/home/karaoke/ending-recommend",
+      "description": "演唱结束后展示推荐歌曲和快捷推荐词，鼓励用户继续点唱。"
+    }
+  ],
+  "key_metrics": [
+    "K歌使用率",
+    "平均K歌时长",
+    "平均K歌数量",
+    "K歌用户活跃",
+    "K歌用户留存",
+    "点歌成功率",
+    "加待唱使用率"
+  ],
+  "core_flow_steps": [
+    "从桌面页点击唱吧磁贴卡片进入点歌台首页",
+    "在点歌台首页通过语音推荐词、热门歌星、大家都爱唱或更多推荐发起选歌",
+    "进入热门歌星页、大家都爱唱页、更多推荐页或歌曲列表页浏览候选歌曲",
+    "在歌曲列表页点击直接唱按钮或加入待唱按钮",
+    "若语义命中多结果则弹出语义歧义弹窗并选择候选歌曲",
+    "进入播放器开始演唱",
+    "在播放器中触发喝彩、手势、调音、原唱开关、已点歌单和切歌操作",
+    "如需退出则触发中途退出弹窗",
+    "演唱结束后进入结尾推荐弹层继续点歌"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "桌面页",
+      "element_name": "唱吧磁贴卡片",
+      "position": "desktop_tiles",
+      "element_type": "卡片",
+      "description": "从桌面进入无麦K歌首页。"
+    },
+    {
+      "page_name": "点歌台首页",
+      "element_name": "语音推荐词按钮",
+      "position": "voice_suggestions",
+      "element_type": "按钮",
+      "description": "快捷发起点歌意图，如打开大家都爱唱、唱某位歌手的歌或打开唱过的歌。"
+    },
+    {
+      "page_name": "点歌台首页",
+      "element_name": "热门歌星入口",
+      "position": "singer_section",
+      "element_type": "入口",
+      "description": "进入热门歌星页。"
+    },
+    {
+      "page_name": "点歌台首页",
+      "element_name": "歌手卡片",
+      "position": "singer_section",
+      "element_type": "卡片",
+      "description": "点击某位歌手进入其歌曲列表。"
+    },
+    {
+      "page_name": "点歌台首页",
+      "element_name": "大家都爱唱入口",
+      "position": "popular_section",
+      "element_type": "入口",
+      "description": "进入大家都爱唱页。"
+    },
+    {
+      "page_name": "点歌台首页",
+      "element_name": "热门歌曲卡片",
+      "position": "popular_section",
+      "element_type": "卡片",
+      "description": "点击热门单曲直接进入播放或列表链路。"
+    },
+    {
+      "page_name": "点歌台首页",
+      "element_name": "更多推荐入口",
+      "position": "recommendation_section",
+      "element_type": "入口",
+      "description": "进入更多推荐页。"
+    },
+    {
+      "page_name": "点歌台首页",
+      "element_name": "推荐分类卡片",
+      "position": "recommendation_section",
+      "element_type": "卡片",
+      "description": "点击唱过的歌、抖音热歌、影视金曲、年代专属等分类。"
+    },
+    {
+      "page_name": "热门歌星页",
+      "element_name": "返回按钮",
+      "position": "fixed_top",
+      "element_type": "按钮",
+      "description": "返回点歌台首页。"
+    },
+    {
+      "page_name": "热门歌星页",
+      "element_name": "歌星分类Tab",
+      "position": "singer_tabs",
+      "element_type": "按钮",
+      "description": "切换热门、华语男星、华语女星、国际歌手等分类。"
+    },
+    {
+      "page_name": "热门歌星页",
+      "element_name": "歌手卡片",
+      "position": "singer_list",
+      "element_type": "卡片",
+      "description": "点击歌手头像卡片进入歌曲列表。"
+    },
+    {
+      "page_name": "大家都爱唱页",
+      "element_name": "返回按钮",
+      "position": "fixed_top",
+      "element_type": "按钮",
+      "description": "返回点歌台首页。"
+    },
+    {
+      "page_name": "大家都爱唱页",
+      "element_name": "热门歌曲卡片",
+      "position": "song_list",
+      "element_type": "卡片",
+      "description": "点击推荐歌曲进入播放或歌曲列表。"
+    },
+    {
+      "page_name": "更多推荐页",
+      "element_name": "返回按钮",
+      "position": "fixed_top",
+      "element_type": "按钮",
+      "description": "返回点歌台首页。"
+    },
+    {
+      "page_name": "更多推荐页",
+      "element_name": "推荐分类Tab",
+      "position": "recommendation_tabs",
+      "element_type": "按钮",
+      "description": "切换唱过的歌、抖音热歌、影视金曲、年代专属等主题。"
+    },
+    {
+      "page_name": "更多推荐页",
+      "element_name": "推荐歌曲卡片",
+      "position": "recommendation_list",
+      "element_type": "卡片",
+      "description": "点击歌曲进入播放或列表页。"
+    },
+    {
+      "page_name": "歌曲列表页",
+      "element_name": "返回按钮",
+      "position": "fixed_top",
+      "element_type": "按钮",
+      "description": "返回上一级页面。"
+    },
+    {
+      "page_name": "歌曲列表页",
+      "element_name": "歌曲卡片",
+      "position": "song_list",
+      "element_type": "卡片",
+      "description": "浏览歌曲封面、歌名、歌手名和 MV 标识。"
+    },
+    {
+      "page_name": "歌曲列表页",
+      "element_name": "直接唱按钮",
+      "position": "song_list",
+      "element_type": "按钮",
+      "description": "直接进入播放器演唱当前歌曲。"
+    },
+    {
+      "page_name": "歌曲列表页",
+      "element_name": "加入待唱按钮",
+      "position": "song_list",
+      "element_type": "按钮",
+      "description": "将歌曲加入待唱列表。"
+    },
+    {
+      "page_name": "语义歧义弹窗",
+      "element_name": "候选歌曲卡片",
+      "position": "modal_candidates",
+      "element_type": "卡片",
+      "description": "在多候选结果中选择具体歌曲或歌手。"
+    },
+    {
+      "page_name": "语义歧义弹窗",
+      "element_name": "语义推荐词按钮",
+      "position": "modal_suggestions",
+      "element_type": "按钮",
+      "description": "通过系统推荐语句进一步缩小候选范围。"
+    },
+    {
+      "page_name": "播放器",
+      "element_name": "演唱区",
+      "position": "player_stage",
+      "element_type": "展示",
+      "description": "展示 MV/歌词、沉浸态演唱界面和唱吧氛围动效。"
+    },
+    {
+      "page_name": "播放器",
+      "element_name": "手势喝彩按钮",
+      "position": "player_stage",
+      "element_type": "按钮",
+      "description": "触发喝彩或识别手势互动。"
+    },
+    {
+      "page_name": "播放器",
+      "element_name": "重唱按钮",
+      "position": "player_controls",
+      "element_type": "按钮",
+      "description": "从头重新播放当前歌曲。"
+    },
+    {
+      "page_name": "播放器",
+      "element_name": "播放暂停按钮",
+      "position": "player_controls",
+      "element_type": "按钮",
+      "description": "切换当前歌曲的播放和暂停状态。"
+    },
+    {
+      "page_name": "播放器",
+      "element_name": "下一首按钮",
+      "position": "player_controls",
+      "element_type": "按钮",
+      "description": "切换到下一首待唱歌曲。"
+    },
+    {
+      "page_name": "播放器",
+      "element_name": "调音按钮",
+      "position": "player_controls",
+      "element_type": "按钮",
+      "description": "打开调音弹窗。"
+    },
+    {
+      "page_name": "播放器",
+      "element_name": "打开领唱按钮",
+      "position": "player_controls",
+      "element_type": "按钮",
+      "description": "打开领唱或辅助演唱能力。"
+    },
+    {
+      "page_name": "播放器",
+      "element_name": "已点歌单按钮",
+      "position": "player_controls",
+      "element_type": "按钮",
+      "description": "打开已点歌单弹窗。"
+    },
+    {
+      "page_name": "播放器",
+      "element_name": "收起按钮",
+      "position": "player_controls",
+      "element_type": "按钮",
+      "description": "收起播放器操作层，回到沉浸态。"
+    },
+    {
+      "page_name": "播放器",
+      "element_name": "原唱开关",
+      "position": "player_controls",
+      "element_type": "按钮",
+      "description": "切换原唱开启或关闭。"
+    },
+    {
+      "page_name": "播放器",
+      "element_name": "高分惊喜动效",
+      "position": "player_effect",
+      "element_type": "展示",
+      "description": "演唱高分时触发自动播放的惊喜动效。"
+    },
+    {
+      "page_name": "调音弹窗",
+      "element_name": "关闭按钮",
+      "position": "modal_close",
+      "element_type": "按钮",
+      "description": "关闭调音弹窗。"
+    },
+    {
+      "page_name": "调音弹窗",
+      "element_name": "麦克风音量滑动条",
+      "position": "tuning_panel",
+      "element_type": "按钮",
+      "description": "调节无麦人声音量。"
+    },
+    {
+      "page_name": "调音弹窗",
+      "element_name": "媒体音量滑动条",
+      "position": "tuning_panel",
+      "element_type": "按钮",
+      "description": "调节伴奏或媒体音量。"
+    },
+    {
+      "page_name": "已点歌单弹窗",
+      "element_name": "已点歌曲卡片",
+      "position": "queue_list",
+      "element_type": "卡片",
+      "description": "浏览已点歌曲及顺序。"
+    },
+    {
+      "page_name": "已点歌单弹窗",
+      "element_name": "置顶按钮",
+      "position": "queue_list",
+      "element_type": "按钮",
+      "description": "将当前歌曲置顶到已点歌单最前。"
+    },
+    {
+      "page_name": "已点歌单弹窗",
+      "element_name": "删除按钮",
+      "position": "queue_list",
+      "element_type": "按钮",
+      "description": "从已点歌单中删除歌曲。"
+    },
+    {
+      "page_name": "中途退出弹窗",
+      "element_name": "退出按钮",
+      "position": "modal_actions",
+      "element_type": "按钮",
+      "description": "中断当前演唱并退出播放器。"
+    },
+    {
+      "page_name": "中途退出弹窗",
+      "element_name": "继续唱按钮",
+      "position": "modal_actions",
+      "element_type": "按钮",
+      "description": "关闭退出弹窗并继续演唱。"
+    },
+    {
+      "page_name": "结尾推荐弹层",
+      "element_name": "推荐歌曲卡片",
+      "position": "ending_recommend",
+      "element_type": "卡片",
+      "description": "演唱结束后展示的推荐歌曲列表。"
+    },
+    {
+      "page_name": "结尾推荐弹层",
+      "element_name": "点第1个推荐词",
+      "position": "ending_recommend",
+      "element_type": "按钮",
+      "description": "快速点唱当前推荐列表中的第一个候选。"
+    },
+    {
+      "page_name": "结尾推荐弹层",
+      "element_name": "换一批按钮",
+      "position": "ending_recommend",
+      "element_type": "按钮",
+      "description": "刷新结尾推荐歌曲列表。"
+    }
+  ]
+}

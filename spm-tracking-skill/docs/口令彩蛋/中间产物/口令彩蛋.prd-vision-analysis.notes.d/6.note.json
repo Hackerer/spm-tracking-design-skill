@@ -1,0 +1,54 @@
+{
+  "image_file": "6.png",
+  "summary": "该图展示了“口令彩蛋”需求中的三个页面/状态：彩蛋入口、彩蛋展现、权益展现。彩蛋入口在页面内以右侧悬浮入口形式出现，并给出了多种入口展示示意；点击入口后进入彩蛋展现；随后有权益展现弹层/页面，用于展示权益内容。右侧文案栏可确认入口页与权益页存在标题、副标题、按钮等文案配置说明。",
+  "pages": [
+    "彩蛋入口",
+    "彩蛋展现",
+    "权益展现"
+  ],
+  "key_metrics": [],
+  "flow_hints": [
+    "页面内出现彩蛋入口悬浮展示位",
+    "用户点击彩蛋入口后进入彩蛋展现",
+    "彩蛋展现后进入权益展现弹层/页面",
+    "入口在不同页面状态下存在多种展示样式"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "彩蛋入口",
+      "element_name": "彩蛋入口悬浮入口",
+      "position": "页面右侧悬浮区",
+      "element_type": "图标",
+      "description": "页面内悬浮展示的彩蛋入口，点击后进入彩蛋流程",
+      "has_exposure_value": true,
+      "is_actionable": true
+    },
+    {
+      "page_name": "彩蛋展现",
+      "element_name": "彩蛋展现弹层",
+      "position": "页面中央",
+      "element_type": "展示",
+      "description": "彩蛋触发后的中心动效/弹层展示位",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "权益展现",
+      "element_name": "权益展现弹层",
+      "position": "页面底部弹窗区域",
+      "element_type": "展示",
+      "description": "用于承载权益内容的弹窗展示区域",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "权益展现",
+      "element_name": "权益卡片区",
+      "position": "弹窗主体区域",
+      "element_type": "卡片",
+      "description": "权益展现弹窗内并列展示的权益内容卡片区域",
+      "has_exposure_value": true,
+      "is_actionable": false
+    }
+  ]
+}

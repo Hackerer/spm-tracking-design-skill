@@ -1,0 +1,598 @@
+{
+  "requirement_name": "Robotaxi 智能车控核心控制能力",
+  "business_line": "robotaxi",
+  "terminal_domain": "cabin_hmi",
+  "business_capability": "vehicle_control",
+  "source_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma",
+  "summary": "结合智能车控 Figma 设计稿，对桌面页底部导航栏、空调控制页、亮度弹窗和音量弹窗进行结构化补充。",
+  "flow_hints": [
+    "进入桌面页",
+    "通过桌面底部导航栏触发空调、亮度、音量或媒体快捷控制",
+    "点击空调开关进入空调控制页"
+  ],
+  "assets": [
+    {
+      "file_name": "低于20-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/低于20-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "空调控制页",
+      "page_type_candidate": "page",
+      "description": "低温状态下的空调控制页面。",
+      "confidence": 0.92
+    },
+    {
+      "file_name": "低于20.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/低于20.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "空调控制页",
+      "page_type_candidate": "page",
+      "description": "低温状态下的空调控制页面。",
+      "confidence": 0.94
+    },
+    {
+      "file_name": "高于28-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/高于28-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "空调控制页",
+      "page_type_candidate": "page",
+      "description": "高温状态下的空调控制页面。",
+      "confidence": 0.92
+    },
+    {
+      "file_name": "高于28.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/高于28.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "空调控制页",
+      "page_type_candidate": "page",
+      "description": "高温状态下的空调控制页面。",
+      "confidence": 0.94
+    },
+    {
+      "file_name": "空调默认页-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/空调默认页-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "空调控制页",
+      "page_type_candidate": "page",
+      "description": "默认温度状态下的空调控制页面。",
+      "confidence": 0.95
+    },
+    {
+      "file_name": "空调默认页.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/空调默认页.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "空调控制页",
+      "page_type_candidate": "page",
+      "description": "默认温度状态下的空调控制页面。",
+      "confidence": 0.97
+    },
+    {
+      "file_name": "音量-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/音量-1.png",
+      "asset_type": "modal_image",
+      "page_name_candidate": "桌面页",
+      "page_type_candidate": "page",
+      "description": "桌面页内的亮度快捷操作面板。",
+      "confidence": 0.96
+    },
+    {
+      "file_name": "音量.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/音量.png",
+      "asset_type": "modal_image",
+      "page_name_candidate": "桌面页",
+      "page_type_candidate": "page",
+      "description": "桌面页内的音量快捷操作面板。",
+      "confidence": 0.96
+    },
+    {
+      "file_name": "button-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/button-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "空调控制页",
+      "page_type_candidate": "page",
+      "description": "空调控制页按钮切片。",
+      "confidence": 0.88
+    },
+    {
+      "file_name": "button.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/button.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "空调控制页",
+      "page_type_candidate": "page",
+      "description": "空调控制页按钮切片。",
+      "confidence": 0.88
+    },
+    {
+      "file_name": "dock-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/dock-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "桌面页",
+      "page_type_candidate": "page",
+      "description": "桌面页底部导航栏与快捷控制。",
+      "confidence": 0.94
+    },
+    {
+      "file_name": "dock.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma/dock.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "桌面页",
+      "page_type_candidate": "page",
+      "description": "桌面页底部导航栏与快捷控制。",
+      "confidence": 0.96
+    }
+  ],
+  "pages": [
+    {
+      "page_name": "空调控制页",
+      "page_type": "page",
+      "page_path_candidate": "/vehicle-control/climate-control",
+      "description": "低温状态下的空调控制页面。",
+      "confidence": 0.97,
+      "source_assets": [
+        "低于20-1.png",
+        "低于20.png",
+        "高于28-1.png",
+        "高于28.png",
+        "空调默认页-1.png",
+        "空调默认页.png",
+        "button-1.png",
+        "button.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "语音推荐词区",
+          "region_name_en": "voice_suggestions",
+          "region_type": "promo",
+          "position_candidate": "voice_suggestions",
+          "description": "低温状态下的语音推荐词。",
+          "elements": [
+            {
+              "element_name": "你好东东，风小一点",
+              "element_type": "button",
+              "description": "快捷触发风量减小语义。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.92
+            },
+            {
+              "element_name": "你好东东，有点冷",
+              "element_type": "button",
+              "description": "快捷触发调高温度语义。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.93
+            },
+            {
+              "element_name": "你好东东，打开右后座椅加热",
+              "element_type": "button",
+              "description": "快捷触发右后座椅加热语义。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.93
+            }
+          ]
+        },
+        {
+          "region_name_zh": "温度调节区",
+          "region_name_en": "temperature_controls",
+          "region_type": "actions",
+          "position_candidate": "temperature_controls",
+          "description": "空调温度的快捷增减操作区。",
+          "elements": [
+            {
+              "element_name": "温度降低按钮",
+              "element_type": "button",
+              "description": "将目标温度调低。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.95
+            },
+            {
+              "element_name": "温度升高按钮",
+              "element_type": "button",
+              "description": "将目标温度调高。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.95
+            }
+          ]
+        },
+        {
+          "region_name_zh": "座椅加热区",
+          "region_name_en": "seat_heating_controls",
+          "region_type": "actions",
+          "position_candidate": "seat_heating_controls",
+          "description": "副驾和后排座椅加热控制。",
+          "elements": [
+            {
+              "element_name": "副驾座椅加热",
+              "element_type": "button",
+              "description": "调节副驾座椅加热档位。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.96
+            },
+            {
+              "element_name": "左后座椅加热",
+              "element_type": "button",
+              "description": "调节左后座椅加热档位。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.96
+            },
+            {
+              "element_name": "右后座椅加热",
+              "element_type": "button",
+              "description": "调节右后座椅加热档位。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.96
+            }
+          ]
+        },
+        {
+          "region_name_zh": "车窗控制区",
+          "region_name_en": "window_controls",
+          "region_type": "actions",
+          "position_candidate": "window_controls",
+          "description": "车窗相关快捷控制。",
+          "elements": [
+            {
+              "element_name": "关窗按钮",
+              "element_type": "button",
+              "description": "关闭全部车窗。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.94
+            },
+            {
+              "element_name": "透气按钮",
+              "element_type": "button",
+              "description": "切换透气状态。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.94
+            }
+          ]
+        },
+        {
+          "region_name_zh": "空调总控区",
+          "region_name_en": "climate_power",
+          "region_type": "actions",
+          "position_candidate": "climate_power",
+          "description": "空调系统总开关。",
+          "elements": [
+            {
+              "element_name": "空调电源按钮",
+              "element_type": "button",
+              "description": "开启或关闭空调系统。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.96
+            }
+          ]
+        },
+        {
+          "region_name_zh": "送风模式区",
+          "region_name_en": "airflow_modes",
+          "region_type": "actions",
+          "position_candidate": "airflow_modes",
+          "description": "吹头、吹脚和吹窗模式切换。",
+          "elements": [
+            {
+              "element_name": "吹头模式",
+              "element_type": "button",
+              "description": "切换为吹头模式。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.94
+            },
+            {
+              "element_name": "吹脚模式",
+              "element_type": "button",
+              "description": "切换为吹脚模式。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.94
+            },
+            {
+              "element_name": "吹窗模式",
+              "element_type": "button",
+              "description": "切换为吹窗模式。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.94
+            }
+          ]
+        },
+        {
+          "region_name_zh": "风量调节区",
+          "region_name_en": "fan_speed_controls",
+          "region_type": "actions",
+          "position_candidate": "fan_speed_controls",
+          "description": "风量快捷调节区。",
+          "elements": [
+            {
+              "element_name": "风量减小按钮",
+              "element_type": "button",
+              "description": "降低风量档位。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.94
+            },
+            {
+              "element_name": "风量增大按钮",
+              "element_type": "button",
+              "description": "提升风量档位。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.94
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "桌面页",
+      "page_type": "page",
+      "page_path_candidate": "/home/desktop",
+      "description": "桌面页内的亮度快捷操作面板。",
+      "confidence": 0.96,
+      "source_assets": [
+        "音量-1.png",
+        "音量.png",
+        "dock-1.png",
+        "dock.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "亮度面板区",
+          "region_name_en": "brightness_panel",
+          "region_type": "actions",
+          "position_candidate": "brightness_panel",
+          "description": "阅读灯和屏幕亮度调节区。",
+          "elements": [
+            {
+              "element_name": "阅读灯开关",
+              "element_type": "button",
+              "description": "开启或关闭阅读灯。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.95
+            },
+            {
+              "element_name": "屏幕亮度滑动条",
+              "element_type": "button",
+              "description": "调节屏幕亮度。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.96
+            }
+          ]
+        },
+        {
+          "region_name_zh": "音量面板区",
+          "region_name_en": "volume_panel",
+          "region_type": "actions",
+          "position_candidate": "volume_panel",
+          "description": "语音助手音量、媒体音量和静音调节区。",
+          "elements": [
+            {
+              "element_name": "语音助手音量滑动条",
+              "element_type": "button",
+              "description": "调节语音助手音量。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            },
+            {
+              "element_name": "媒体音量滑动条",
+              "element_type": "button",
+              "description": "调节媒体音量。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            },
+            {
+              "element_name": "媒体静音按钮",
+              "element_type": "button",
+              "description": "切换媒体静音状态。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.94
+            }
+          ]
+        },
+        {
+          "region_name_zh": "底部导航栏",
+          "region_name_en": "bottom_navigation",
+          "region_type": "nav",
+          "position_candidate": "bottom_navigation",
+          "description": "桌面页底部导航栏中的固定快捷控制和固定入口。",
+          "elements": [
+            {
+              "element_name": "空调开关",
+              "element_type": "button",
+              "description": "打开空调控制页。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.96
+            },
+            {
+              "element_name": "返回桌面",
+              "element_type": "button",
+              "description": "返回桌面。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.93
+            },
+            {
+              "element_name": "亮度降低",
+              "element_type": "button",
+              "description": "快捷降低亮度。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.92
+            },
+            {
+              "element_name": "亮度调节入口",
+              "element_type": "button",
+              "description": "打开亮度弹窗。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            },
+            {
+              "element_name": "亮度升高",
+              "element_type": "button",
+              "description": "快捷提高亮度。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.92
+            },
+            {
+              "element_name": "媒体下一个",
+              "element_type": "button",
+              "description": "切换到下一媒体内容。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.91
+            },
+            {
+              "element_name": "媒体播放暂停",
+              "element_type": "button",
+              "description": "播放或暂停媒体。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.94
+            },
+            {
+              "element_name": "就近停车入口",
+              "element_type": "button",
+              "description": "进入就近停车能力。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.93
+            },
+            {
+              "element_name": "音量调节入口",
+              "element_type": "button",
+              "description": "打开音量弹窗。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "unclassified_assets": []
+}

@@ -1,0 +1,1043 @@
+{
+  "requirement_name": "Robotaxi 无麦K歌",
+  "business_line": "robotaxi",
+  "terminal_domain": "cabin_hmi",
+  "business_capability": "karaoke",
+  "source_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma",
+  "summary": "基于无麦K歌 Figma 设计稿，对桌面入口、点歌台首页、歌手页、推荐页、歌曲列表页、语义歧义弹窗、播放器、调音弹窗和结尾推荐弹层进行结构化补充。",
+  "flow_hints": [
+    "从桌面页点击唱吧磁贴卡片进入点歌台首页",
+    "在点歌台首页通过语音推荐词、热门歌星、大家都爱唱或更多推荐发起选歌",
+    "进入歌曲列表页并点击直接唱按钮或加入待唱按钮",
+    "进入播放器开始演唱",
+    "在播放器中完成调音、喝彩、已点歌单和切歌操作",
+    "演唱结束后进入结尾推荐弹层继续点歌"
+  ],
+  "assets": [
+    {
+      "file_name": "1_1-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/1_1-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "1_1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/1_1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "2251.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/2251.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "大家都爱唱.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/大家都爱唱.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "歌手页.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/歌手页.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "热门歌星页",
+      "page_type_candidate": "page",
+      "description": "歌手分类和歌手列表页面。",
+      "confidence": 0.97
+    },
+    {
+      "file_name": "更多推荐.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/更多推荐.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "更多推荐页",
+      "page_type_candidate": "page",
+      "description": "按推荐主题浏览歌曲的页面。",
+      "confidence": 0.97
+    },
+    {
+      "file_name": "列表页-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/列表页-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "列表页-2.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/列表页-2.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "列表页.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/列表页.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "歌曲列表页",
+      "page_type_candidate": "page",
+      "description": "歌手或主题下的歌曲列表页面。",
+      "confidence": 0.97
+    },
+    {
+      "file_name": "年代专属.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/年代专属.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "日常文案.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/日常文案.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "识别到超高分，自动播放动效-1.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/识别到超高分，自动播放动效-1.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "识别到超高分，自动播放动效.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/识别到超高分，自动播放动效.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "播放器",
+      "page_type_candidate": "page",
+      "description": "播放器高分命中后的惊喜动效。",
+      "confidence": 0.92
+    },
+    {
+      "file_name": "周五下班文案.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/周五下班文案.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "桌面页",
+      "page_type_candidate": "page",
+      "description": "桌面页承载唱吧磁贴卡片入口。",
+      "confidence": 0.95
+    },
+    {
+      "file_name": "Frame 2134302251.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302251.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302382.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302382.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302391.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302391.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302393.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302393.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302396.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302396.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302398.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302398.png",
+      "asset_type": "modal_image",
+      "page_name_candidate": "结尾推荐弹层",
+      "page_type_candidate": "modal",
+      "description": "演唱结束后展示的推荐歌曲弹层。",
+      "confidence": 0.93
+    },
+    {
+      "file_name": "Frame 2134302402.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302402.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "点歌台首页",
+      "page_type_candidate": "page",
+      "description": "点歌台首页包含语音引导、热门歌星、大家都爱唱和更多推荐三个核心楼层。",
+      "confidence": 0.98
+    },
+    {
+      "file_name": "Frame 2134302403.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302403.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "播放器",
+      "page_type_candidate": "page",
+      "description": "无麦K歌全屏沉浸式播放器。",
+      "confidence": 0.97
+    },
+    {
+      "file_name": "Frame 2134302421.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302421.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302422.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302422.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302425.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302425.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302429.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302429.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302438.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302438.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302439.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302439.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302440.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302440.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    },
+    {
+      "file_name": "Frame 2134302447.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302447.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "播放器",
+      "page_type_candidate": "page",
+      "description": "播放器操作态，展示主要控制按钮。",
+      "confidence": 0.97
+    },
+    {
+      "file_name": "Frame 2134302448.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302448.png",
+      "asset_type": "modal_image",
+      "page_name_candidate": "调音弹窗",
+      "page_type_candidate": "modal",
+      "description": "麦克风和媒体音量调节弹窗。",
+      "confidence": 0.98
+    },
+    {
+      "file_name": "Frame 2134302501.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302501.png",
+      "asset_type": "modal_image",
+      "page_name_candidate": "语义歧义弹窗",
+      "page_type_candidate": "modal",
+      "description": "语音结果存在歧义时的候选选择弹窗。",
+      "confidence": 0.96
+    },
+    {
+      "file_name": "Frame 2134302502.png",
+      "file_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma/Frame 2134302502.png",
+      "asset_type": "page_image",
+      "page_name_candidate": "",
+      "page_type_candidate": "unknown",
+      "description": "",
+      "confidence": 0.4
+    }
+  ],
+  "pages": [
+    {
+      "page_name": "热门歌星页",
+      "page_type": "page",
+      "page_path_candidate": "/home/karaoke/singer",
+      "description": "歌手分类和歌手列表页面。",
+      "confidence": 0.97,
+      "source_assets": [
+        "歌手页.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "顶部返回区",
+          "region_name_en": "fixed_top",
+          "region_type": "actions",
+          "position_candidate": "fixed_top",
+          "description": "页面顶部返回控件。",
+          "elements": [
+            {
+              "element_name": "返回按钮",
+              "element_type": "icon_button",
+              "description": "返回点歌台首页。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.97
+            }
+          ]
+        },
+        {
+          "region_name_zh": "歌星分类导航",
+          "region_name_en": "singer_tabs",
+          "region_type": "nav",
+          "position_candidate": "singer_tabs",
+          "description": "热门、华语男星、华语女星、国际歌手等分类导航。",
+          "elements": [
+            {
+              "element_name": "歌星分类Tab",
+              "element_type": "button",
+              "description": "切换歌手分类。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            }
+          ]
+        },
+        {
+          "region_name_zh": "歌手列表区",
+          "region_name_en": "singer_list",
+          "region_type": "content",
+          "position_candidate": "singer_list",
+          "description": "歌手头像与姓名列表。",
+          "elements": [
+            {
+              "element_name": "歌手卡片",
+              "element_type": "card",
+              "description": "进入对应歌手的歌曲列表。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "更多推荐页",
+      "page_type": "page",
+      "page_path_candidate": "/home/karaoke/recommendation",
+      "description": "按推荐主题浏览歌曲的页面。",
+      "confidence": 0.97,
+      "source_assets": [
+        "更多推荐.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "顶部返回区",
+          "region_name_en": "fixed_top",
+          "region_type": "actions",
+          "position_candidate": "fixed_top",
+          "description": "页面顶部返回控件。",
+          "elements": [
+            {
+              "element_name": "返回按钮",
+              "element_type": "icon_button",
+              "description": "返回点歌台首页。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.96
+            }
+          ]
+        },
+        {
+          "region_name_zh": "推荐分类导航",
+          "region_name_en": "recommendation_tabs",
+          "region_type": "nav",
+          "position_candidate": "recommendation_tabs",
+          "description": "唱过的歌、抖音热歌、影视金曲、年代专属等主题导航。",
+          "elements": [
+            {
+              "element_name": "推荐分类Tab",
+              "element_type": "button",
+              "description": "切换推荐主题。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            }
+          ]
+        },
+        {
+          "region_name_zh": "推荐歌曲列表",
+          "region_name_en": "recommendation_list",
+          "region_type": "content",
+          "position_candidate": "recommendation_list",
+          "description": "按主题展示推荐歌曲卡片。",
+          "elements": [
+            {
+              "element_name": "推荐歌曲卡片",
+              "element_type": "card",
+              "description": "点击进入播放或歌曲列表。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "歌曲列表页",
+      "page_type": "page",
+      "page_path_candidate": "/home/karaoke/song-list",
+      "description": "歌手或主题下的歌曲列表页面。",
+      "confidence": 0.97,
+      "source_assets": [
+        "列表页.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "顶部返回区",
+          "region_name_en": "fixed_top",
+          "region_type": "actions",
+          "position_candidate": "fixed_top",
+          "description": "页面顶部返回控件。",
+          "elements": [
+            {
+              "element_name": "返回按钮",
+              "element_type": "icon_button",
+              "description": "返回上一级页面。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.96
+            }
+          ]
+        },
+        {
+          "region_name_zh": "歌曲列表区",
+          "region_name_en": "song_list",
+          "region_type": "content",
+          "position_candidate": "song_list",
+          "description": "歌曲封面、歌名、歌手名及操作按钮列表。",
+          "elements": [
+            {
+              "element_name": "歌曲卡片",
+              "element_type": "card",
+              "description": "歌曲信息列表项。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            },
+            {
+              "element_name": "直接唱按钮",
+              "element_type": "button",
+              "description": "直接进入播放器演唱当前歌曲。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.96
+            },
+            {
+              "element_name": "加入待唱按钮",
+              "element_type": "button",
+              "description": "将歌曲加入待唱列表。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.96
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "播放器",
+      "page_type": "page",
+      "page_path_candidate": "/home/karaoke/player",
+      "description": "播放器高分命中后的惊喜动效。",
+      "confidence": 0.97,
+      "source_assets": [
+        "识别到超高分，自动播放动效.png",
+        "Frame 2134302403.png",
+        "Frame 2134302447.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "高分惊喜区",
+          "region_name_en": "player_effect",
+          "region_type": "status",
+          "position_candidate": "player_effect",
+          "description": "高分时触发的自动播放动效区域。",
+          "elements": [
+            {
+              "element_name": "高分惊喜动效",
+              "element_type": "status_visual",
+              "description": "演唱达到高分时自动播放的视觉动效。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "system"
+              ],
+              "confidence": 0.92
+            }
+          ]
+        },
+        {
+          "region_name_zh": "演唱主舞台",
+          "region_name_en": "player_stage",
+          "region_type": "status",
+          "position_candidate": "player_stage",
+          "description": "MV/歌词沉浸式演唱区域。",
+          "elements": [
+            {
+              "element_name": "演唱区",
+              "element_type": "display_panel",
+              "description": "展示歌词字幕、MV 和演唱氛围。",
+              "is_actionable": false,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            },
+            {
+              "element_name": "手势喝彩按钮",
+              "element_type": "button",
+              "description": "触发喝彩并识别手势互动。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "gesture"
+              ],
+              "confidence": 0.94
+            }
+          ]
+        },
+        {
+          "region_name_zh": "播放器控制区",
+          "region_name_en": "player_controls",
+          "region_type": "actions",
+          "position_candidate": "player_controls",
+          "description": "播放过程中的重唱、暂停、下一首、调音、领唱和已点歌单等操作。",
+          "elements": [
+            {
+              "element_name": "重唱按钮",
+              "element_type": "button",
+              "description": "从头重新播放当前歌曲。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            },
+            {
+              "element_name": "播放暂停按钮",
+              "element_type": "button",
+              "description": "播放或暂停当前歌曲。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            },
+            {
+              "element_name": "下一首按钮",
+              "element_type": "button",
+              "description": "切换到下一首待唱歌曲。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            },
+            {
+              "element_name": "调音按钮",
+              "element_type": "button",
+              "description": "打开调音弹窗。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            },
+            {
+              "element_name": "打开领唱按钮",
+              "element_type": "button",
+              "description": "打开领唱能力。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.92
+            },
+            {
+              "element_name": "已点歌单按钮",
+              "element_type": "button",
+              "description": "打开已点歌单弹窗。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.92
+            },
+            {
+              "element_name": "收起按钮",
+              "element_type": "icon_button",
+              "description": "收起播放器操作层。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.94
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "桌面页",
+      "page_type": "page",
+      "page_path_candidate": "/home/desktop",
+      "description": "桌面页承载唱吧磁贴卡片入口。",
+      "confidence": 0.95,
+      "source_assets": [
+        "周五下班文案.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "桌面应用区",
+          "region_name_en": "desktop_tiles",
+          "region_type": "nav",
+          "position_candidate": "desktop_tiles",
+          "description": "桌面首页的应用磁贴区域。",
+          "elements": [
+            {
+              "element_name": "唱吧磁贴卡片",
+              "element_type": "card",
+              "description": "进入无麦K歌首页。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "结尾推荐弹层",
+      "page_type": "modal",
+      "page_path_candidate": "/home/karaoke/ending-recommend",
+      "description": "演唱结束后展示的推荐歌曲弹层。",
+      "confidence": 0.93,
+      "source_assets": [
+        "Frame 2134302398.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "推荐歌曲区",
+          "region_name_en": "ending_recommend",
+          "region_type": "content",
+          "position_candidate": "ending_recommend",
+          "description": "推荐歌曲和推荐词操作区域。",
+          "elements": [
+            {
+              "element_name": "推荐歌曲卡片",
+              "element_type": "card",
+              "description": "点击继续点唱推荐歌曲。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.93
+            },
+            {
+              "element_name": "点第1个推荐词",
+              "element_type": "button",
+              "description": "快捷点唱当前推荐列表的第一个结果。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.91
+            },
+            {
+              "element_name": "换一批按钮",
+              "element_type": "button",
+              "description": "刷新一批新的推荐歌曲。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.91
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "点歌台首页",
+      "page_type": "page",
+      "page_path_candidate": "/home/karaoke/index",
+      "description": "点歌台首页包含语音引导、热门歌星、大家都爱唱和更多推荐三个核心楼层。",
+      "confidence": 0.98,
+      "source_assets": [
+        "Frame 2134302402.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "语音引导区",
+          "region_name_en": "voice_suggestions",
+          "region_type": "actions",
+          "position_candidate": "voice_suggestions",
+          "description": "顶部语音泡泡和快捷推荐词区域。",
+          "elements": [
+            {
+              "element_name": "语音推荐词按钮",
+              "element_type": "button",
+              "description": "快捷发起点歌意图。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.97
+            }
+          ]
+        },
+        {
+          "region_name_zh": "热门歌星区",
+          "region_name_en": "singer_section",
+          "region_type": "content",
+          "position_candidate": "singer_section",
+          "description": "首页热门歌星楼层。",
+          "elements": [
+            {
+              "element_name": "热门歌星入口",
+              "element_type": "button",
+              "description": "进入热门歌星页。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.96
+            },
+            {
+              "element_name": "歌手卡片",
+              "element_type": "card",
+              "description": "点击歌手进入其歌曲列表。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.94
+            }
+          ]
+        },
+        {
+          "region_name_zh": "大家都爱唱区",
+          "region_name_en": "popular_section",
+          "region_type": "content",
+          "position_candidate": "popular_section",
+          "description": "首页大家都爱唱楼层。",
+          "elements": [
+            {
+              "element_name": "大家都爱唱入口",
+              "element_type": "button",
+              "description": "进入大家都爱唱页。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.96
+            },
+            {
+              "element_name": "热门歌曲卡片",
+              "element_type": "card",
+              "description": "点击热门单曲进入播放或列表页。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.94
+            }
+          ]
+        },
+        {
+          "region_name_zh": "更多推荐区",
+          "region_name_en": "recommendation_section",
+          "region_type": "content",
+          "position_candidate": "recommendation_section",
+          "description": "首页更多推荐楼层。",
+          "elements": [
+            {
+              "element_name": "更多推荐入口",
+              "element_type": "button",
+              "description": "进入更多推荐页。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.96
+            },
+            {
+              "element_name": "推荐分类卡片",
+              "element_type": "card",
+              "description": "点击推荐分类进入对应推荐结果。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "调音弹窗",
+      "page_type": "modal",
+      "page_path_candidate": "/home/karaoke/tuning",
+      "description": "麦克风和媒体音量调节弹窗。",
+      "confidence": 0.98,
+      "source_assets": [
+        "Frame 2134302448.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "调音操作区",
+          "region_name_en": "tuning_panel",
+          "region_type": "actions",
+          "position_candidate": "tuning_panel",
+          "description": "音量滑动条操作区域。",
+          "elements": [
+            {
+              "element_name": "麦克风音量滑动条",
+              "element_type": "button",
+              "description": "调节麦克风人声音量。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.96
+            },
+            {
+              "element_name": "媒体音量滑动条",
+              "element_type": "button",
+              "description": "调节伴奏和媒体音量。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.96
+            }
+          ]
+        },
+        {
+          "region_name_zh": "弹窗关闭区",
+          "region_name_en": "modal_close",
+          "region_type": "actions",
+          "position_candidate": "modal_close",
+          "description": "弹窗右上角关闭控件。",
+          "elements": [
+            {
+              "element_name": "关闭按钮",
+              "element_type": "icon_button",
+              "description": "关闭调音弹窗。",
+              "is_actionable": true,
+              "has_exposure_value": false,
+              "interaction_modes": [
+                "touch"
+              ],
+              "confidence": 0.96
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "page_name": "语义歧义弹窗",
+      "page_type": "modal",
+      "page_path_candidate": "/home/karaoke/disambiguation",
+      "description": "语音结果存在歧义时的候选选择弹窗。",
+      "confidence": 0.96,
+      "source_assets": [
+        "Frame 2134302501.png"
+      ],
+      "regions": [
+        {
+          "region_name_zh": "候选结果区",
+          "region_name_en": "modal_candidates",
+          "region_type": "content",
+          "position_candidate": "modal_candidates",
+          "description": "展示多首候选歌曲及排序。",
+          "elements": [
+            {
+              "element_name": "候选歌曲卡片",
+              "element_type": "card",
+              "description": "从候选歌曲中选择一个结果。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.96
+            }
+          ]
+        },
+        {
+          "region_name_zh": "推荐词区",
+          "region_name_en": "modal_suggestions",
+          "region_type": "actions",
+          "position_candidate": "modal_suggestions",
+          "description": "补充语义推荐词，帮助用户进一步澄清点歌意图。",
+          "elements": [
+            {
+              "element_name": "语义推荐词按钮",
+              "element_type": "button",
+              "description": "通过示例语句进一步选择目标歌曲。",
+              "is_actionable": true,
+              "has_exposure_value": true,
+              "interaction_modes": [
+                "touch",
+                "voice"
+              ],
+              "confidence": 0.94
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "unclassified_assets": [
+    "1_1-1.png",
+    "1_1.png",
+    "2251.png",
+    "大家都爱唱.png",
+    "列表页-1.png",
+    "列表页-2.png",
+    "年代专属.png",
+    "日常文案.png",
+    "识别到超高分，自动播放动效-1.png",
+    "Frame 2134302251.png",
+    "Frame 2134302382.png",
+    "Frame 2134302391.png",
+    "Frame 2134302393.png",
+    "Frame 2134302396.png",
+    "Frame 2134302421.png",
+    "Frame 2134302422.png",
+    "Frame 2134302425.png",
+    "Frame 2134302429.png",
+    "Frame 2134302438.png",
+    "Frame 2134302439.png",
+    "Frame 2134302440.png",
+    "Frame 2134302502.png"
+  ]
+}

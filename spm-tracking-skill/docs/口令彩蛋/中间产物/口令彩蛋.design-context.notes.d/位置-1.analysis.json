@@ -1,0 +1,337 @@
+{
+  "file_name": "位置-1.png",
+  "page_name": "口令彩蛋主页面",
+  "page_type": "page",
+  "description": "车机首页中的口令彩蛋主页面，包含顶部状态信息、中央彩蛋互动展示区、中部语音提示按钮、快捷功能卡片区和底部常驻控制栏。",
+  "flow_hints": [
+    "从车机首页进入口令彩蛋主页面",
+    "用户可通过触屏或语音触发彩蛋提示/关闭操作",
+    "用户可继续点击快捷功能卡片或底部控制入口跳转其他能力"
+  ],
+  "regions": [
+    {
+      "region_name_zh": "顶部状态栏",
+      "region_name_en": "Top Status Bar",
+      "region_type": "status",
+      "position_candidate": "top",
+      "description": "展示天气、行程进度、距离时长与当前时间等全局状态信息。",
+      "elements": [
+        {
+          "element_name": "天气信息",
+          "element_type": "status_visual",
+          "position_candidate": "top-left",
+          "description": "云朵图标、温度与天气文案“20℃ 多云”。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.98
+        },
+        {
+          "element_name": "行程进度条",
+          "element_type": "status_visual",
+          "position_candidate": "top-center",
+          "description": "车辆位于进度条上的行程进度展示。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.95
+        },
+        {
+          "element_name": "距离时长信息",
+          "element_type": "status_visual",
+          "position_candidate": "top-center-right",
+          "description": "展示剩余里程“3.5 km”和预计时长“20 分钟”。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.97
+        },
+        {
+          "element_name": "当前时间",
+          "element_type": "status_visual",
+          "position_candidate": "top-right",
+          "description": "展示当前时间“09:54”。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.99
+        }
+      ]
+    },
+    {
+      "region_name_zh": "彩蛋互动展示区",
+      "region_name_en": "Easter Egg Hero Area",
+      "region_type": "content",
+      "position_candidate": "center",
+      "description": "页面核心视觉区域，包含IP形象、标题与散落口令字词。",
+      "elements": [
+        {
+          "element_name": "东东IP形象",
+          "element_type": "display_panel",
+          "position_candidate": "center-left",
+          "description": "大尺寸3D小狗形象，承载彩蛋氛围展示。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.96
+        },
+        {
+          "element_name": "彩蛋标题",
+          "element_type": "text",
+          "position_candidate": "upper-center-right",
+          "description": "主标题“猜猜口令有惊喜”，表达当前玩法主题。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.99
+        },
+        {
+          "element_name": "口令散落字词",
+          "element_type": "text",
+          "position_candidate": "center-right",
+          "description": "以漂浮形式展示“喜、乐、随、行”等字词，强化口令提示。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.91
+        }
+      ]
+    },
+    {
+      "region_name_zh": "语音提示操作区",
+      "region_name_en": "Voice Prompt Actions",
+      "region_type": "actions",
+      "position_candidate": "lower-center",
+      "description": "提供口令彩蛋的语音提示与关闭入口。",
+      "elements": [
+        {
+          "element_name": "你好东东，提示",
+          "element_type": "button",
+          "position_candidate": "lower-center-left",
+          "description": "触发语音助手给出口令提示。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.98
+        },
+        {
+          "element_name": "你好东东，关闭",
+          "element_type": "button",
+          "position_candidate": "lower-center-right",
+          "description": "关闭当前口令彩蛋提示玩法。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.98
+        }
+      ]
+    },
+    {
+      "region_name_zh": "快捷功能卡片区",
+      "region_name_en": "Quick Function Cards",
+      "region_type": "content",
+      "position_candidate": "lower-middle",
+      "description": "横向排布的功能入口卡片，用于从当前页面跳转常用车机能力。",
+      "elements": [
+        {
+          "element_name": "3D路况卡片",
+          "element_type": "card",
+          "position_candidate": "lower-left",
+          "description": "进入3D路况能力，副文案为“透视路况，预见每一程”。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.98
+        },
+        {
+          "element_name": "地图卡片",
+          "element_type": "card",
+          "position_candidate": "lower-mid-left",
+          "description": "进入地图能力，副文案为“行程路线，尽在掌握”。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.99
+        },
+        {
+          "element_name": "音乐卡片",
+          "element_type": "card",
+          "position_candidate": "lower-mid-right",
+          "description": "进入音乐能力，副文案为“你的旋律，随心播放”。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.99
+        },
+        {
+          "element_name": "播客卡片",
+          "element_type": "card",
+          "position_candidate": "lower-right",
+          "description": "进入播客能力，副文案为“选你所爱，听你想听”。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.98
+        },
+        {
+          "element_name": "右侧露出卡片",
+          "element_type": "card",
+          "position_candidate": "far-right-edge",
+          "description": "页面右缘部分露出的下一张快捷卡片，当前仅可见心率样式图标。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.73
+        }
+      ]
+    },
+    {
+      "region_name_zh": "底部控制栏",
+      "region_name_en": "Bottom Control Dock",
+      "region_type": "nav",
+      "position_candidate": "bottom",
+      "description": "常驻底部快捷入口与媒体控制区域。",
+      "elements": [
+        {
+          "element_name": "求助入口",
+          "element_type": "button",
+          "position_candidate": "bottom-left",
+          "description": "SOS图标与“求助”文案入口。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.97
+        },
+        {
+          "element_name": "就近停车入口",
+          "element_type": "button",
+          "position_candidate": "bottom-left-mid",
+          "description": "P图标与“就近停车”文案入口。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.96
+        },
+        {
+          "element_name": "当前播放信息",
+          "element_type": "display_card",
+          "position_candidate": "bottom-center-left",
+          "description": "显示当前音频封面、标题“Hoka母公司...”与播放进度。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.92
+        },
+        {
+          "element_name": "暂停按钮",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-center",
+          "description": "控制当前媒体暂停。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.98
+        },
+        {
+          "element_name": "播放按钮",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-center",
+          "description": "控制当前媒体播放。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.97
+        },
+        {
+          "element_name": "上一项按钮",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-center-right",
+          "description": "切换上一首或上一个内容。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.94
+        },
+        {
+          "element_name": "温度调节显示",
+          "element_type": "display_panel",
+          "position_candidate": "bottom-center-right",
+          "description": "展示当前空调温度“24°”及两侧调节箭头。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.93
+        },
+        {
+          "element_name": "环境设置入口",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-right-mid",
+          "description": "太阳样式图标，可能对应亮度或环境控制。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.76
+        },
+        {
+          "element_name": "音量入口",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-right-mid",
+          "description": "扬声器图标，用于音量相关控制。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "element_name": "首页入口",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-right",
+          "description": "房子图标，返回首页或主面板。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.98
+        }
+      ]
+    }
+  ],
+  "confidence": 0.94
+}

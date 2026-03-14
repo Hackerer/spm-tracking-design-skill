@@ -1,0 +1,6762 @@
+{
+  "requirement_name": "Robotaxi 健康监测功能",
+  "business_line": "robotaxi",
+  "terminal_domain": "cabin_hmi",
+  "business_capability": "health_monitor",
+  "summary": "智能座舱通过高频、沉浸式的车内场景提供轻量化健康监测服务，目标是在行程中完成健康检测、输出报告并承接健康服务转化。当前需求覆盖性别选择、基础信息录入、监测启动、教学引导、检测准备、检测过程、报告生成、结果报告以及协议/退出等关键弹窗场景。",
+  "pages": [
+    {
+      "page_name_zh": "性别选择页",
+      "page_name_en": "gender_selection",
+      "page_id": "health_monitor_gender_selection",
+      "description": "用户进入健康监测后的第一页，选择性别后进入基础信息录入。"
+    },
+    {
+      "page_name_zh": "基础信息录入页",
+      "page_name_en": "basic_info",
+      "page_id": "health_monitor_basic_info",
+      "description": "用户录入年龄、身高、体重，并点击开始检测。"
+    },
+    {
+      "page_name_zh": "健康监测启动页",
+      "page_name_en": "start",
+      "page_id": "health_monitor_start",
+      "description": "展示健康监测价值介绍、协议勾选和一键开启按钮。"
+    },
+    {
+      "page_name_zh": "协议详情弹窗",
+      "page_name_en": "agreement_detail",
+      "page_id": "health_monitor_agreement_detail",
+      "description": "展示知情同意书内容，并提供不同意/同意并继续操作。"
+    },
+    {
+      "page_name_zh": "隐私政策弹窗",
+      "page_name_en": "privacy_policy",
+      "page_id": "health_monitor_privacy_policy",
+      "description": "展示隐私政策内容，并提供不同意/同意并继续操作。"
+    },
+    {
+      "page_name_zh": "教学引导页",
+      "page_name_en": "guide",
+      "page_id": "health_monitor_guide",
+      "description": "展示如何取出设备、如何双手持握的教学指引。"
+    },
+    {
+      "page_name_zh": "检测准备页",
+      "page_name_en": "prepare",
+      "page_id": "health_monitor_prepare",
+      "description": "信号采集正常后展示准备状态，提示检测即将开始。"
+    },
+    {
+      "page_name_zh": "监测过程页",
+      "page_name_en": "monitoring",
+      "page_id": "health_monitor_monitoring",
+      "description": "展示监测进度、实时波形和健康科普内容。"
+    },
+    {
+      "page_name_zh": "退出确认弹窗",
+      "page_name_en": "exit_confirm",
+      "page_id": "health_monitor_exit_confirm",
+      "description": "用户中途退出时的挽留弹窗，提供退出和坚持一下两个选择。"
+    },
+    {
+      "page_name_zh": "报告生成页",
+      "page_name_en": "report_generating",
+      "page_id": "health_monitor_report_generating",
+      "description": "监测完成后展示报告生成中的等待页面与科普内容。"
+    },
+    {
+      "page_name_zh": "结果报告页",
+      "page_name_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "description": "展示总评分、生理指标、心理指标，以及二维码和营销banner。"
+    }
+  ],
+  "tracking_specs": [
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "性别选择页",
+      "b_en": "gender_selection",
+      "page_id": "health_monitor_gender_selection",
+      "c_zh": "性别选择区",
+      "c_en": "gender_selector",
+      "c_support_exposure": false,
+      "d_zh": "男性选项",
+      "d_en": "male_option",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "none",
+      "exposure_reason": "该元素以主动操作为主，且缺少独立曝光分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“男性选项”和位置“gender_selector”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "性别选择页",
+      "b_en": "gender_selection",
+      "page_id": "health_monitor_gender_selection",
+      "c_zh": "性别选择区",
+      "c_en": "gender_selector",
+      "c_support_exposure": false,
+      "d_zh": "女性选项",
+      "d_en": "female_option",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "none",
+      "exposure_reason": "该元素以主动操作为主，且缺少独立曝光分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“女性选项”和位置“gender_selector”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "性别选择页",
+      "b_en": "gender_selection",
+      "page_id": "health_monitor_gender_selection",
+      "c_zh": "底部固定区域",
+      "c_en": "fixed_bottom",
+      "c_support_exposure": false,
+      "d_zh": "下一步按钮",
+      "d_en": "next_btn",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "none",
+      "exposure_reason": "该元素以主动操作为主，且缺少独立曝光分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“下一步按钮”和位置“fixed_bottom”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "基础信息录入页",
+      "b_en": "basic_info",
+      "page_id": "health_monitor_basic_info",
+      "c_zh": "基础信息区",
+      "c_en": "basic_info_form",
+      "c_support_exposure": false,
+      "d_zh": "年龄选择器",
+      "d_en": "age_picker",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "none",
+      "exposure_reason": "该元素以主动操作为主，且缺少独立曝光分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“年龄选择器”和位置“basic_info_form”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "基础信息录入页",
+      "b_en": "basic_info",
+      "page_id": "health_monitor_basic_info",
+      "c_zh": "基础信息区",
+      "c_en": "basic_info_form",
+      "c_support_exposure": false,
+      "d_zh": "身高选择器",
+      "d_en": "height_picker",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "none",
+      "exposure_reason": "该元素以主动操作为主，且缺少独立曝光分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“身高选择器”和位置“basic_info_form”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "基础信息录入页",
+      "b_en": "basic_info",
+      "page_id": "health_monitor_basic_info",
+      "c_zh": "基础信息区",
+      "c_en": "basic_info_form",
+      "c_support_exposure": false,
+      "d_zh": "体重选择器",
+      "d_en": "weight_picker",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "none",
+      "exposure_reason": "该元素以主动操作为主，且缺少独立曝光分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“体重选择器”和位置“basic_info_form”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "基础信息录入页",
+      "b_en": "basic_info",
+      "page_id": "health_monitor_basic_info",
+      "c_zh": "底部固定区域",
+      "c_en": "fixed_bottom",
+      "c_support_exposure": false,
+      "d_zh": "开始检测按钮",
+      "d_en": "start_btn",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "none",
+      "exposure_reason": "该元素以主动操作为主，且缺少独立曝光分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“开始检测按钮”和位置“fixed_bottom”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "健康监测启动页",
+      "b_en": "start",
+      "page_id": "health_monitor_start",
+      "c_zh": "协议栏",
+      "c_en": "agreement_bar",
+      "c_support_exposure": false,
+      "d_zh": "知情同意复选框",
+      "d_en": "agreement_checkbox",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "none",
+      "exposure_reason": "该元素以主动操作为主，且缺少独立曝光分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“知情同意复选框”和位置“agreement_bar”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "健康监测启动页",
+      "b_en": "start",
+      "page_id": "health_monitor_start",
+      "c_zh": "协议栏",
+      "c_en": "agreement_bar",
+      "c_support_exposure": false,
+      "d_zh": "知情同意书链接",
+      "d_en": "agreement_link",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "none",
+      "exposure_reason": "该元素以主动操作为主，且缺少独立曝光分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "agreement_type",
+          "param_name_zh": "协议类型",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [
+            "agreement",
+            "privacy"
+          ],
+          "validation_rules": {},
+          "description": "协议类型或政策类型",
+          "source_reason": "根据交互元素映射规则自动推荐"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“知情同意书链接”和位置“agreement_bar”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "健康监测启动页",
+      "b_en": "start",
+      "page_id": "health_monitor_start",
+      "c_zh": "协议栏",
+      "c_en": "agreement_bar",
+      "c_support_exposure": false,
+      "d_zh": "隐私政策链接",
+      "d_en": "privacy_link",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "none",
+      "exposure_reason": "该元素以主动操作为主，且缺少独立曝光分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "agreement_type",
+          "param_name_zh": "协议类型",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [
+            "agreement",
+            "privacy"
+          ],
+          "validation_rules": {},
+          "description": "协议类型或政策类型",
+          "source_reason": "根据交互元素映射规则自动推荐"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“隐私政策链接”和位置“agreement_bar”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "健康监测启动页",
+      "b_en": "start",
+      "page_id": "health_monitor_start",
+      "c_zh": "启动主区域",
+      "c_en": "start_panel",
+      "c_support_exposure": true,
+      "d_zh": "开始检测按钮",
+      "d_en": "start_btn",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "该元素以主动操作为主，区块曝光已覆盖其可见性，单独配置坑位曝光冗余。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“一键开启健康守护按钮”和位置“start_panel”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "协议详情弹窗",
+      "b_en": "agreement_detail",
+      "page_id": "health_monitor_agreement_detail",
+      "c_zh": "操作弹窗区",
+      "c_en": "modal_actions",
+      "c_support_exposure": true,
+      "d_zh": "不同意按钮",
+      "d_en": "disagree_btn",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "该元素以主动操作为主，区块曝光已覆盖其可见性，单独配置坑位曝光冗余。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "agreement_type",
+          "param_name_zh": "协议类型",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [
+            "agreement",
+            "privacy"
+          ],
+          "validation_rules": {},
+          "description": "协议类型或政策类型",
+          "source_reason": "根据交互元素映射规则自动推荐"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“不同意按钮”和位置“modal_actions”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "协议详情弹窗",
+      "b_en": "agreement_detail",
+      "page_id": "health_monitor_agreement_detail",
+      "c_zh": "操作弹窗区",
+      "c_en": "modal_actions",
+      "c_support_exposure": true,
+      "d_zh": "同意并继续按钮",
+      "d_en": "agree_continue_btn",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "该元素以主动操作为主，区块曝光已覆盖其可见性，单独配置坑位曝光冗余。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "agreement_type",
+          "param_name_zh": "协议类型",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [
+            "agreement",
+            "privacy"
+          ],
+          "validation_rules": {},
+          "description": "协议类型或政策类型",
+          "source_reason": "根据交互元素映射规则自动推荐"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“同意并继续按钮”和位置“modal_actions”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "隐私政策弹窗",
+      "b_en": "privacy_policy",
+      "page_id": "health_monitor_privacy_policy",
+      "c_zh": "操作弹窗区",
+      "c_en": "modal_actions",
+      "c_support_exposure": true,
+      "d_zh": "不同意按钮",
+      "d_en": "disagree_btn",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "该元素以主动操作为主，区块曝光已覆盖其可见性，单独配置坑位曝光冗余。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "agreement_type",
+          "param_name_zh": "协议类型",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [
+            "agreement",
+            "privacy"
+          ],
+          "validation_rules": {},
+          "description": "协议类型或政策类型",
+          "source_reason": "根据交互元素映射规则自动推荐"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“不同意按钮”和位置“modal_actions”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "隐私政策弹窗",
+      "b_en": "privacy_policy",
+      "page_id": "health_monitor_privacy_policy",
+      "c_zh": "操作弹窗区",
+      "c_en": "modal_actions",
+      "c_support_exposure": true,
+      "d_zh": "同意并继续按钮",
+      "d_en": "agree_continue_btn",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "该元素以主动操作为主，区块曝光已覆盖其可见性，单独配置坑位曝光冗余。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "agreement_type",
+          "param_name_zh": "协议类型",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [
+            "agreement",
+            "privacy"
+          ],
+          "validation_rules": {},
+          "description": "协议类型或政策类型",
+          "source_reason": "根据交互元素映射规则自动推荐"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“同意并继续按钮”和位置“modal_actions”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "教学引导页",
+      "b_en": "guide",
+      "page_id": "health_monitor_guide",
+      "c_zh": "引导内容区",
+      "c_en": "guide_content",
+      "c_support_exposure": true,
+      "d_zh": "引导卡片",
+      "d_en": "guide_card",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "当前区块曝光已覆盖模块整体展示，单独配置坑位曝光信息增益有限。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“引导卡片”和位置“guide_content”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "检测准备页",
+      "b_en": "prepare",
+      "page_id": "health_monitor_prepare",
+      "c_zh": "准备状态区",
+      "c_en": "prepare_status",
+      "c_support_exposure": true,
+      "d_zh": "准备进度环",
+      "d_en": "prepare_progress",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "当前区块曝光已覆盖模块整体展示，单独配置坑位曝光信息增益有限。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“准备进度环”和位置“prepare_status”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "监测过程页",
+      "b_en": "monitoring",
+      "page_id": "health_monitor_monitoring",
+      "c_zh": "监测面板区",
+      "c_en": "monitoring_panel",
+      "c_support_exposure": true,
+      "d_zh": "监测进度区",
+      "d_en": "monitoring_area",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "当前区块曝光已覆盖模块整体展示，单独配置坑位曝光信息增益有限。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“监测进度区”和位置“monitoring_panel”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "监测过程页",
+      "b_en": "monitoring",
+      "page_id": "health_monitor_monitoring",
+      "c_zh": "科普内容区",
+      "c_en": "science_content",
+      "c_support_exposure": true,
+      "d_zh": "科普卡片",
+      "d_en": "science_card",
+      "position_type": "ordered",
+      "order_level": "level_1",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "顺序坑位需要区分具体位置或序号，坑位级曝光具备独立分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "content_id",
+          "param_name_zh": "内容ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "科普内容或营销内容ID",
+          "source_reason": "根据交互元素映射规则自动推荐"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        },
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“健康科普卡片”和位置“science_content”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "退出确认弹窗",
+      "b_en": "exit_confirm",
+      "page_id": "health_monitor_exit_confirm",
+      "c_zh": "操作弹窗区",
+      "c_en": "modal_actions",
+      "c_support_exposure": true,
+      "d_zh": "退出按钮",
+      "d_en": "exit_btn",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "该元素以主动操作为主，区块曝光已覆盖其可见性，单独配置坑位曝光冗余。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“退出按钮”和位置“modal_actions”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "退出确认弹窗",
+      "b_en": "exit_confirm",
+      "page_id": "health_monitor_exit_confirm",
+      "c_zh": "操作弹窗区",
+      "c_en": "modal_actions",
+      "c_support_exposure": true,
+      "d_zh": "坚持一下按钮",
+      "d_en": "hold_btn",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "该元素以主动操作为主，区块曝光已覆盖其可见性，单独配置坑位曝光冗余。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“坚持一下按钮”和位置“modal_actions”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "退出确认弹窗",
+      "b_en": "exit_confirm",
+      "page_id": "health_monitor_exit_confirm",
+      "c_zh": "弹窗关闭区",
+      "c_en": "modal_close",
+      "c_support_exposure": false,
+      "d_zh": "关闭按钮",
+      "d_en": "close_btn",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": false,
+      "exposure_decision": "none",
+      "exposure_reason": "当前元素无主动交互且缺少独立曝光价值，无需配置曝光。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“关闭按钮”和位置“modal_close”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "报告生成页",
+      "b_en": "report_generating",
+      "page_id": "health_monitor_report_generating",
+      "c_zh": "报告生成区",
+      "c_en": "generating_panel",
+      "c_support_exposure": true,
+      "d_zh": "生成中区域",
+      "d_en": "generating_area",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "当前区块曝光已覆盖模块整体展示，单独配置坑位曝光信息增益有限。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“报告生成动效”和位置“generating_panel”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "报告生成页",
+      "b_en": "report_generating",
+      "page_id": "health_monitor_report_generating",
+      "c_zh": "科普内容区",
+      "c_en": "science_content",
+      "c_support_exposure": true,
+      "d_zh": "科普卡片",
+      "d_en": "science_card",
+      "position_type": "ordered",
+      "order_level": "level_1",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "顺序坑位需要区分具体位置或序号，坑位级曝光具备独立分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "content_id",
+          "param_name_zh": "内容ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "科普内容或营销内容ID",
+          "source_reason": "根据交互元素映射规则自动推荐"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        },
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“健康科普卡片”和位置“science_content”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "结果总览区",
+      "c_en": "result_summary",
+      "c_support_exposure": true,
+      "d_zh": "综合评分区",
+      "d_en": "score_area",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": false,
+      "exposure_decision": "block_only",
+      "exposure_reason": "当前区块曝光已覆盖模块整体展示，单独配置坑位曝光信息增益有限。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        },
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“总评分区”和位置“result_summary”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "生理指标区",
+      "c_en": "physiological_metrics",
+      "c_support_exposure": true,
+      "d_zh": "生理指标卡组",
+      "d_en": "physio_cards",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“生理指标卡组”和位置“physiological_metrics”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "生理指标区",
+      "c_en": "physiological_metrics",
+      "c_support_exposure": true,
+      "d_zh": "窦性心律指标卡",
+      "d_en": "sinus_rhythm_card",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“窦性心律指标卡”和位置“physiological_metrics”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "生理指标区",
+      "c_en": "physiological_metrics",
+      "c_support_exposure": true,
+      "d_zh": "室上性早搏指标卡",
+      "d_en": "premature_beat_card",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“室上性早搏指标卡”和位置“physiological_metrics”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "生理指标区",
+      "c_en": "physiological_metrics",
+      "c_support_exposure": true,
+      "d_zh": "心率指标卡",
+      "d_en": "heart_rate_card",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“心率指标卡”和位置“physiological_metrics”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "心理指标区",
+      "c_en": "mental_metrics",
+      "c_support_exposure": true,
+      "d_zh": "心理指标卡组",
+      "d_en": "mental_cards",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“心理指标卡组”和位置“mental_metrics”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "心理指标区",
+      "c_en": "mental_metrics",
+      "c_support_exposure": true,
+      "d_zh": "能量指标卡",
+      "d_en": "energy_card",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“能量指标卡”和位置“mental_metrics”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "心理指标区",
+      "c_en": "mental_metrics",
+      "c_support_exposure": true,
+      "d_zh": "压力指标卡",
+      "d_en": "stress_card",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“压力指标卡”和位置“mental_metrics”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "心理指标区",
+      "c_en": "mental_metrics",
+      "c_support_exposure": true,
+      "d_zh": "负面情绪指标卡",
+      "d_en": "negative_emotion_card",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“负面情绪指标卡”和位置“mental_metrics”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "心理指标区",
+      "c_en": "mental_metrics",
+      "c_support_exposure": true,
+      "d_zh": "效率指标卡",
+      "d_en": "efficiency_card",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "该元素具备独立曝光分析价值，保留坑位级曝光。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“效率指标卡”和位置“mental_metrics”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "右侧推广区",
+      "c_en": "right_promo",
+      "c_support_exposure": true,
+      "d_zh": "二维码卡片",
+      "d_en": "qr_card",
+      "position_type": "fixed",
+      "order_level": "none",
+      "user_actionability": "passive",
+      "d_support_click": false,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "该元素承载独立内容或素材，需要保留坑位级曝光。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "content_id",
+          "param_name_zh": "内容ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "科普内容或营销内容ID",
+          "source_reason": "根据交互元素映射规则自动推荐"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        },
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“二维码卡片”和位置“right_promo”自动推断"
+    },
+    {
+      "a_zh": "健康监测",
+      "a_en": "health_monitor",
+      "b_zh": "结果报告页",
+      "b_en": "report_result",
+      "page_id": "health_monitor_report_result",
+      "c_zh": "右侧推广区",
+      "c_en": "right_promo",
+      "c_support_exposure": true,
+      "d_zh": "营销Banner",
+      "d_en": "promo_banner",
+      "position_type": "ordered",
+      "order_level": "level_1",
+      "user_actionability": "actionable",
+      "d_support_click": true,
+      "d_support_exposure": true,
+      "exposure_decision": "position",
+      "exposure_reason": "顺序坑位需要区分具体位置或序号，坑位级曝光具备独立分析价值。",
+      "biz_type_zh": "",
+      "biz_type_en": "",
+      "params": [
+        {
+          "param_name": "content_id",
+          "param_name_zh": "内容ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "科普内容或营销内容ID",
+          "source_reason": "根据交互元素映射规则自动推荐"
+        },
+        {
+          "param_name": "user_pin",
+          "param_name_zh": "用户PIN",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 100
+            }
+          },
+          "description": "用户标识。注意与SDK中的pin不同，SDK pin传的是车标识，这里传用户标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "order_id",
+          "param_name_zh": "订单ID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "Robotaxi行程订单唯一标识，座舱内行为默认归属于某个行程订单",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "vid",
+          "param_name_zh": "车辆VID",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆唯一VID标识",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "car_city",
+          "param_name_zh": "运营城市",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "车辆当前运营城市",
+          "source_reason": "根据业务线公共分析需求自动补充"
+        },
+        {
+          "param_name": "env",
+          "param_name_zh": "环境",
+          "data_type": "string",
+          "required": true,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "当前行为发生的环境标识，例如 cabin_hmi",
+          "source_reason": "根据终端公共分析需求自动补充"
+        },
+        {
+          "param_name": "monitor_id",
+          "param_name_zh": "监测ID",
+          "data_type": "string",
+          "required": false,
+          "enum_values": [],
+          "validation_rules": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          },
+          "description": "健康监测任务唯一标识",
+          "source_reason": "根据页面公共分析需求自动补充"
+        }
+      ],
+      "notes": "由元素“营销Banner”和位置“right_promo”自动推断"
+    }
+  ],
+  "catalog_suggestions": [
+    {
+      "catalog_type": "c",
+      "zh_name": "弹窗关闭区",
+      "en_name": "modal_close",
+      "reason": "需求中出现新的区块C定义，需要纳入主数据目录。",
+      "status": "new_candidate"
+    },
+    {
+      "catalog_type": "d",
+      "zh_name": "关闭按钮",
+      "en_name": "close_btn",
+      "reason": "需求中出现新的坑位D定义，需要纳入主数据目录。",
+      "status": "new_candidate"
+    },
+    {
+      "catalog_type": "d",
+      "zh_name": "窦性心律指标卡",
+      "en_name": "sinus_rhythm_card",
+      "reason": "需求中出现新的坑位D定义，需要纳入主数据目录。",
+      "status": "new_candidate"
+    },
+    {
+      "catalog_type": "d",
+      "zh_name": "室上性早搏指标卡",
+      "en_name": "premature_beat_card",
+      "reason": "需求中出现新的坑位D定义，需要纳入主数据目录。",
+      "status": "new_candidate"
+    },
+    {
+      "catalog_type": "d",
+      "zh_name": "心率指标卡",
+      "en_name": "heart_rate_card",
+      "reason": "需求中出现新的坑位D定义，需要纳入主数据目录。",
+      "status": "new_candidate"
+    },
+    {
+      "catalog_type": "d",
+      "zh_name": "能量指标卡",
+      "en_name": "energy_card",
+      "reason": "需求中出现新的坑位D定义，需要纳入主数据目录。",
+      "status": "new_candidate"
+    },
+    {
+      "catalog_type": "d",
+      "zh_name": "压力指标卡",
+      "en_name": "stress_card",
+      "reason": "需求中出现新的坑位D定义，需要纳入主数据目录。",
+      "status": "new_candidate"
+    },
+    {
+      "catalog_type": "d",
+      "zh_name": "负面情绪指标卡",
+      "en_name": "negative_emotion_card",
+      "reason": "需求中出现新的坑位D定义，需要纳入主数据目录。",
+      "status": "new_candidate"
+    },
+    {
+      "catalog_type": "d",
+      "zh_name": "效率指标卡",
+      "en_name": "efficiency_card",
+      "reason": "需求中出现新的坑位D定义，需要纳入主数据目录。",
+      "status": "new_candidate"
+    }
+  ],
+  "page_flows": [
+    {
+      "flow_name": "核心业务链路",
+      "steps": [
+        {
+          "page_name_zh": "性别选择页",
+          "page_name_en": "gender_selection",
+          "page_id": "health_monitor_gender_selection",
+          "action": "进入性别选择页",
+          "notes": "用户进入健康监测后的第一页，选择性别后进入基础信息录入。"
+        },
+        {
+          "page_name_zh": "基础信息录入页",
+          "page_name_en": "basic_info",
+          "page_id": "health_monitor_basic_info",
+          "action": "选择性别并进入基础信息录入页",
+          "notes": "用户录入年龄、身高、体重，并点击开始检测。"
+        },
+        {
+          "page_name_zh": "健康监测启动页",
+          "page_name_en": "start",
+          "page_id": "health_monitor_start",
+          "action": "填写年龄、身高、体重并进入健康监测启动页",
+          "notes": "展示健康监测价值介绍、协议勾选和一键开启按钮。"
+        },
+        {
+          "page_name_zh": "教学引导页",
+          "page_name_en": "guide",
+          "page_id": "health_monitor_guide",
+          "action": "进入教学引导页",
+          "notes": "展示如何取出设备、如何双手持握的教学指引。"
+        },
+        {
+          "page_name_zh": "检测准备页",
+          "page_name_en": "prepare",
+          "page_id": "health_monitor_prepare",
+          "action": "完成双手持握进入检测准备页",
+          "notes": "信号采集正常后展示准备状态，提示检测即将开始。"
+        },
+        {
+          "page_name_zh": "监测过程页",
+          "page_name_en": "monitoring",
+          "page_id": "health_monitor_monitoring",
+          "action": "进入监测过程页",
+          "notes": "展示监测进度、实时波形和健康科普内容。"
+        },
+        {
+          "page_name_zh": "报告生成页",
+          "page_name_en": "report_generating",
+          "page_id": "health_monitor_report_generating",
+          "action": "生成报告并进入报告生成页",
+          "notes": "监测完成后展示报告生成中的等待页面与科普内容。"
+        },
+        {
+          "page_name_zh": "结果报告页",
+          "page_name_en": "report_result",
+          "page_id": "health_monitor_report_result",
+          "action": "进入结果报告页",
+          "notes": "展示总评分、生理指标、心理指标，以及二维码和营销banner。"
+        },
+        {
+          "page_name_zh": "健康监测启动页",
+          "page_name_en": "start",
+          "page_id": "health_monitor_start",
+          "action": "进入健康监测启动页",
+          "notes": "展示健康监测价值介绍、协议勾选和一键开启按钮。"
+        },
+        {
+          "page_name_zh": "检测准备页",
+          "page_name_en": "prepare",
+          "page_id": "health_monitor_prepare",
+          "action": "进入检测准备页",
+          "notes": "信号采集正常后展示准备状态，提示检测即将开始。"
+        },
+        {
+          "page_name_zh": "退出确认弹窗",
+          "page_name_en": "exit_confirm",
+          "page_id": "health_monitor_exit_confirm",
+          "action": "检测中可能弹出退出确认弹窗",
+          "notes": "用户中途退出时的挽留弹窗，提供退出和坚持一下两个选择。"
+        },
+        {
+          "page_name_zh": "报告生成页",
+          "page_name_en": "report_generating",
+          "page_id": "health_monitor_report_generating",
+          "action": "进入报告生成页",
+          "notes": "监测完成后展示报告生成中的等待页面与科普内容。"
+        }
+      ],
+      "has_rollback": false,
+      "rollback_from_page_id": "",
+      "rollback_to_page_id": "",
+      "rollback_trigger": "",
+      "rollback_notes": ""
+    }
+  ],
+  "test_scenarios": [
+    {
+      "scenario_name": "性别选择页页面浏览验证",
+      "page_name": "性别选择页",
+      "target_spm": "health_monitor.gender_selection",
+      "test_type": "pv_check",
+      "test_points": [
+        {
+          "point_name": "页面进入",
+          "operation": "进入性别选择页",
+          "check_target": "页面浏览上报",
+          "notes": "确认页面浏览是否正常上报，page_id是否正确。"
+        }
+      ],
+      "expected_result": "页面浏览上报成功，页面SPM与page_id符合方案定义。"
+    },
+    {
+      "scenario_name": "男性选项坑位点击验证",
+      "page_name": "性别选择页",
+      "target_spm": "health_monitor.gender_selection.gender_selector.male_option",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击男性选项",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "男性选项参数验证",
+      "page_name": "性别选择页",
+      "target_spm": "health_monitor.gender_selection.gender_selector.male_option",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发男性选项对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发男性选项对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发男性选项对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发男性选项对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发男性选项对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "女性选项坑位点击验证",
+      "page_name": "性别选择页",
+      "target_spm": "health_monitor.gender_selection.gender_selector.female_option",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击女性选项",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "女性选项参数验证",
+      "page_name": "性别选择页",
+      "target_spm": "health_monitor.gender_selection.gender_selector.female_option",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发女性选项对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发女性选项对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发女性选项对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发女性选项对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发女性选项对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "下一步按钮坑位点击验证",
+      "page_name": "性别选择页",
+      "target_spm": "health_monitor.gender_selection.fixed_bottom.next_btn",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击下一步按钮",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "下一步按钮参数验证",
+      "page_name": "性别选择页",
+      "target_spm": "health_monitor.gender_selection.fixed_bottom.next_btn",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发下一步按钮对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发下一步按钮对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发下一步按钮对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发下一步按钮对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发下一步按钮对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "基础信息录入页页面浏览验证",
+      "page_name": "基础信息录入页",
+      "target_spm": "health_monitor.basic_info",
+      "test_type": "pv_check",
+      "test_points": [
+        {
+          "point_name": "页面进入",
+          "operation": "进入基础信息录入页",
+          "check_target": "页面浏览上报",
+          "notes": "确认页面浏览是否正常上报，page_id是否正确。"
+        }
+      ],
+      "expected_result": "页面浏览上报成功，页面SPM与page_id符合方案定义。"
+    },
+    {
+      "scenario_name": "年龄选择器坑位点击验证",
+      "page_name": "基础信息录入页",
+      "target_spm": "health_monitor.basic_info.basic_info_form.age_picker",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击年龄选择器",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "年龄选择器参数验证",
+      "page_name": "基础信息录入页",
+      "target_spm": "health_monitor.basic_info.basic_info_form.age_picker",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发年龄选择器对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发年龄选择器对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发年龄选择器对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发年龄选择器对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发年龄选择器对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "身高选择器坑位点击验证",
+      "page_name": "基础信息录入页",
+      "target_spm": "health_monitor.basic_info.basic_info_form.height_picker",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击身高选择器",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "身高选择器参数验证",
+      "page_name": "基础信息录入页",
+      "target_spm": "health_monitor.basic_info.basic_info_form.height_picker",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发身高选择器对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发身高选择器对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发身高选择器对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发身高选择器对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发身高选择器对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "体重选择器坑位点击验证",
+      "page_name": "基础信息录入页",
+      "target_spm": "health_monitor.basic_info.basic_info_form.weight_picker",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击体重选择器",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "体重选择器参数验证",
+      "page_name": "基础信息录入页",
+      "target_spm": "health_monitor.basic_info.basic_info_form.weight_picker",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发体重选择器对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发体重选择器对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发体重选择器对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发体重选择器对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发体重选择器对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "开始检测按钮坑位点击验证",
+      "page_name": "基础信息录入页",
+      "target_spm": "health_monitor.basic_info.fixed_bottom.start_btn",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击开始检测按钮",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "开始检测按钮参数验证",
+      "page_name": "基础信息录入页",
+      "target_spm": "health_monitor.basic_info.fixed_bottom.start_btn",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发开始检测按钮对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发开始检测按钮对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发开始检测按钮对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发开始检测按钮对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发开始检测按钮对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "健康监测启动页页面浏览验证",
+      "page_name": "健康监测启动页",
+      "target_spm": "health_monitor.start",
+      "test_type": "pv_check",
+      "test_points": [
+        {
+          "point_name": "页面进入",
+          "operation": "进入健康监测启动页",
+          "check_target": "页面浏览上报",
+          "notes": "确认页面浏览是否正常上报，page_id是否正确。"
+        }
+      ],
+      "expected_result": "页面浏览上报成功，页面SPM与page_id符合方案定义。"
+    },
+    {
+      "scenario_name": "知情同意复选框坑位点击验证",
+      "page_name": "健康监测启动页",
+      "target_spm": "health_monitor.start.agreement_bar.agreement_checkbox",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击知情同意复选框",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "知情同意复选框参数验证",
+      "page_name": "健康监测启动页",
+      "target_spm": "health_monitor.start.agreement_bar.agreement_checkbox",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发知情同意复选框对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发知情同意复选框对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发知情同意复选框对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发知情同意复选框对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发知情同意复选框对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "知情同意书链接坑位点击验证",
+      "page_name": "健康监测启动页",
+      "target_spm": "health_monitor.start.agreement_bar.agreement_link",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击知情同意书链接",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "知情同意书链接参数验证",
+      "page_name": "健康监测启动页",
+      "target_spm": "health_monitor.start.agreement_bar.agreement_link",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "协议类型参数校验",
+          "operation": "触发知情同意书链接对应事件",
+          "check_target": "agreement_type",
+          "notes": "协议类型需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发知情同意书链接对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发知情同意书链接对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发知情同意书链接对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发知情同意书链接对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发知情同意书链接对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "隐私政策链接坑位点击验证",
+      "page_name": "健康监测启动页",
+      "target_spm": "health_monitor.start.agreement_bar.privacy_link",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击隐私政策链接",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "隐私政策链接参数验证",
+      "page_name": "健康监测启动页",
+      "target_spm": "health_monitor.start.agreement_bar.privacy_link",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "协议类型参数校验",
+          "operation": "触发隐私政策链接对应事件",
+          "check_target": "agreement_type",
+          "notes": "协议类型需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发隐私政策链接对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发隐私政策链接对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发隐私政策链接对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发隐私政策链接对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发隐私政策链接对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "启动主区域区块曝光验证",
+      "page_name": "健康监测启动页",
+      "target_spm": "health_monitor.start.start_panel",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入健康监测启动页并确认启动主区域展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "开始检测按钮坑位点击验证",
+      "page_name": "健康监测启动页",
+      "target_spm": "health_monitor.start.start_panel.start_btn",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击开始检测按钮",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "开始检测按钮参数验证",
+      "page_name": "健康监测启动页",
+      "target_spm": "health_monitor.start.start_panel.start_btn",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发开始检测按钮对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发开始检测按钮对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发开始检测按钮对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发开始检测按钮对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发开始检测按钮对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "协议详情弹窗页面浏览验证",
+      "page_name": "协议详情弹窗",
+      "target_spm": "health_monitor.agreement_detail",
+      "test_type": "pv_check",
+      "test_points": [
+        {
+          "point_name": "页面进入",
+          "operation": "进入协议详情弹窗",
+          "check_target": "页面浏览上报",
+          "notes": "确认页面浏览是否正常上报，page_id是否正确。"
+        }
+      ],
+      "expected_result": "页面浏览上报成功，页面SPM与page_id符合方案定义。"
+    },
+    {
+      "scenario_name": "操作弹窗区区块曝光验证",
+      "page_name": "协议详情弹窗",
+      "target_spm": "health_monitor.agreement_detail.modal_actions",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入协议详情弹窗并确认操作弹窗区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "不同意按钮坑位点击验证",
+      "page_name": "协议详情弹窗",
+      "target_spm": "health_monitor.agreement_detail.modal_actions.disagree_btn",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击不同意按钮",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "不同意按钮参数验证",
+      "page_name": "协议详情弹窗",
+      "target_spm": "health_monitor.agreement_detail.modal_actions.disagree_btn",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "协议类型参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "agreement_type",
+          "notes": "协议类型需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "同意并继续按钮坑位点击验证",
+      "page_name": "协议详情弹窗",
+      "target_spm": "health_monitor.agreement_detail.modal_actions.agree_continue_btn",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击同意并继续按钮",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "同意并继续按钮参数验证",
+      "page_name": "协议详情弹窗",
+      "target_spm": "health_monitor.agreement_detail.modal_actions.agree_continue_btn",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "协议类型参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "agreement_type",
+          "notes": "协议类型需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "隐私政策弹窗页面浏览验证",
+      "page_name": "隐私政策弹窗",
+      "target_spm": "health_monitor.privacy_policy",
+      "test_type": "pv_check",
+      "test_points": [
+        {
+          "point_name": "页面进入",
+          "operation": "进入隐私政策弹窗",
+          "check_target": "页面浏览上报",
+          "notes": "确认页面浏览是否正常上报，page_id是否正确。"
+        }
+      ],
+      "expected_result": "页面浏览上报成功，页面SPM与page_id符合方案定义。"
+    },
+    {
+      "scenario_name": "操作弹窗区区块曝光验证",
+      "page_name": "隐私政策弹窗",
+      "target_spm": "health_monitor.privacy_policy.modal_actions",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入隐私政策弹窗并确认操作弹窗区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "不同意按钮坑位点击验证",
+      "page_name": "隐私政策弹窗",
+      "target_spm": "health_monitor.privacy_policy.modal_actions.disagree_btn",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击不同意按钮",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "不同意按钮参数验证",
+      "page_name": "隐私政策弹窗",
+      "target_spm": "health_monitor.privacy_policy.modal_actions.disagree_btn",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "协议类型参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "agreement_type",
+          "notes": "协议类型需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发不同意按钮对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "同意并继续按钮坑位点击验证",
+      "page_name": "隐私政策弹窗",
+      "target_spm": "health_monitor.privacy_policy.modal_actions.agree_continue_btn",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击同意并继续按钮",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "同意并继续按钮参数验证",
+      "page_name": "隐私政策弹窗",
+      "target_spm": "health_monitor.privacy_policy.modal_actions.agree_continue_btn",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "协议类型参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "agreement_type",
+          "notes": "协议类型需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发同意并继续按钮对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "教学引导页页面浏览验证",
+      "page_name": "教学引导页",
+      "target_spm": "health_monitor.guide",
+      "test_type": "pv_check",
+      "test_points": [
+        {
+          "point_name": "页面进入",
+          "operation": "进入教学引导页",
+          "check_target": "页面浏览上报",
+          "notes": "确认页面浏览是否正常上报，page_id是否正确。"
+        }
+      ],
+      "expected_result": "页面浏览上报成功，页面SPM与page_id符合方案定义。"
+    },
+    {
+      "scenario_name": "引导内容区区块曝光验证",
+      "page_name": "教学引导页",
+      "target_spm": "health_monitor.guide.guide_content",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入教学引导页并确认引导内容区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "引导卡片参数验证",
+      "page_name": "教学引导页",
+      "target_spm": "health_monitor.guide.guide_content.guide_card",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发引导卡片对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发引导卡片对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发引导卡片对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发引导卡片对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发引导卡片对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "检测准备页页面浏览验证",
+      "page_name": "检测准备页",
+      "target_spm": "health_monitor.prepare",
+      "test_type": "pv_check",
+      "test_points": [
+        {
+          "point_name": "页面进入",
+          "operation": "进入检测准备页",
+          "check_target": "页面浏览上报",
+          "notes": "确认页面浏览是否正常上报，page_id是否正确。"
+        }
+      ],
+      "expected_result": "页面浏览上报成功，页面SPM与page_id符合方案定义。"
+    },
+    {
+      "scenario_name": "准备状态区区块曝光验证",
+      "page_name": "检测准备页",
+      "target_spm": "health_monitor.prepare.prepare_status",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入检测准备页并确认准备状态区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "准备进度环参数验证",
+      "page_name": "检测准备页",
+      "target_spm": "health_monitor.prepare.prepare_status.prepare_progress",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发准备进度环对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发准备进度环对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发准备进度环对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发准备进度环对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发准备进度环对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发准备进度环对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "监测过程页页面浏览验证",
+      "page_name": "监测过程页",
+      "target_spm": "health_monitor.monitoring",
+      "test_type": "pv_check",
+      "test_points": [
+        {
+          "point_name": "页面进入",
+          "operation": "进入监测过程页",
+          "check_target": "页面浏览上报",
+          "notes": "确认页面浏览是否正常上报，page_id是否正确。"
+        }
+      ],
+      "expected_result": "页面浏览上报成功，页面SPM与page_id符合方案定义。"
+    },
+    {
+      "scenario_name": "监测面板区区块曝光验证",
+      "page_name": "监测过程页",
+      "target_spm": "health_monitor.monitoring.monitoring_panel",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入监测过程页并确认监测面板区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "监测进度区参数验证",
+      "page_name": "监测过程页",
+      "target_spm": "health_monitor.monitoring.monitoring_panel.monitoring_area",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发监测进度区对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发监测进度区对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发监测进度区对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发监测进度区对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发监测进度区对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发监测进度区对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "科普内容区区块曝光验证",
+      "page_name": "监测过程页",
+      "target_spm": "health_monitor.monitoring.science_content",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入监测过程页并确认科普内容区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "科普卡片坑位曝光验证",
+      "page_name": "监测过程页",
+      "target_spm": "health_monitor.monitoring.science_content.science_card",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认科普卡片展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "顺序坑位需同时确认坑位顺序是否符合预期。顺序坑位需要区分具体位置或序号，坑位级曝光具备独立分析价值。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "科普卡片参数验证",
+      "page_name": "监测过程页",
+      "target_spm": "health_monitor.monitoring.science_content.science_card",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "内容ID参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "content_id",
+          "notes": "内容ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "退出确认弹窗页面浏览验证",
+      "page_name": "退出确认弹窗",
+      "target_spm": "health_monitor.exit_confirm",
+      "test_type": "pv_check",
+      "test_points": [
+        {
+          "point_name": "页面进入",
+          "operation": "进入退出确认弹窗",
+          "check_target": "页面浏览上报",
+          "notes": "确认页面浏览是否正常上报，page_id是否正确。"
+        }
+      ],
+      "expected_result": "页面浏览上报成功，页面SPM与page_id符合方案定义。"
+    },
+    {
+      "scenario_name": "操作弹窗区区块曝光验证",
+      "page_name": "退出确认弹窗",
+      "target_spm": "health_monitor.exit_confirm.modal_actions",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入退出确认弹窗并确认操作弹窗区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "退出按钮坑位点击验证",
+      "page_name": "退出确认弹窗",
+      "target_spm": "health_monitor.exit_confirm.modal_actions.exit_btn",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击退出按钮",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "退出按钮参数验证",
+      "page_name": "退出确认弹窗",
+      "target_spm": "health_monitor.exit_confirm.modal_actions.exit_btn",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发退出按钮对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发退出按钮对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发退出按钮对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发退出按钮对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发退出按钮对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发退出按钮对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "坚持一下按钮坑位点击验证",
+      "page_name": "退出确认弹窗",
+      "target_spm": "health_monitor.exit_confirm.modal_actions.hold_btn",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击坚持一下按钮",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "坚持一下按钮参数验证",
+      "page_name": "退出确认弹窗",
+      "target_spm": "health_monitor.exit_confirm.modal_actions.hold_btn",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发坚持一下按钮对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发坚持一下按钮对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发坚持一下按钮对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发坚持一下按钮对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发坚持一下按钮对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发坚持一下按钮对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "关闭按钮坑位点击验证",
+      "page_name": "退出确认弹窗",
+      "target_spm": "health_monitor.exit_confirm.modal_close.close_btn",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击关闭按钮",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "关闭按钮参数验证",
+      "page_name": "退出确认弹窗",
+      "target_spm": "health_monitor.exit_confirm.modal_close.close_btn",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发关闭按钮对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发关闭按钮对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发关闭按钮对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发关闭按钮对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发关闭按钮对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发关闭按钮对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "报告生成页页面浏览验证",
+      "page_name": "报告生成页",
+      "target_spm": "health_monitor.report_generating",
+      "test_type": "pv_check",
+      "test_points": [
+        {
+          "point_name": "页面进入",
+          "operation": "进入报告生成页",
+          "check_target": "页面浏览上报",
+          "notes": "确认页面浏览是否正常上报，page_id是否正确。"
+        }
+      ],
+      "expected_result": "页面浏览上报成功，页面SPM与page_id符合方案定义。"
+    },
+    {
+      "scenario_name": "报告生成区区块曝光验证",
+      "page_name": "报告生成页",
+      "target_spm": "health_monitor.report_generating.generating_panel",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入报告生成页并确认报告生成区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "生成中区域参数验证",
+      "page_name": "报告生成页",
+      "target_spm": "health_monitor.report_generating.generating_panel.generating_area",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发生成中区域对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发生成中区域对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发生成中区域对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发生成中区域对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发生成中区域对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发生成中区域对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "科普内容区区块曝光验证",
+      "page_name": "报告生成页",
+      "target_spm": "health_monitor.report_generating.science_content",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入报告生成页并确认科普内容区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "科普卡片坑位曝光验证",
+      "page_name": "报告生成页",
+      "target_spm": "health_monitor.report_generating.science_content.science_card",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认科普卡片展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "顺序坑位需同时确认坑位顺序是否符合预期。顺序坑位需要区分具体位置或序号，坑位级曝光具备独立分析价值。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "科普卡片参数验证",
+      "page_name": "报告生成页",
+      "target_spm": "health_monitor.report_generating.science_content.science_card",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "内容ID参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "content_id",
+          "notes": "内容ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发科普卡片对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "结果报告页页面浏览验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result",
+      "test_type": "pv_check",
+      "test_points": [
+        {
+          "point_name": "页面进入",
+          "operation": "进入结果报告页",
+          "check_target": "页面浏览上报",
+          "notes": "确认页面浏览是否正常上报，page_id是否正确。"
+        }
+      ],
+      "expected_result": "页面浏览上报成功，页面SPM与page_id符合方案定义。"
+    },
+    {
+      "scenario_name": "结果总览区区块曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.result_summary",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入结果报告页并确认结果总览区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "综合评分区参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.result_summary.score_area",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发综合评分区对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发综合评分区对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发综合评分区对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发综合评分区对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发综合评分区对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发综合评分区对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "生理指标区区块曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.physiological_metrics",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入结果报告页并确认生理指标区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "生理指标卡组坑位曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.physiological_metrics.physio_cards",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认生理指标卡组展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "固定坑位只需确认曝光是否存在。该元素具备独立曝光分析价值，保留坑位级曝光。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "生理指标卡组参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.physiological_metrics.physio_cards",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发生理指标卡组对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发生理指标卡组对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发生理指标卡组对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发生理指标卡组对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发生理指标卡组对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发生理指标卡组对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "窦性心律指标卡坑位曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.physiological_metrics.sinus_rhythm_card",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认窦性心律指标卡展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "固定坑位只需确认曝光是否存在。该元素具备独立曝光分析价值，保留坑位级曝光。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "窦性心律指标卡参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.physiological_metrics.sinus_rhythm_card",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发窦性心律指标卡对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发窦性心律指标卡对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发窦性心律指标卡对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发窦性心律指标卡对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发窦性心律指标卡对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发窦性心律指标卡对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "室上性早搏指标卡坑位曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.physiological_metrics.premature_beat_card",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认室上性早搏指标卡展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "固定坑位只需确认曝光是否存在。该元素具备独立曝光分析价值，保留坑位级曝光。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "室上性早搏指标卡参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.physiological_metrics.premature_beat_card",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发室上性早搏指标卡对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发室上性早搏指标卡对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发室上性早搏指标卡对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发室上性早搏指标卡对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发室上性早搏指标卡对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发室上性早搏指标卡对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "心率指标卡坑位曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.physiological_metrics.heart_rate_card",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认心率指标卡展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "固定坑位只需确认曝光是否存在。该元素具备独立曝光分析价值，保留坑位级曝光。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "心率指标卡参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.physiological_metrics.heart_rate_card",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发心率指标卡对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发心率指标卡对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发心率指标卡对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发心率指标卡对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发心率指标卡对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发心率指标卡对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "心理指标区区块曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.mental_metrics",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入结果报告页并确认心理指标区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "心理指标卡组坑位曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.mental_metrics.mental_cards",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认心理指标卡组展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "固定坑位只需确认曝光是否存在。该元素具备独立曝光分析价值，保留坑位级曝光。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "心理指标卡组参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.mental_metrics.mental_cards",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发心理指标卡组对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发心理指标卡组对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发心理指标卡组对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发心理指标卡组对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发心理指标卡组对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发心理指标卡组对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "能量指标卡坑位曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.mental_metrics.energy_card",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认能量指标卡展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "固定坑位只需确认曝光是否存在。该元素具备独立曝光分析价值，保留坑位级曝光。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "能量指标卡参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.mental_metrics.energy_card",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发能量指标卡对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发能量指标卡对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发能量指标卡对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发能量指标卡对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发能量指标卡对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发能量指标卡对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "压力指标卡坑位曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.mental_metrics.stress_card",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认压力指标卡展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "固定坑位只需确认曝光是否存在。该元素具备独立曝光分析价值，保留坑位级曝光。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "压力指标卡参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.mental_metrics.stress_card",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发压力指标卡对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发压力指标卡对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发压力指标卡对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发压力指标卡对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发压力指标卡对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发压力指标卡对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "负面情绪指标卡坑位曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.mental_metrics.negative_emotion_card",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认负面情绪指标卡展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "固定坑位只需确认曝光是否存在。该元素具备独立曝光分析价值，保留坑位级曝光。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "负面情绪指标卡参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.mental_metrics.negative_emotion_card",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发负面情绪指标卡对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发负面情绪指标卡对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发负面情绪指标卡对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发负面情绪指标卡对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发负面情绪指标卡对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发负面情绪指标卡对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "效率指标卡坑位曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.mental_metrics.efficiency_card",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认效率指标卡展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "固定坑位只需确认曝光是否存在。该元素具备独立曝光分析价值，保留坑位级曝光。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "效率指标卡参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.mental_metrics.efficiency_card",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发效率指标卡对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发效率指标卡对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发效率指标卡对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发效率指标卡对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发效率指标卡对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发效率指标卡对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "右侧推广区区块曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.right_promo",
+      "test_type": "block_exposure_check",
+      "test_points": [
+        {
+          "point_name": "区块首次曝光",
+          "operation": "进入结果报告页并确认右侧推广区展示",
+          "check_target": "区块曝光上报",
+          "notes": "确认区块曝光是否按方案触发。"
+        }
+      ],
+      "expected_result": "区块曝光上报成功，目标区块标识正确。"
+    },
+    {
+      "scenario_name": "二维码卡片坑位曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.right_promo.qr_card",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认二维码卡片展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "固定坑位只需确认曝光是否存在。该元素承载独立内容或素材，需要保留坑位级曝光。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "二维码卡片参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.right_promo.qr_card",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "内容ID参数校验",
+          "operation": "触发二维码卡片对应事件",
+          "check_target": "content_id",
+          "notes": "内容ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发二维码卡片对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发二维码卡片对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发二维码卡片对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发二维码卡片对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发二维码卡片对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发二维码卡片对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "营销Banner坑位曝光验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.right_promo.promo_banner",
+      "test_type": "ordered_position_check",
+      "test_points": [
+        {
+          "point_name": "坑位曝光",
+          "operation": "确认营销Banner展示并进入可视区域",
+          "check_target": "坑位曝光上报",
+          "notes": "顺序坑位需同时确认坑位顺序是否符合预期。顺序坑位需要区分具体位置或序号，坑位级曝光具备独立分析价值。"
+        }
+      ],
+      "expected_result": "坑位曝光上报成功，SPM位置定义与方案一致。"
+    },
+    {
+      "scenario_name": "营销Banner坑位点击验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.right_promo.promo_banner",
+      "test_type": "position_click_check",
+      "test_points": [
+        {
+          "point_name": "点击坑位",
+          "operation": "点击营销Banner",
+          "check_target": "点击事件上报",
+          "notes": "无biz_type要求。"
+        }
+      ],
+      "expected_result": "坑位点击上报成功，SPM与业务类型符合方案定义。"
+    },
+    {
+      "scenario_name": "营销Banner参数验证",
+      "page_name": "结果报告页",
+      "target_spm": "health_monitor.report_result.right_promo.promo_banner",
+      "test_type": "param_check",
+      "test_points": [
+        {
+          "point_name": "内容ID参数校验",
+          "operation": "触发营销Banner对应事件",
+          "check_target": "content_id",
+          "notes": "内容ID需符合类型 string。"
+        },
+        {
+          "point_name": "用户PIN参数校验",
+          "operation": "触发营销Banner对应事件",
+          "check_target": "user_pin",
+          "notes": "用户PIN需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "订单ID参数校验",
+          "operation": "触发营销Banner对应事件",
+          "check_target": "order_id",
+          "notes": "订单ID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "车辆VID参数校验",
+          "operation": "触发营销Banner对应事件",
+          "check_target": "vid",
+          "notes": "车辆VID需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "运营城市参数校验",
+          "operation": "触发营销Banner对应事件",
+          "check_target": "car_city",
+          "notes": "运营城市需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "环境参数校验",
+          "operation": "触发营销Banner对应事件",
+          "check_target": "env",
+          "notes": "环境需符合类型 string，且为必填。"
+        },
+        {
+          "point_name": "监测ID参数校验",
+          "operation": "触发营销Banner对应事件",
+          "check_target": "monitor_id",
+          "notes": "监测ID需符合类型 string。"
+        }
+      ],
+      "expected_result": "关键业务参数完整上报，字段定义符合方案约束。"
+    },
+    {
+      "scenario_name": "核心业务链路链路验证",
+      "page_name": "性别选择页",
+      "target_spm": "health_monitor_gender_selection -> health_monitor_report_generating",
+      "test_type": "flow_check",
+      "test_points": [
+        {
+          "point_name": "链路步骤1",
+          "operation": "进入性别选择页",
+          "check_target": "health_monitor_gender_selection",
+          "notes": "用户进入健康监测后的第一页，选择性别后进入基础信息录入。"
+        },
+        {
+          "point_name": "链路步骤2",
+          "operation": "选择性别并进入基础信息录入页",
+          "check_target": "health_monitor_basic_info",
+          "notes": "用户录入年龄、身高、体重，并点击开始检测。"
+        },
+        {
+          "point_name": "链路步骤3",
+          "operation": "填写年龄、身高、体重并进入健康监测启动页",
+          "check_target": "health_monitor_start",
+          "notes": "展示健康监测价值介绍、协议勾选和一键开启按钮。"
+        },
+        {
+          "point_name": "链路步骤4",
+          "operation": "进入教学引导页",
+          "check_target": "health_monitor_guide",
+          "notes": "展示如何取出设备、如何双手持握的教学指引。"
+        },
+        {
+          "point_name": "链路步骤5",
+          "operation": "完成双手持握进入检测准备页",
+          "check_target": "health_monitor_prepare",
+          "notes": "信号采集正常后展示准备状态，提示检测即将开始。"
+        },
+        {
+          "point_name": "链路步骤6",
+          "operation": "进入监测过程页",
+          "check_target": "health_monitor_monitoring",
+          "notes": "展示监测进度、实时波形和健康科普内容。"
+        },
+        {
+          "point_name": "链路步骤7",
+          "operation": "生成报告并进入报告生成页",
+          "check_target": "health_monitor_report_generating",
+          "notes": "监测完成后展示报告生成中的等待页面与科普内容。"
+        },
+        {
+          "point_name": "链路步骤8",
+          "operation": "进入结果报告页",
+          "check_target": "health_monitor_report_result",
+          "notes": "展示总评分、生理指标、心理指标，以及二维码和营销banner。"
+        },
+        {
+          "point_name": "链路步骤9",
+          "operation": "进入健康监测启动页",
+          "check_target": "health_monitor_start",
+          "notes": "展示健康监测价值介绍、协议勾选和一键开启按钮。"
+        },
+        {
+          "point_name": "链路步骤10",
+          "operation": "进入检测准备页",
+          "check_target": "health_monitor_prepare",
+          "notes": "信号采集正常后展示准备状态，提示检测即将开始。"
+        },
+        {
+          "point_name": "链路步骤11",
+          "operation": "检测中可能弹出退出确认弹窗",
+          "check_target": "health_monitor_exit_confirm",
+          "notes": "用户中途退出时的挽留弹窗，提供退出和坚持一下两个选择。"
+        },
+        {
+          "point_name": "链路步骤12",
+          "operation": "进入报告生成页",
+          "check_target": "health_monitor_report_generating",
+          "notes": "监测完成后展示报告生成中的等待页面与科普内容。"
+        }
+      ],
+      "expected_result": "核心页面跳转链路可被完整识别，页面序列与方案一致。"
+    }
+  ]
+}

@@ -1,0 +1,1591 @@
+{
+  "requirement_name": "口令彩蛋",
+  "business_line": "出行/车载场景营销",
+  "terminal_domain": "APP端、HMI端、口令模块、权益模块、推荐与数据需求",
+  "business_capability": "基于订单/行程场景的口令彩蛋触发、权益展现与领取",
+  "business_background": "该需求面向乘车场景，覆盖 APP 端与 HMI 端，并区分智能车载、量产车A版本等车型/版本形态。产品目标是在乘车链路中为用户提供口令彩蛋固定入口、口令教学与说明、HMI 侧彩蛋触发、权益展现与领取能力，同时通过口令模块与权益模块完成口令生成/匹配、活动配置、奖品发放和推荐分发，并配套数据统计评估用户互动率、权益领取与核销效果。",
+  "pages": [
+    {
+      "page_name": "等待接驾页",
+      "page_path": "",
+      "description": "APP端乘车前页面，承载口令教学动效与口令常驻入口，是口令彩蛋固定曝光入口之一。"
+    },
+    {
+      "page_name": "行程中页面",
+      "page_path": "",
+      "description": "APP端行程内页面，展示口令教学动效与口令常驻入口，用户可点击入口查看活动说明。"
+    },
+    {
+      "page_name": "口令说明半弹层",
+      "page_path": "",
+      "description": "APP端由口令常驻入口拉起的说明层，包含今日口令、活动说明、奖品预告，并支持关闭。"
+    },
+    {
+      "page_name": "APP首页",
+      "page_path": "",
+      "description": "推荐需求与数据需求中出现的 APP 首页场景，存在首页入口或弹窗曝光统计。"
+    },
+    {
+      "page_name": "APP首页弹窗",
+      "page_path": "",
+      "description": "APP侧独立统计曝光的首页弹窗展示位。"
+    },
+    {
+      "page_name": "首页推荐容器",
+      "page_path": "",
+      "description": "推荐系统分发口令彩蛋内容的首页推荐列表/容器。"
+    },
+    {
+      "page_name": "推荐页",
+      "page_path": "",
+      "description": "数据需求中提到的推荐页入口场景，可承接彩蛋入口曝光与点击。"
+    },
+    {
+      "page_name": "排行圈",
+      "page_path": "",
+      "description": "数据需求中提到的排行圈入口场景，可承接彩蛋入口曝光与点击。"
+    },
+    {
+      "page_name": "行程结束页",
+      "page_path": "",
+      "description": "数据需求中提到的去彩蛋入口场景。"
+    },
+    {
+      "page_name": "HMI首页",
+      "page_path": "",
+      "description": "HMI端核心入口页，存在首页挂件/入口、语音触发及彩蛋入口曝光统计。"
+    },
+    {
+      "page_name": "应用页面",
+      "page_path": "",
+      "description": "HMI侧首页外的应用上层页面，支持说出口令触发彩蛋。"
+    },
+    {
+      "page_name": "彩蛋入口",
+      "page_path": "",
+      "description": "HMI侧口令彩蛋入口态，表现为首页挂件或右侧悬浮入口，不同页面状态下存在多种样式。"
+    },
+    {
+      "page_name": "彩蛋展现",
+      "page_path": "",
+      "description": "用户说出口令或点击入口后触发的彩蛋展现态，可为全屏彩蛋或中心弹层/动效。"
+    },
+    {
+      "page_name": "权益展现",
+      "page_path": "",
+      "description": "彩蛋触发后的权益展示态，可展示最多三份权益，并存在页面层级与数字人层级两种透出方式。"
+    },
+    {
+      "page_name": "权益领取",
+      "page_path": "",
+      "description": "用户选择权益后的领取页/领取态，支持点击或语音领取，领取后按权益类型展示二维码及引导信息。"
+    },
+    {
+      "page_name": "权益领取已领取状态",
+      "page_path": "",
+      "description": "用户已领取权益后再次触发彩蛋时进入的已领取状态页面。"
+    },
+    {
+      "page_name": "统一兜底页面",
+      "page_path": "",
+      "description": "权益获取失败、未命中、超时或不可领取时展示的统一兜底页或提示态。"
+    },
+    {
+      "page_name": "首页",
+      "page_path": "",
+      "description": "HMI 数据需求中的首页语音入口场景。"
+    },
+    {
+      "page_name": "二级应用页",
+      "page_path": "",
+      "description": "HMI 数据需求中的二级应用页语音入口场景。"
+    },
+    {
+      "page_name": "口令模块",
+      "page_path": "",
+      "description": "负责口令描述、类型、动作、素材、生效规则、关联 Action、车型与人群等配置与匹配的模块。"
+    },
+    {
+      "page_name": "口令配置",
+      "page_path": "",
+      "description": "口令模块中的配置能力页，用于注册口令、素材、生效时间、支持车型/人群和关联动作。"
+    },
+    {
+      "page_name": "口令匹配",
+      "page_path": "",
+      "description": "用户触发口令后的匹配流程节点，按配置、车型、人群和素材规则返回对应结果。"
+    },
+    {
+      "page_name": "权益模块",
+      "page_path": "",
+      "description": "营销平台券池能力，负责奖品配置、活动管理、权益查询与发放。"
+    },
+    {
+      "page_name": "权益管理",
+      "page_path": "",
+      "description": "权益模块中的奖品/权益配置与管理能力。"
+    },
+    {
+      "page_name": "运营管理",
+      "page_path": "",
+      "description": "权益模块中的运营发奖与活动管理能力。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "page_path": "",
+      "description": "根据设计稿补充的页面"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "page_path": "",
+      "description": "根据设计稿补充的页面"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "page_path": "",
+      "description": "根据设计稿补充的页面"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "page_path": "",
+      "description": "根据设计稿补充的页面"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "page_path": "",
+      "description": "根据设计稿补充的页面"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "page_path": "",
+      "description": "根据设计稿补充的页面"
+    }
+  ],
+  "key_metrics": [
+    "用户互动率",
+    "权益核爆率",
+    "APP首页入口曝光次数",
+    "APP首页弹窗曝光次数",
+    "HMI首页入口曝光次数",
+    "HMI新建触发次数",
+    "APP彩蛋入口曝光数",
+    "APP彩蛋弹层曝光数",
+    "HMI彩蛋入口曝光数",
+    "HMI彩蛋播放数",
+    "权益曝光次数",
+    "权益领取数",
+    "权益核销数",
+    "彩蛋曝光率",
+    "彩蛋完播率",
+    "权益领取率",
+    "权益核销率",
+    "语音意图触发次数"
+  ],
+  "core_flow_steps": [
+    "需求需按 APP 端、HMI 端以及智能车载、量产车A版本等不同车型/版本确认覆盖范围与实现差异。",
+    "用户进入等待接驾页或行程中页面后，若命中教学规则则先展示口令教学动效；若未命中则直接展示口令常驻入口。教学动效受单用户频控、页面完整曝光和弹层打断恢复规则控制。",
+    "用户点击行程卡片左上角的口令常驻入口后，在 APP 内拉起口令说明半弹层，查看今日口令、活动说明和奖品预告，并可通过右上角关闭按钮或点击弹层外区域收起。",
+    "用户上车后，HMI 首页出现口令彩蛋入口挂件或悬浮入口；用户在首页或应用页面说出口令，或点击可点击入口后，触发彩蛋展现。",
+    "彩蛋被触发后，系统展示全屏或中心弹层形式的彩蛋内容；该阶段存在播放、完播以及被首页、应用页、熄屏等场景打断的处理逻辑。",
+    "行程开始后或彩蛋触发后，HMI 请求口令模块和权益模块，获取本次行程命中的权益信息，并在权益展现态中按页面层级或数字人层级展示最多三份权益，数量不足时按实际返回展示。",
+    "用户在权益展现页从最多三份权益中三选一，可通过点击选择按钮或语音指定权益进行领取。领取后已选权益卡片放大并左移，其余权益消失。",
+    "权益领取后，右侧根据权益类型展示对应二维码及引导文案，可能包含订单物流二维码、商品商详二维码、打车二维码，部分权益还支持跳转对应 APP 或服务。再次触发彩蛋时可直接进入已领取状态。",
+    "当权益信息获取失败、未命中、超时或权益已发完不可领取时，系统展示统一兜底页面或不可领取提示文案。",
+    "运营侧在口令模块中注册口令描述、类型、动作、APP/HMI 素材、生效规则、车型和人群，并在权益模块中配置奖品、活动、发放规则；订单口令生成后结合车型、人群、订单信息进行口令匹配并执行关联 Action。",
+    "推荐系统将口令彩蛋内容分发至 APP 首页、推荐页、排行圈、行程结束页及 HMI 首页等入口；数据需求需统计入口曝光、弹层曝光、彩蛋播放、权益曝光/领取/核销、语音触发等指标，并支持按行程、成交或券类型拆分。",
+    "首页资源位卡片曝光/点击后进入口令彩蛋弹窗",
+    "弹窗内存在主视觉、口令输入/触发区和确认操作",
+    "提交后进入奖励结果态，出现奖品卡片或权益承接区",
+    "结果态可继续点击奖品卡片、行动按钮，或关闭返回首页",
+    "底部还展示了一个较简化的入口到弹窗的支线路径",
+    "活动页存在常规入口态与背景弹窗态两种起始状态。",
+    "用户点击活动页中的彩蛋入口后，进入彩蛋选择弹窗。",
+    "彩蛋选择弹窗内包含多个奖品/彩蛋卡位，支持逐个点击选择。",
+    "选择后进入奖励结果弹窗，结果形态至少包含二维码分享态和已开奖励态。",
+    "奖励结果关闭或完成后回流至活动页。",
+    "底部还存在从活动页直接进入已开奖励结果弹窗的分支。",
+    "从车机首页进入口令彩蛋主页面",
+    "用户可通过触屏或语音触发彩蛋提示/关闭操作",
+    "用户可继续点击快捷功能卡片或底部控制入口跳转其他能力",
+    "用户进入该页面后，先感知顶部状态与中部口令彩蛋主视觉。",
+    "用户可通过点击或语音触发“提示/关闭”等口令相关操作。",
+    "用户也可直接从底部快捷卡片进入3D路况、地图、音乐、播客等功能。",
+    "底部播放控制和底部导航承接常用车机操作。",
+    "从车机首页进入口令彩蛋展示态",
+    "用户可通过触屏点击提示/关闭按钮与彩蛋卡片交互",
+    "用户也可能通过语音唤醒“你好东东”触发提示或关闭",
+    "用户可通过语音或触屏触发彩蛋内容",
+    "用户可继续点击快捷功能卡片或底部功能入口离开当前展示态",
+    "进入车机首页后触发口令彩蛋弹窗曝光",
+    "用户可点击或语音唤起“提示”获取口令线索",
+    "用户可点击或语音执行“关闭”退出弹窗",
+    "未关闭时，首页常驻功能卡片和底部快捷操作仍有曝光价值"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "等待接驾页",
+      "element_name": "口令教学动效",
+      "position": "页面内口令卡片区域",
+      "element_type": "展示",
+      "description": "用于介绍口令彩蛋能力的教学动效，按页面完整曝光与频控规则触发。"
+    },
+    {
+      "page_name": "等待接驾页",
+      "element_name": "口令常驻入口",
+      "position": "行程卡片左上角",
+      "element_type": "展示",
+      "description": "APP 端固定展示的口令彩蛋入口，点击后进入说明半弹层。"
+    },
+    {
+      "page_name": "行程中页面",
+      "element_name": "口令教学动效",
+      "position": "页面内口令卡片区域",
+      "element_type": "展示",
+      "description": "用于介绍口令彩蛋能力的教学动效，播放完成后再展示常驻入口。"
+    },
+    {
+      "page_name": "行程中页面",
+      "element_name": "口令常驻入口",
+      "position": "行程卡片左上角",
+      "element_type": "展示",
+      "description": "乘车过程中的固定口令入口，展示今日口令标签或引导信息。"
+    },
+    {
+      "page_name": "口令说明半弹层",
+      "element_name": "今日口令",
+      "position": "半弹层内容区",
+      "element_type": "展示",
+      "description": "展示当前用户可参与的今日口令信息。"
+    },
+    {
+      "page_name": "口令说明半弹层",
+      "element_name": "奖品预告",
+      "position": "半弹层内容区",
+      "element_type": "展示",
+      "description": "展示活动奖品预告信息。"
+    },
+    {
+      "page_name": "口令说明半弹层",
+      "element_name": "关闭按钮",
+      "position": "半弹层右上角",
+      "element_type": "按钮",
+      "description": "点击后关闭口令说明半弹层。"
+    },
+    {
+      "page_name": "APP首页",
+      "element_name": "首页入口",
+      "position": "首页主区域",
+      "element_type": "展示",
+      "description": "数据需求中单独统计曝光的 APP 首页入口。"
+    },
+    {
+      "page_name": "APP首页弹窗",
+      "element_name": "首页弹窗",
+      "position": "弹窗层",
+      "element_type": "展示",
+      "description": "数据需求中单独统计曝光的 APP 首页弹窗。"
+    },
+    {
+      "page_name": "首页推荐容器",
+      "element_name": "口令彩蛋推荐内容",
+      "position": "首页推荐列表",
+      "element_type": "展示",
+      "description": "推荐引擎分发后的口令彩蛋内容展示位。"
+    },
+    {
+      "page_name": "推荐页",
+      "element_name": "彩蛋入口",
+      "position": "推荐页入口位",
+      "element_type": "展示",
+      "description": "推荐页中的彩蛋入口，同时统计曝光与点击触发。"
+    },
+    {
+      "page_name": "排行圈",
+      "element_name": "彩蛋入口",
+      "position": "排行圈入口位",
+      "element_type": "展示",
+      "description": "排行圈中的彩蛋入口，同时统计曝光与点击触发。"
+    },
+    {
+      "page_name": "行程结束页",
+      "element_name": "去彩蛋入口",
+      "position": "行程结束页入口位",
+      "element_type": "展示",
+      "description": "行程结束页中的去彩蛋入口，具备独立曝光价值。"
+    },
+    {
+      "page_name": "HMI首页",
+      "element_name": "彩蛋入口",
+      "position": "首页多入口位置",
+      "element_type": "展示",
+      "description": "HMI 首页提供的彩蛋触发入口。"
+    },
+    {
+      "page_name": "彩蛋入口",
+      "element_name": "口令彩蛋入口挂件",
+      "position": "首页主内容区域",
+      "element_type": "展示",
+      "description": "用户上车后出现的彩蛋入口展示位，用于承接后续口令彩蛋触发。"
+    },
+    {
+      "page_name": "彩蛋入口",
+      "element_name": "彩蛋入口悬浮入口",
+      "position": "页面右侧悬浮区",
+      "element_type": "图标",
+      "description": "页面内悬浮展示的彩蛋入口，点击后进入彩蛋流程。"
+    },
+    {
+      "page_name": "彩蛋展现",
+      "element_name": "全屏口令彩蛋",
+      "position": "页面中部",
+      "element_type": "展示",
+      "description": "用户说出口令后出现的全屏彩蛋展示内容。"
+    },
+    {
+      "page_name": "彩蛋展现",
+      "element_name": "彩蛋展现弹层",
+      "position": "页面中央",
+      "element_type": "展示",
+      "description": "彩蛋触发后的中心动效或弹层展示位。"
+    },
+    {
+      "page_name": "权益展现",
+      "element_name": "权益展现内容",
+      "position": "权益展示区域",
+      "element_type": "展示",
+      "description": "用户触发彩蛋后展示的权益内容。"
+    },
+    {
+      "page_name": "权益展现",
+      "element_name": "权益卡片展示位",
+      "position": "页面中部",
+      "element_type": "展示",
+      "description": "展示可领取的权益内容，最多可同时出现三张。"
+    },
+    {
+      "page_name": "权益展现",
+      "element_name": "选择按钮",
+      "position": "每张权益卡片下方",
+      "element_type": "按钮",
+      "description": "每张权益卡片对应的领取按钮，用于选择所选权益。"
+    },
+    {
+      "page_name": "权益展现",
+      "element_name": "权益展现弹层",
+      "position": "页面底部弹窗区域",
+      "element_type": "展示",
+      "description": "用于承载权益内容的弹窗展示区域。"
+    },
+    {
+      "page_name": "权益展现",
+      "element_name": "权益卡片区",
+      "position": "弹窗主体区域",
+      "element_type": "卡片",
+      "description": "权益展现弹窗内并列展示的权益内容卡片区域。"
+    },
+    {
+      "page_name": "权益展现",
+      "element_name": "权益卡片",
+      "position": "页面中部",
+      "element_type": "展示",
+      "description": "用于展示权益内容的核心卡片区域。"
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "权益领取卡片",
+      "position": "页面左侧中部",
+      "element_type": "卡片",
+      "description": "用户进入领取态后展示的权益卡片，可承载领取与后续跳转信息。"
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "已领取权益卡片",
+      "position": "页面左侧",
+      "element_type": "展示",
+      "description": "用户领取后保留并突出展示的已选权益卡片，带已领取标识。"
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "订单物流二维码",
+      "position": "页面右侧",
+      "element_type": "展示",
+      "description": "用户领取实物商品后展示的订单物流二维码及引导文案。"
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "商品商详二维码",
+      "position": "页面右侧",
+      "element_type": "展示",
+      "description": "用户领取商品券后展示的商品商详页二维码及引导文案。"
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "打车二维码",
+      "position": "页面右侧",
+      "element_type": "展示",
+      "description": "用户领取打车券后展示的打车二维码及引导文案。"
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "关闭按钮",
+      "position": "权益卡片右上角",
+      "element_type": "按钮",
+      "description": "用于关闭权益领取展示。"
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "APP入口",
+      "position": "权益卡片右侧",
+      "element_type": "按钮",
+      "description": "部分权益支持点击后跳转对应 APP。"
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "服务入口",
+      "position": "权益卡片下方操作区",
+      "element_type": "按钮",
+      "description": "部分权益支持点击后进入对应服务或工具能力。"
+    },
+    {
+      "page_name": "首页",
+      "element_name": "语音入口",
+      "position": "首页语音入口区域",
+      "element_type": "输入框",
+      "description": "首页语音入口会统计语音触发次数，并区分彩蛋推荐有无等情形。"
+    },
+    {
+      "page_name": "二级应用页",
+      "element_name": "语音入口",
+      "position": "二级应用页语音入口区域",
+      "element_type": "输入框",
+      "description": "二级应用页语音入口会统计语音触发次数。"
+    },
+    {
+      "page_name": "口令模块",
+      "element_name": "APP入口文案",
+      "position": "APP入口",
+      "element_type": "展示",
+      "description": "APP 行程卡片入口的配置文案字段。"
+    },
+    {
+      "page_name": "口令模块",
+      "element_name": "APP弹窗素材",
+      "position": "APP弹窗",
+      "element_type": "展示",
+      "description": "APP 使用弹窗时对应的展示素材字段。"
+    },
+    {
+      "page_name": "口令模块",
+      "element_name": "HMI显式素材",
+      "position": "HMI显式口令侧",
+      "element_type": "展示",
+      "description": "推荐提示口令词时使用的显式素材字段。"
+    },
+    {
+      "page_name": "口令模块",
+      "element_name": "HMI隐式素材",
+      "position": "HMI隐式口令侧",
+      "element_type": "展示",
+      "description": "推荐提示口令词时使用的隐式素材字段。"
+    },
+    {
+      "page_name": "口令模块",
+      "element_name": "HMI sug",
+      "position": "HMI建议区",
+      "element_type": "展示",
+      "description": "推荐提示口令词时使用的智能 Sug 字段。"
+    },
+    {
+      "page_name": "口令模块",
+      "element_name": "HMI标签",
+      "position": "HMI标签区",
+      "element_type": "展示",
+      "description": "权益提醒类展示所使用的标签字段。"
+    },
+    {
+      "page_name": "口令匹配",
+      "element_name": "资源展示素材",
+      "position": "口令匹配结果",
+      "element_type": "展示",
+      "description": "口令匹配成功后返回的资源展示素材。"
+    },
+    {
+      "page_name": "口令匹配",
+      "element_name": "HM素材",
+      "position": "口令匹配结果",
+      "element_type": "展示",
+      "description": "命中条件后返回的 HM 相关素材内容。"
+    },
+    {
+      "page_name": "口令匹配",
+      "element_name": "HMLSug文案",
+      "position": "口令匹配结果",
+      "element_type": "展示",
+      "description": "根据判断结果返回的 HMI Sug 文案。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "口令彩蛋活动入口卡片",
+      "position": "左上区域偏左",
+      "element_type": "卡片",
+      "description": "首页资源位卡片，承载活动主图和入口信息。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "活动标题文案",
+      "position": "入口卡片内部上方",
+      "element_type": "展示",
+      "description": "入口卡片内的活动名称或利益点文案，用于传达活动信息。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "次级入口卡片",
+      "position": "左上区域偏下",
+      "element_type": "卡片",
+      "description": "同页面另一处活动入口，形态与主入口相近。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "口令彩蛋主视觉面板",
+      "position": "弹窗主体中央",
+      "element_type": "展示",
+      "description": "弹窗内的大图主视觉，用于承载活动氛围和核心信息。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "关闭按钮",
+      "position": "弹窗右上角",
+      "element_type": "图标",
+      "description": "用于关闭口令彩蛋弹窗并返回上一页。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "确认操作按钮",
+      "position": "弹窗底部",
+      "element_type": "按钮",
+      "description": "提交口令、开启彩蛋或确认下一步的主操作按钮。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "状态提示文案",
+      "position": "各状态弹窗中部",
+      "element_type": "展示",
+      "description": "用于反馈口令结果、奖励提示或下一步引导。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "状态弹层面板",
+      "position": "中上区域多张弹窗缩略图",
+      "element_type": "展示",
+      "description": "不同状态的弹层容器，如成功态、待领取态或异常态。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "继续操作按钮",
+      "position": "状态弹层底部",
+      "element_type": "按钮",
+      "description": "状态分支里的下一步操作按钮，如继续、查看奖励或重新输入。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "奖励结果面板",
+      "position": "偏右上方",
+      "element_type": "展示",
+      "description": "展示中奖或命中奖励结果的核心面板。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "奖励卡片",
+      "position": "偏右中部",
+      "element_type": "卡片",
+      "description": "承载奖品、权益或商品信息的卡片。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "去使用/去查看按钮",
+      "position": "奖励面板底部",
+      "element_type": "按钮",
+      "description": "奖励结果页的主承接按钮，进入权益使用或详情页。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "简化入口卡片",
+      "position": "左下区域左侧",
+      "element_type": "卡片",
+      "description": "底部支线路径中的活动入口卡片。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "简化弹窗面板",
+      "position": "左下区域右侧",
+      "element_type": "展示",
+      "description": "从简化入口进入后的口令活动弹窗缩略图。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "口令彩蛋活动主页面",
+      "position": "upper-left",
+      "element_type": "展示",
+      "description": "蓝色主视觉活动页，作为主流程起点。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "彩蛋入口按钮",
+      "position": "within upper-left activity page lower area",
+      "element_type": "按钮",
+      "description": "活动页内用于触发彩蛋玩法的主入口按钮/热点区域。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "新蛋已打开活动页",
+      "position": "lower-left",
+      "element_type": "展示",
+      "description": "活动页在已开蛋后的状态页或回流态，用于区分用户当前进度。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "彩蛋选择弹窗",
+      "position": "center-upper",
+      "element_type": "展示",
+      "description": "中央弹窗，承载多个可选彩蛋/奖品卡位。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "奖品卡位一",
+      "position": "within selection popup left",
+      "element_type": "卡片",
+      "description": "弹窗内左侧奖品/彩蛋卡片，可点击选择。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "奖品卡位二",
+      "position": "within selection popup center",
+      "element_type": "卡片",
+      "description": "弹窗内中间奖品/彩蛋卡片，可点击选择。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "奖品卡位三",
+      "position": "within selection popup right",
+      "element_type": "卡片",
+      "description": "弹窗内右侧奖品/彩蛋卡片，可点击选择。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "弹窗关闭按钮",
+      "position": "within selection popup top-right",
+      "element_type": "图标",
+      "description": "用于关闭彩蛋选择弹窗并返回上层页面。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "二维码奖励弹窗",
+      "position": "upper-right of center",
+      "element_type": "展示",
+      "description": "展示奖励结果并附带二维码的结果弹窗。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "二维码展示区",
+      "position": "within QR reward popup right",
+      "element_type": "展示",
+      "description": "用于承载二维码内容，主要用于曝光和后续扫码传播。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "奖励卡展示位",
+      "position": "within reward popup left",
+      "element_type": "卡片",
+      "description": "结果弹窗内展示当前开出的奖励卡片。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "已开奖励结果弹窗",
+      "position": "center-right lower",
+      "element_type": "展示",
+      "description": "不带二维码的已开奖励结果态，用于展示奖励结果或状态文案。"
+    },
+    {
+      "page_name": "口令彩蛋活动流程",
+      "element_name": "回流活动页",
+      "position": "far-right",
+      "element_type": "展示",
+      "description": "用户完成弹窗操作后返回的活动页状态。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "天气信息",
+      "position": "top-left",
+      "element_type": "展示",
+      "description": "云朵图标、温度与天气文案“20℃ 多云”。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "行程进度条",
+      "position": "top-center",
+      "element_type": "展示",
+      "description": "车辆位于进度条上的行程进度展示。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "距离时长信息",
+      "position": "top-center-right",
+      "element_type": "展示",
+      "description": "展示剩余里程“3.5 km”和预计时长“20 分钟”。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "当前时间",
+      "position": "top-right",
+      "element_type": "展示",
+      "description": "展示当前时间“09:54”。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "东东IP形象",
+      "position": "center-left",
+      "element_type": "展示",
+      "description": "大尺寸3D小狗形象，承载彩蛋氛围展示。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "彩蛋标题",
+      "position": "upper-center-right",
+      "element_type": "展示",
+      "description": "主标题“猜猜口令有惊喜”，表达当前玩法主题。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "口令散落字词",
+      "position": "center-right",
+      "element_type": "展示",
+      "description": "以漂浮形式展示“喜、乐、随、行”等字词，强化口令提示。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "你好东东，提示",
+      "position": "lower-center-left",
+      "element_type": "按钮",
+      "description": "触发语音助手给出口令提示。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "你好东东，关闭",
+      "position": "lower-center-right",
+      "element_type": "按钮",
+      "description": "关闭当前口令彩蛋提示玩法。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "3D路况卡片",
+      "position": "lower-left",
+      "element_type": "卡片",
+      "description": "进入3D路况能力，副文案为“透视路况，预见每一程”。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "地图卡片",
+      "position": "lower-mid-left",
+      "element_type": "卡片",
+      "description": "进入地图能力，副文案为“行程路线，尽在掌握”。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "音乐卡片",
+      "position": "lower-mid-right",
+      "element_type": "卡片",
+      "description": "进入音乐能力，副文案为“你的旋律，随心播放”。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "播客卡片",
+      "position": "lower-right",
+      "element_type": "卡片",
+      "description": "进入播客能力，副文案为“选你所爱，听你想听”。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "求助入口",
+      "position": "bottom-left",
+      "element_type": "按钮",
+      "description": "SOS图标与“求助”文案入口。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "就近停车入口",
+      "position": "bottom-left-mid",
+      "element_type": "按钮",
+      "description": "P图标与“就近停车”文案入口。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "当前播放信息",
+      "position": "bottom-center-left",
+      "element_type": "卡片",
+      "description": "显示当前音频封面、标题“Hoka母公司...”与播放进度。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "暂停按钮",
+      "position": "bottom-center",
+      "element_type": "图标",
+      "description": "控制当前媒体暂停。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "播放按钮",
+      "position": "bottom-center",
+      "element_type": "图标",
+      "description": "控制当前媒体播放。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "上一项按钮",
+      "position": "bottom-center-right",
+      "element_type": "图标",
+      "description": "切换上一首或上一个内容。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "温度调节显示",
+      "position": "bottom-center-right",
+      "element_type": "展示",
+      "description": "展示当前空调温度“24°”及两侧调节箭头。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "环境设置入口",
+      "position": "bottom-right-mid",
+      "element_type": "图标",
+      "description": "太阳样式图标，可能对应亮度或环境控制。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "音量入口",
+      "position": "bottom-right-mid",
+      "element_type": "图标",
+      "description": "扬声器图标，用于音量相关控制。"
+    },
+    {
+      "page_name": "口令彩蛋主页面",
+      "element_name": "首页入口",
+      "position": "bottom-right",
+      "element_type": "图标",
+      "description": "房子图标，返回首页或主面板。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "天气信息",
+      "position": "top-left",
+      "element_type": "展示",
+      "description": "云朵图标、20℃与多云文案，用于展示当前天气状态。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "行程进度条",
+      "position": "top-center",
+      "element_type": "展示",
+      "description": "车辆图标与横向进度条，表达当前行驶进度。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "距离与时长信息",
+      "position": "top-center-right",
+      "element_type": "展示",
+      "description": "展示剩余3.5km和20分钟。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "当前时间",
+      "position": "top-right",
+      "element_type": "展示",
+      "description": "展示当前系统时间09:54。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "IP形象展示",
+      "position": "center-left",
+      "element_type": "展示",
+      "description": "大尺寸白色卡通形象，承担主题吸引与活动氛围传达。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "口令彩蛋标题",
+      "position": "center-right-top",
+      "element_type": "展示",
+      "description": "“猜猜口令有惊喜”主题标题，是页面核心文案。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "口令词云",
+      "position": "center-right",
+      "element_type": "展示",
+      "description": "“喜乐随行”等发光词云，用于强化口令线索与活动记忆点。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "你好东东，提示",
+      "position": "lower-center-left",
+      "element_type": "按钮",
+      "description": "口令提示按钮，帮助用户获取彩蛋口令线索。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "你好东东，关闭",
+      "position": "lower-center-right",
+      "element_type": "按钮",
+      "description": "关闭口令彩蛋提示或退出当前引导态。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "3D路况卡片",
+      "position": "lower-middle-left",
+      "element_type": "卡片",
+      "description": "进入3D路况功能，查看预见路况。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "地图卡片",
+      "position": "lower-middle-left",
+      "element_type": "卡片",
+      "description": "进入地图功能，查看行程路线。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "音乐卡片",
+      "position": "lower-middle-right",
+      "element_type": "卡片",
+      "description": "进入音乐功能，进行旋律播放。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "播客卡片",
+      "position": "lower-middle-right",
+      "element_type": "卡片",
+      "description": "进入播客功能，选择想听内容。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "当前播放内容卡片",
+      "position": "bottom-center-left",
+      "element_type": "卡片",
+      "description": "展示封面、歌曲名“Hoka母公司...”及播放进度。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "暂停按钮",
+      "position": "bottom-center",
+      "element_type": "图标",
+      "description": "控制当前媒体暂停。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "播放按钮",
+      "position": "bottom-center",
+      "element_type": "图标",
+      "description": "控制当前媒体播放。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "上一项按钮",
+      "position": "bottom-center-right",
+      "element_type": "图标",
+      "description": "切换上一首或上一个媒体内容。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "空调温度调节",
+      "position": "bottom-center-right",
+      "element_type": "展示",
+      "description": "展示并调节当前空调温度24°，两侧箭头可调整。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "求助入口",
+      "position": "bottom-left",
+      "element_type": "按钮",
+      "description": "紧急求助快捷入口。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "就近停车入口",
+      "position": "bottom-left",
+      "element_type": "按钮",
+      "description": "查找附近停车位的快捷入口。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "亮度控制",
+      "position": "bottom-right",
+      "element_type": "图标",
+      "description": "调节屏幕或界面亮度。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "音量控制",
+      "position": "bottom-right",
+      "element_type": "图标",
+      "description": "调节系统音量。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜页",
+      "element_name": "首页入口",
+      "position": "bottom-right",
+      "element_type": "图标",
+      "description": "返回车机首页。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "天气信息",
+      "position": "top-left",
+      "element_type": "展示",
+      "description": "天气图标、温度与天气文案“20℃ 多云”。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "行程进度条",
+      "position": "top-center",
+      "element_type": "展示",
+      "description": "车辆图标与进度条组合，表示当前行程进展。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "距离时长信息",
+      "position": "top-center-right",
+      "element_type": "展示",
+      "description": "显示剩余里程“3.5 km”和时长“20 分钟”。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "当前时间",
+      "position": "top-right",
+      "element_type": "展示",
+      "description": "显示当前时间“09:54”。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "彩蛋标题",
+      "position": "upper-center",
+      "element_type": "展示",
+      "description": "标题文案“猜猜口令有惊喜”。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "彩蛋问答卡片",
+      "position": "center-right",
+      "element_type": "展示",
+      "description": "浅蓝色大卡片，承载题目文案与插画，是本页核心内容容器。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "题目文案",
+      "position": "inside-main-card-top",
+      "element_type": "展示",
+      "description": "题目内容“鸡伤心的时候会变成什么？”。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "小鸡插画",
+      "position": "inside-main-card-bottom",
+      "element_type": "卡片",
+      "description": "用于辅助题面表达的小鸡形象插画。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "提示按钮",
+      "position": "below-main-card-left",
+      "element_type": "按钮",
+      "description": "按钮文案“你好东东，提示”，用于请求提示。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "关闭按钮",
+      "position": "below-main-card-right",
+      "element_type": "按钮",
+      "description": "按钮文案“你好东东，关闭”，用于关闭当前彩蛋。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "东东IP形象",
+      "position": "left-center",
+      "element_type": "卡片",
+      "description": "页面左侧白色卡通形象展示。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "3D路况卡片",
+      "position": "lower-middle-left",
+      "element_type": "卡片",
+      "description": "入口文案“3D路况”，附带说明“透视路况，预见每一程”。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "地图卡片",
+      "position": "lower-middle-left-2",
+      "element_type": "卡片",
+      "description": "入口文案“地图”，附带说明“行程路线，尽在掌握”。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "音乐卡片",
+      "position": "lower-middle-right-2",
+      "element_type": "卡片",
+      "description": "入口文案“音乐”，附带说明“你的旋律，随心播放”。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "播客卡片",
+      "position": "lower-middle-right",
+      "element_type": "卡片",
+      "description": "入口文案“播客”，附带说明“选你所爱，听你想听”。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "右侧半露出功能卡片",
+      "position": "far-right-edge",
+      "element_type": "卡片",
+      "description": "右侧仅部分露出的下一张功能卡片，提示可横向浏览更多入口。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "求助入口",
+      "position": "bottom-left",
+      "element_type": "按钮",
+      "description": "红色SOS图标及“求助”文案。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "就近停车入口",
+      "position": "bottom-left-2",
+      "element_type": "按钮",
+      "description": "P图标及“就近停车”文案。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "当前播放信息",
+      "position": "bottom-center-left",
+      "element_type": "展示",
+      "description": "展示当前播放内容封面、标题“Hoka母公司...”及播放进度。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "暂停按钮",
+      "position": "bottom-center",
+      "element_type": "图标",
+      "description": "媒体暂停控制。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "播放按钮",
+      "position": "bottom-center-right-1",
+      "element_type": "图标",
+      "description": "媒体播放控制。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "上一项按钮",
+      "position": "bottom-center-right-2",
+      "element_type": "图标",
+      "description": "切换上一首或上一内容。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "空调温度显示",
+      "position": "bottom-center-right-3",
+      "element_type": "展示",
+      "description": "显示当前温度“24°”。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "下一项按钮",
+      "position": "bottom-center-right-4",
+      "element_type": "图标",
+      "description": "切换下一首或下一内容。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "亮度按钮",
+      "position": "bottom-right-left",
+      "element_type": "图标",
+      "description": "太阳图标，可能用于亮度或显示设置。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "音量按钮",
+      "position": "bottom-right-center",
+      "element_type": "图标",
+      "description": "扬声器图标，用于音量相关控制。"
+    },
+    {
+      "page_name": "口令彩蛋首页卡片态",
+      "element_name": "首页按钮",
+      "position": "bottom-right",
+      "element_type": "图标",
+      "description": "房屋图标，用于返回首页。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "天气信息",
+      "position": "top-left",
+      "element_type": "展示",
+      "description": "显示天气图标、温度和天气状态。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "行程进度条",
+      "position": "top-center",
+      "element_type": "展示",
+      "description": "显示车辆图标与进度条，用于表达当前行程进度。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "距离与时长",
+      "position": "top-center-right",
+      "element_type": "展示",
+      "description": "显示剩余距离和预计时长。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "当前时间",
+      "position": "top-right",
+      "element_type": "展示",
+      "description": "显示系统当前时间。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "IP形象展示",
+      "position": "center-left",
+      "element_type": "卡片",
+      "description": "大尺寸吉祥物形象，用于强化彩蛋氛围。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "彩蛋标题",
+      "position": "center-right-top",
+      "element_type": "展示",
+      "description": "“猜猜口令有惊喜”标题，提示当前玩法主题。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "口令内容卡片",
+      "position": "center-right",
+      "element_type": "展示",
+      "description": "展示识别出的口令主题“emoji”和对应图案内容。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "关闭指令胶囊",
+      "position": "center-lower-right",
+      "element_type": "按钮",
+      "description": "“你好东东，关闭”语音/触控关闭入口。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "3D路况卡片",
+      "position": "lower-middle-left",
+      "element_type": "卡片",
+      "description": "进入3D路况相关功能。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "地图卡片",
+      "position": "lower-middle-left-2",
+      "element_type": "卡片",
+      "description": "进入地图与行程路线功能。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "音乐卡片",
+      "position": "lower-middle-right-2",
+      "element_type": "卡片",
+      "description": "进入音乐播放功能。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "播客卡片",
+      "position": "lower-middle-right",
+      "element_type": "卡片",
+      "description": "进入播客播放功能。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "右侧半露出功能卡片",
+      "position": "far-right-edge",
+      "element_type": "卡片",
+      "description": "横向卡片列表中的下一张入口，当前仅部分露出。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "求助入口",
+      "position": "bottom-left",
+      "element_type": "按钮",
+      "description": "SOS求助快捷入口。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "就近停车入口",
+      "position": "bottom-left-2",
+      "element_type": "按钮",
+      "description": "查找附近停车位入口。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "当前播放信息",
+      "position": "bottom-center-left",
+      "element_type": "卡片",
+      "description": "显示当前播放内容封面、标题和进度。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "暂停按钮",
+      "position": "bottom-center",
+      "element_type": "图标",
+      "description": "控制当前媒体暂停。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "播放按钮",
+      "position": "bottom-center",
+      "element_type": "图标",
+      "description": "控制当前媒体播放。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "温度调节减",
+      "position": "bottom-center-right",
+      "element_type": "图标",
+      "description": "降低空调温度。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "温度数值",
+      "position": "bottom-center-right",
+      "element_type": "展示",
+      "description": "显示当前空调设定温度24度。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "温度调节加",
+      "position": "bottom-center-right",
+      "element_type": "图标",
+      "description": "升高空调温度。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "亮度控制",
+      "position": "bottom-right-left",
+      "element_type": "图标",
+      "description": "控制屏幕或氛围亮度。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "音量控制",
+      "position": "bottom-right-center",
+      "element_type": "图标",
+      "description": "控制系统音量。"
+    },
+    {
+      "page_name": "口令彩蛋主页",
+      "element_name": "首页入口",
+      "position": "bottom-right",
+      "element_type": "图标",
+      "description": "返回或进入首页。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "天气信息",
+      "position": "top-left",
+      "element_type": "展示",
+      "description": "显示天气图标、温度和天气文案。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "行程进度条",
+      "position": "top-center",
+      "element_type": "展示",
+      "description": "显示车辆图标与路线进度的视觉状态条。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "距离与时长",
+      "position": "top-center-right",
+      "element_type": "展示",
+      "description": "显示剩余距离和预计时长。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "当前时间",
+      "position": "top-right",
+      "element_type": "展示",
+      "description": "显示系统当前时间。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "东东IP形象",
+      "position": "left-center",
+      "element_type": "卡片",
+      "description": "白色卡通形象主视觉，不承担直接交互。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "弹窗标题",
+      "position": "top-left",
+      "element_type": "展示",
+      "description": "“猜猜口令有惊喜”标题，表明当前活动主题。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "谜面面板",
+      "position": "center",
+      "element_type": "展示",
+      "description": "承载四个提示符号的主面板。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "提示符号1-爱心",
+      "position": "center-left",
+      "element_type": "卡片",
+      "description": "谜面第1个符号卡片。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "提示符号2-房子",
+      "position": "center-left",
+      "element_type": "卡片",
+      "description": "谜面第2个符号卡片。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "提示符号3-小鸡",
+      "position": "center-right",
+      "element_type": "卡片",
+      "description": "谜面第3个符号卡片。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "提示符号4-房子",
+      "position": "center-right",
+      "element_type": "卡片",
+      "description": "谜面第4个符号卡片。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "提示按钮",
+      "position": "bottom-left",
+      "element_type": "按钮",
+      "description": "“你好东东，提示”，用于获取口令线索。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "关闭按钮",
+      "position": "bottom-right",
+      "element_type": "按钮",
+      "description": "“你好东东，关闭”，用于关闭当前弹窗。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "3D路况卡片",
+      "position": "bottom-left",
+      "element_type": "卡片",
+      "description": "进入3D路况功能。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "地图卡片",
+      "position": "bottom-left-center",
+      "element_type": "卡片",
+      "description": "进入地图与路线功能。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "音乐卡片",
+      "position": "bottom-center",
+      "element_type": "卡片",
+      "description": "进入音乐播放功能。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "播客卡片",
+      "position": "bottom-right-center",
+      "element_type": "卡片",
+      "description": "进入播客内容功能。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "求助入口",
+      "position": "bottom-left",
+      "element_type": "按钮",
+      "description": "SOS求助快捷操作。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "就近停车入口",
+      "position": "bottom-left-center",
+      "element_type": "按钮",
+      "description": "查找附近停车位。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "当前播放信息",
+      "position": "bottom-center-left",
+      "element_type": "卡片",
+      "description": "显示当前播放内容与进度。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "暂停按钮",
+      "position": "bottom-center",
+      "element_type": "图标",
+      "description": "暂停当前媒体播放。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "播放按钮",
+      "position": "bottom-center",
+      "element_type": "图标",
+      "description": "播放当前媒体内容。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "上一项按钮",
+      "position": "bottom-center-right",
+      "element_type": "图标",
+      "description": "切换上一首或上一个内容。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "空调温度显示",
+      "position": "bottom-center-right",
+      "element_type": "展示",
+      "description": "显示当前空调设定温度24度。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "下一项按钮",
+      "position": "bottom-center-right",
+      "element_type": "图标",
+      "description": "切换下一首或下一个内容。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "亮度控制",
+      "position": "bottom-right-center",
+      "element_type": "图标",
+      "description": "调节屏幕或氛围亮度。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "音量控制",
+      "position": "bottom-right-center",
+      "element_type": "图标",
+      "description": "调节系统音量。"
+    },
+    {
+      "page_name": "猜猜口令有惊喜弹窗",
+      "element_name": "首页入口",
+      "position": "bottom-right",
+      "element_type": "图标",
+      "description": "返回或进入首页。"
+    }
+  ]
+}

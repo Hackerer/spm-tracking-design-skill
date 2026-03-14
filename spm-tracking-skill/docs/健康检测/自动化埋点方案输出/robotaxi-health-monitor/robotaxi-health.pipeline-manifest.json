@@ -1,0 +1,14 @@
+{
+  "input_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/自动化埋点方案输出/robotaxi-health-monitor/robotaxi-health.merged.requirement-context.json",
+  "input_type": "context",
+  "output_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/自动化埋点方案输出/robotaxi-health-monitor",
+  "artifacts": {
+    "requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/自动化埋点方案输出/robotaxi-health-monitor/robotaxi-health.merged.requirement-context.json",
+    "requirement_input_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/自动化埋点方案输出/robotaxi-health-monitor/robotaxi-health.draft.requirement-input.json",
+    "requirement_plan_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/自动化埋点方案输出/robotaxi-health-monitor/robotaxi-health.generated.requirement-plan.json",
+    "requirement_plan_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/自动化埋点方案输出/robotaxi-health-monitor/robotaxi-health.generated.requirement-plan.md",
+    "test_scenarios_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/自动化埋点方案输出/robotaxi-health-monitor/robotaxi-health.generated.test-scenarios.md",
+    "validation_report_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/自动化埋点方案输出/robotaxi-health-monitor/robotaxi-health.generated.validation-report.json",
+    "validation_report_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/健康检测/自动化埋点方案输出/robotaxi-health-monitor/robotaxi-health.generated.validation-report.md"
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "file_name": "彩蛋-1.png",
+  "page_name": "口令彩蛋活动流程",
+  "page_type": "flow",
+  "description": "设计稿展示了口令彩蛋从首页资源位进入、唤起弹窗、输入或触发口令、展示奖励结果、再回流首页的完整业务链路。画面核心是口令彩蛋弹窗及其结果态，适合用于拆解入口曝光、弹窗曝光、提交点击、奖励承接点击等埋点。",
+  "flow_hints": [
+    "首页资源位卡片曝光/点击后进入口令彩蛋弹窗",
+    "弹窗内存在主视觉、口令输入/触发区和确认操作",
+    "提交后进入奖励结果态，出现奖品卡片或权益承接区",
+    "结果态可继续点击奖品卡片、行动按钮，或关闭返回首页",
+    "底部还展示了一个较简化的入口到弹窗的支线路径"
+  ],
+  "regions": [
+    {
+      "region_name_zh": "首页入口区",
+      "region_name_en": "home_entry_region",
+      "region_type": "promo",
+      "position_candidate": "左上区域",
+      "description": "首页或频道页中的活动资源位，是口令彩蛋的主要进入入口，设计稿里出现了两个入口样式。",
+      "elements": [
+        {
+          "element_name": "口令彩蛋活动入口卡片",
+          "element_type": "display_card",
+          "position_candidate": "左上区域偏左",
+          "description": "首页资源位卡片，承载活动主图和入口信息。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.92
+        },
+        {
+          "element_name": "活动标题文案",
+          "element_type": "text",
+          "position_candidate": "入口卡片内部上方",
+          "description": "入口卡片内的活动名称或利益点文案，用于传达活动信息。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.78
+        },
+        {
+          "element_name": "次级入口卡片",
+          "element_type": "display_card",
+          "position_candidate": "左上区域偏下",
+          "description": "同页面另一处活动入口，形态与主入口相近。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.88
+        }
+      ]
+    },
+    {
+      "region_name_zh": "口令弹窗主界面",
+      "region_name_en": "command_modal_main",
+      "region_type": "content",
+      "position_candidate": "中上区域偏左",
+      "description": "点击入口后出现的口令彩蛋弹窗主界面，包含主视觉、口令内容区和操作按钮。",
+      "elements": [
+        {
+          "element_name": "口令彩蛋主视觉面板",
+          "element_type": "display_panel",
+          "position_candidate": "弹窗主体中央",
+          "description": "弹窗内的大图主视觉，用于承载活动氛围和核心信息。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.9
+        },
+        {
+          "element_name": "关闭按钮",
+          "element_type": "icon_button",
+          "position_candidate": "弹窗右上角",
+          "description": "用于关闭口令彩蛋弹窗并返回上一页。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.84
+        },
+        {
+          "element_name": "口令输入/触发区",
+          "element_type": "unknown",
+          "position_candidate": "弹窗主体中下部",
+          "description": "用户输入口令或触发口令校验的区域，可能是输入框或点击触发位。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.71
+        },
+        {
+          "element_name": "确认操作按钮",
+          "element_type": "button",
+          "position_candidate": "弹窗底部",
+          "description": "提交口令、开启彩蛋或确认下一步的主操作按钮。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.9
+        }
+      ]
+    },
+    {
+      "region_name_zh": "口令状态分支区",
+      "region_name_en": "command_state_branch",
+      "region_type": "status",
+      "position_candidate": "中上区域中央",
+      "description": "主弹窗后的多个状态分支，包括不同校验结果或不同奖励前置态。",
+      "elements": [
+        {
+          "element_name": "状态提示文案",
+          "element_type": "text",
+          "position_candidate": "各状态弹窗中部",
+          "description": "用于反馈口令结果、奖励提示或下一步引导。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.82
+        },
+        {
+          "element_name": "状态弹层面板",
+          "element_type": "display_panel",
+          "position_candidate": "中上区域多张弹窗缩略图",
+          "description": "不同状态的弹层容器，如成功态、待领取态或异常态。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.85
+        },
+        {
+          "element_name": "继续操作按钮",
+          "element_type": "button",
+          "position_candidate": "状态弹层底部",
+          "description": "状态分支里的下一步操作按钮，如继续、查看奖励或重新输入。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.83
+        }
+      ]
+    },
+    {
+      "region_name_zh": "奖励结果承接区",
+      "region_name_en": "reward_result_region",
+      "region_type": "promo",
+      "position_candidate": "中上区域偏右",
+      "description": "口令命中后展示的奖励结果区域，包含奖励卡片和承接动作。",
+      "elements": [
+        {
+          "element_name": "奖励结果面板",
+          "element_type": "display_panel",
+          "position_candidate": "偏右上方",
+          "description": "展示中奖或命中奖励结果的核心面板。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.88
+        },
+        {
+          "element_name": "奖励卡片",
+          "element_type": "card",
+          "position_candidate": "偏右中部",
+          "description": "承载奖品、权益或商品信息的卡片。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.91
+        },
+        {
+          "element_name": "去使用/去查看按钮",
+          "element_type": "button",
+          "position_candidate": "奖励面板底部",
+          "description": "奖励结果页的主承接按钮，进入权益使用或详情页。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.87
+        }
+      ]
+    },
+    {
+      "region_name_zh": "回流首页区",
+      "region_name_en": "return_home_region",
+      "region_type": "summary",
+      "position_candidate": "最右侧",
+      "description": "完成弹窗流程后的回流页面，设计稿中表现为回到首页或活动入口页。",
+      "elements": [
+        {
+          "element_name": "回流首页卡片",
+          "element_type": "display_card",
+          "position_candidate": "最右侧单张页面缩略图",
+          "description": "流程结束后展示的首页承接状态，可用于观察活动后回流曝光。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.74
+        },
+        {
+          "element_name": "活动承接内容区",
+          "element_type": "display_panel",
+          "position_candidate": "首页中部",
+          "description": "回流后首页仍可看到的活动或内容承接区域。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.68
+        }
+      ]
+    },
+    {
+      "region_name_zh": "底部简化链路区",
+      "region_name_en": "bottom_short_flow",
+      "region_type": "promo",
+      "position_candidate": "左下区域",
+      "description": "设计稿下方单独摆放的一条简化流程，表现为另一个入口直接唤起活动弹窗。",
+      "elements": [
+        {
+          "element_name": "简化入口卡片",
+          "element_type": "display_card",
+          "position_candidate": "左下区域左侧",
+          "description": "底部支线路径中的活动入口卡片。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.86
+        },
+        {
+          "element_name": "简化弹窗面板",
+          "element_type": "display_panel",
+          "position_candidate": "左下区域右侧",
+          "description": "从简化入口进入后的口令活动弹窗缩略图。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.8
+        }
+      ]
+    }
+  ],
+  "confidence": 0.79
+}

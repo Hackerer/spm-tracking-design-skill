@@ -1,0 +1,76 @@
+{
+  "image_file": "7.png",
+  "summary": "截图展示了“口令彩蛋”需求中的两块能力说明：`权益展现`与`权益领取`。图中明确给出了对应页面示意、功能逻辑、部分系统/异常说明，以及页面文案要素。`权益展现`包含页面层级与数字人层级两种展现层级；`权益领取`表现为领取弹层/卡片样式，并包含关闭、轮播切换、跳转APP等说明。",
+  "pages": [
+    "权益展现",
+    "权益领取",
+    "页面层级",
+    "数字人层级"
+  ],
+  "key_metrics": [
+    "权益展现按订屏维度触发",
+    "权益展现支持页面层级与数字人层级",
+    "权益领取包含8语音文案与8语言文案",
+    "权益领取后支持轮播展示下一张权益"
+  ],
+  "flow_hints": [
+    "行程内触发权益发放后，展示权益展现内容",
+    "权益展现可按页面层级或数字人层级透出",
+    "用户进入权益领取态后，可看到领取卡片/弹层",
+    "用户领取一张权益后，卡片切换并继续展示剩余权益",
+    "用户可点击关闭按钮关闭领取展示",
+    "部分权益支持点击后跳转对应APP或服务页面",
+    "异常情况下展示兜底提示文案，稍后再试"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "权益展现",
+      "element_name": "权益卡片",
+      "position": "页面中部",
+      "element_type": "展示",
+      "description": "用于展示权益内容的卡片区域，图中体现为权益展现的核心展示位",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "权益领取卡片",
+      "position": "页面左侧中部",
+      "element_type": "卡片",
+      "description": "用户进入领取态后展示的权益卡片，可承载领取与后续跳转信息",
+      "has_exposure_value": true,
+      "is_actionable": true
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "关闭按钮",
+      "position": "权益卡片右上角",
+      "element_type": "按钮",
+      "description": "用于关闭权益领取展示",
+      "has_exposure_value": false,
+      "is_actionable": true
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "APP入口",
+      "position": "权益卡片右侧",
+      "element_type": "按钮",
+      "description": "部分权益支持点击后跳转对应APP，如图中文案示例包含美团、饿了么等",
+      "has_exposure_value": false,
+      "is_actionable": true
+    },
+    {
+      "page_name": "权益领取",
+      "element_name": "服务入口",
+      "position": "权益卡片下方操作区",
+      "element_type": "按钮",
+      "description": "部分权益支持点击后进入对应服务或工具能力",
+      "has_exposure_value": false,
+      "is_actionable": true
+    }
+  ],
+  "notes": [
+    "截图底部还出现“3.3.3 口令模块”标题及HMI系统能力说明，但未展开到具体页面元素，因此未纳入页面与元素清单。",
+    "部分文案较小，仅保留截图中能够明确确认的信息，不补充未在图中清晰表达的流程或字段。"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "requirement_name": "Robotaxi 无麦K歌",
+  "summary": "自动审查完成，共发现 2 条问题或提示。",
+  "issues": [
+    {
+      "severity": "warning",
+      "rule_id": "CATALOG_MANUAL_REVIEW_REQUIRED",
+      "message": "坑位D定义与现有目录冲突，命中已有项 推荐词按钮/suggestion_btn。",
+      "target_type": "tracking_spec",
+      "target_ref": "d:语音推荐词按钮/suggestion_btn",
+      "suggestion": "请人工确认是否复用已有主数据，或对新命名进行统一调整。"
+    },
+    {
+      "severity": "warning",
+      "rule_id": "CATALOG_MANUAL_REVIEW_REQUIRED",
+      "message": "坑位D定义与现有目录冲突，命中已有项 推荐词按钮/suggestion_btn。",
+      "target_type": "tracking_spec",
+      "target_ref": "d:语义推荐词按钮/suggestion_btn",
+      "suggestion": "请人工确认是否复用已有主数据，或对新命名进行统一调整。"
+    }
+  ]
+}

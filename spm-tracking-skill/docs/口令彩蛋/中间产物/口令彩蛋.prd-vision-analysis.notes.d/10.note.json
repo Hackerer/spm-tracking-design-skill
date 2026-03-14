@@ -1,0 +1,64 @@
+{
+  "image_file": "10.png",
+  "summary": "该图是PRD中“3.4 相关需求”页，当前可确认包含“3.4.1 推荐需求”“3.4.2 运营需求”“3.4.3 数据需求”三部分。其中推荐需求下有业务流程图和产品要求；产品要求文字可辨识到内容涉及“内容召回”“内容插入”以及“HMI侧”处理。数据需求表中能直接识别出多项与APP首页、HMI首页入口及弹窗/触发相关的曝光或触发指标。",
+  "pages": [
+    "APP首页",
+    "APP首页弹窗",
+    "HMI首页",
+    "推荐悬浮窗"
+  ],
+  "key_metrics": [
+    "APP首页入口曝光次数",
+    "APP首页弹窗曝光次数",
+    "HMI首页入口曝光次数",
+    "HMI新建触发次数"
+  ],
+  "flow_hints": [
+    "该页明确将需求拆分为推荐需求、运营需求、数据需求三部分",
+    "推荐需求部分包含一张跨角色/跨环节的业务流程图",
+    "产品要求中可确认存在内容召回、内容插入、HMI侧处理等环节",
+    "数据需求明确要求统计APP首页入口、APP首页弹窗、HMI首页入口等曝光数据",
+    "数据需求中可确认存在HMI侧新建/触发相关统计"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "APP首页",
+      "element_name": "首页入口",
+      "position": "首页主区域",
+      "element_type": "展示",
+      "description": "数据需求表中明确有APP首页入口曝光统计，说明该入口具备独立曝光价值",
+      "has_exposure_value": true,
+      "is_actionable": true
+    },
+    {
+      "page_name": "APP首页弹窗",
+      "element_name": "首页弹窗",
+      "position": "弹窗层",
+      "element_type": "展示",
+      "description": "数据需求表中明确有APP首页弹窗曝光统计，说明该弹窗具备独立曝光价值",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "HMI首页",
+      "element_name": "首页入口",
+      "position": "首页主区域",
+      "element_type": "展示",
+      "description": "数据需求表中明确有HMI首页入口曝光统计，说明该入口具备独立曝光价值",
+      "has_exposure_value": true,
+      "is_actionable": true
+    },
+    {
+      "page_name": "推荐悬浮窗",
+      "element_name": "悬浮入口",
+      "position": "悬浮区域",
+      "element_type": "展示",
+      "description": "从数据需求表可确认存在推荐悬浮入口相关统计，说明该悬浮入口是独立展示位",
+      "has_exposure_value": true,
+      "is_actionable": true
+    }
+  ],
+  "notes": [
+    "截图分辨率有限，业务流程图中的多数节点文案无法稳定辨认；以上仅保留画面中可直接确认的信息。"
+  ]
+}

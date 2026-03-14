@@ -1,0 +1,335 @@
+{
+  "file_name": "位置-4.png",
+  "page_name": "口令彩蛋主页",
+  "page_type": "page",
+  "description": "车机首页场景中的口令彩蛋展示页，包含顶部状态信息、中央彩蛋展示卡片、快捷功能入口和底部控制栏。",
+  "flow_hints": [
+    "从车机首页进入口令彩蛋展示态",
+    "用户可通过语音或触屏触发彩蛋内容",
+    "用户可继续点击快捷功能卡片或底部功能入口离开当前展示态"
+  ],
+  "regions": [
+    {
+      "region_name_zh": "顶部状态栏",
+      "region_name_en": "top_status_bar",
+      "region_type": "status",
+      "position_candidate": "top",
+      "description": "展示天气、行程进度、距离时长和当前时间的全局状态区。",
+      "elements": [
+        {
+          "element_name": "天气信息",
+          "element_type": "text",
+          "position_candidate": "top-left",
+          "description": "显示天气图标、温度和天气状态。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.96
+        },
+        {
+          "element_name": "行程进度条",
+          "element_type": "status_visual",
+          "position_candidate": "top-center",
+          "description": "显示车辆图标与进度条，用于表达当前行程进度。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.95
+        },
+        {
+          "element_name": "距离与时长",
+          "element_type": "text",
+          "position_candidate": "top-center-right",
+          "description": "显示剩余距离和预计时长。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.96
+        },
+        {
+          "element_name": "当前时间",
+          "element_type": "text",
+          "position_candidate": "top-right",
+          "description": "显示系统当前时间。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.98
+        }
+      ]
+    },
+    {
+      "region_name_zh": "彩蛋主展示区",
+      "region_name_en": "easter_egg_hero",
+      "region_type": "content",
+      "position_candidate": "center",
+      "description": "页面核心展示区域，承载口令彩蛋标题、IP形象和答案卡片。",
+      "elements": [
+        {
+          "element_name": "IP形象展示",
+          "element_type": "display_card",
+          "position_candidate": "center-left",
+          "description": "大尺寸吉祥物形象，用于强化彩蛋氛围。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.94
+        },
+        {
+          "element_name": "彩蛋标题",
+          "element_type": "text",
+          "position_candidate": "center-right-top",
+          "description": "“猜猜口令有惊喜”标题，提示当前玩法主题。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.98
+        },
+        {
+          "element_name": "口令内容卡片",
+          "element_type": "display_panel",
+          "position_candidate": "center-right",
+          "description": "展示识别出的口令主题“emoji”和对应图案内容。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.97
+        }
+      ]
+    },
+    {
+      "region_name_zh": "彩蛋应答操作区",
+      "region_name_en": "easter_egg_action",
+      "region_type": "actions",
+      "position_candidate": "center-lower-right",
+      "description": "彩蛋响应后的快捷指令区域。",
+      "elements": [
+        {
+          "element_name": "关闭指令胶囊",
+          "element_type": "button",
+          "position_candidate": "center-lower-right",
+          "description": "“你好东东，关闭”语音/触控关闭入口。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.97
+        }
+      ]
+    },
+    {
+      "region_name_zh": "快捷功能卡片区",
+      "region_name_en": "feature_cards",
+      "region_type": "nav",
+      "position_candidate": "lower-middle",
+      "description": "中下部横向功能卡片入口，可跳转到不同车机场景。",
+      "elements": [
+        {
+          "element_name": "3D路况卡片",
+          "element_type": "card",
+          "position_candidate": "lower-middle-left",
+          "description": "进入3D路况相关功能。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.98
+        },
+        {
+          "element_name": "地图卡片",
+          "element_type": "card",
+          "position_candidate": "lower-middle-left-2",
+          "description": "进入地图与行程路线功能。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.98
+        },
+        {
+          "element_name": "音乐卡片",
+          "element_type": "card",
+          "position_candidate": "lower-middle-right-2",
+          "description": "进入音乐播放功能。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.98
+        },
+        {
+          "element_name": "播客卡片",
+          "element_type": "card",
+          "position_candidate": "lower-middle-right",
+          "description": "进入播客播放功能。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.98
+        },
+        {
+          "element_name": "右侧半露出功能卡片",
+          "element_type": "card",
+          "position_candidate": "far-right-edge",
+          "description": "横向卡片列表中的下一张入口，当前仅部分露出。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.82
+        }
+      ]
+    },
+    {
+      "region_name_zh": "底部控制栏",
+      "region_name_en": "bottom_control_bar",
+      "region_type": "actions",
+      "position_candidate": "bottom",
+      "description": "底部常驻功能和媒体控制区。",
+      "elements": [
+        {
+          "element_name": "求助入口",
+          "element_type": "button",
+          "position_candidate": "bottom-left",
+          "description": "SOS求助快捷入口。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.97
+        },
+        {
+          "element_name": "就近停车入口",
+          "element_type": "button",
+          "position_candidate": "bottom-left-2",
+          "description": "查找附近停车位入口。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.96
+        },
+        {
+          "element_name": "当前播放信息",
+          "element_type": "display_card",
+          "position_candidate": "bottom-center-left",
+          "description": "显示当前播放内容封面、标题和进度。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "element_name": "暂停按钮",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-center",
+          "description": "控制当前媒体暂停。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.98
+        },
+        {
+          "element_name": "播放按钮",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-center",
+          "description": "控制当前媒体播放。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.98
+        },
+        {
+          "element_name": "温度调节减",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-center-right",
+          "description": "降低空调温度。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.94
+        },
+        {
+          "element_name": "温度数值",
+          "element_type": "text",
+          "position_candidate": "bottom-center-right",
+          "description": "显示当前空调设定温度24度。",
+          "is_actionable": false,
+          "has_exposure_value": true,
+          "confidence": 0.96
+        },
+        {
+          "element_name": "温度调节加",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-center-right",
+          "description": "升高空调温度。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.94
+        },
+        {
+          "element_name": "亮度控制",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-right-left",
+          "description": "控制屏幕或氛围亮度。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.83
+        },
+        {
+          "element_name": "音量控制",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-right-center",
+          "description": "控制系统音量。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch",
+            "voice"
+          ],
+          "confidence": 0.95
+        },
+        {
+          "element_name": "首页入口",
+          "element_type": "icon_button",
+          "position_candidate": "bottom-right",
+          "description": "返回或进入首页。",
+          "is_actionable": true,
+          "has_exposure_value": true,
+          "interaction_modes": [
+            "touch"
+          ],
+          "confidence": 0.96
+        }
+      ]
+    }
+  ],
+  "confidence": 0.95
+}

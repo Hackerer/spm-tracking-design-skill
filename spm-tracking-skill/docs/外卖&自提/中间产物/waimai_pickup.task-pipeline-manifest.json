@@ -1,0 +1,20 @@
+{
+  "mode": "task_design_enhanced",
+  "requirement_context_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物/waimai_pickup.requirement-context.json",
+  "design_dir_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/输入/figma设计图",
+  "design_overrides_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物/waimai_pickup.design-overrides.json",
+  "intermediate_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物",
+  "output_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/输出",
+  "artifacts": {
+    "requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物/waimai_pickup.requirement-context.json",
+    "design_overrides_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物/waimai_pickup.design-overrides.json",
+    "design_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物/waimai_pickup.design-context.json",
+    "merged_requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物/waimai_pickup.merged.requirement-context.json",
+    "requirement_input_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物/waimai_pickup.draft.requirement-input.json",
+    "requirement_plan_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/输出/waimai_pickup.generated.requirement-plan.json",
+    "requirement_plan_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/输出/waimai_pickup.generated.requirement-plan.md",
+    "test_scenarios_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/输出/waimai_pickup.generated.test-scenarios.md",
+    "validation_report_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/输出/waimai_pickup.generated.validation-report.json",
+    "validation_report_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/输出/waimai_pickup.generated.validation-report.md"
+  }
+}

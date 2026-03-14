@@ -1,0 +1,312 @@
+{
+  "project_name": "口令彩蛋",
+  "version": "v1.0",
+  "created_date": "2026-03-10",
+  "spm_tree": {
+    "a": "user",
+    "b": [
+      {
+        "name": "easter_egg",
+        "cn_name": "口令彩蛋入口",
+        "c": [
+          {
+            "name": "entry",
+            "cn_name": "入口区域",
+            "d": [
+              {
+                "name": "easter_egg_entrance",
+                "cn_name": "口令彩蛋入口",
+                "description": "我的页面中的口令彩蛋入口"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "easter_egg_input",
+        "cn_name": "口令输入弹窗",
+        "c": [
+          {
+            "name": "popup",
+            "cn_name": "弹窗区域",
+            "d": [
+              {
+                "name": "close_btn",
+                "cn_name": "关闭按钮"
+              },
+              {
+                "name": "input_field",
+                "cn_name": "口令输入框"
+              },
+              {
+                "name": "confirm_btn",
+                "cn_name": "确认按钮"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "easter_egg_show",
+        "cn_name": "彩蛋展示页",
+        "c": [
+          {
+            "name": "animation",
+            "cn_name": "动画区域",
+            "d": [
+              {
+                "name": "easter_egg_animation",
+                "cn_name": "彩蛋动画"
+              },
+              {
+                "name": "logo",
+                "cn_name": "品牌logo"
+              }
+            ]
+          },
+          {
+            "name": "close",
+            "cn_name": "关闭区域",
+            "d": [
+              {
+                "name": "close_btn",
+                "cn_name": "关闭按钮"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "tracking_list": [
+    {
+      "id": 1,
+      "b": "easter_egg",
+      "c": "entry",
+      "d": "easter_egg_entrance",
+      "d_cn": "口令彩蛋入口",
+      "event_type": "click",
+      "trigger": "点击\"口令彩蛋\"入口",
+      "params": []
+    },
+    {
+      "id": 2,
+      "b": "easter_egg_input",
+      "c": "popup",
+      "d": "close_btn",
+      "d_cn": "关闭按钮",
+      "event_type": "click",
+      "trigger": "点击关闭按钮",
+      "params": []
+    },
+    {
+      "id": 3,
+      "b": "easter_egg_input",
+      "c": "popup",
+      "d": "input_field",
+      "d_cn": "口令输入框",
+      "event_type": "input",
+      "trigger": "输入/修改口令时",
+      "params": [
+        {
+          "param_code": "input_text",
+          "param_name": "输入的口令",
+          "data_type": "string",
+          "is_required": false,
+          "description": "用户输入的口令内容",
+          "校验规则": {
+            "length": {
+              "min": 0,
+              "max": 20
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "b": "easter_egg_input",
+      "c": "popup",
+      "d": "confirm_btn",
+      "d_cn": "确认按钮",
+      "event_type": "click",
+      "trigger": "点击确认按钮",
+      "params": [
+        {
+          "param_code": "input_text",
+          "param_name": "输入的口令",
+          "data_type": "string",
+          "is_required": true,
+          "description": "用户输入的口令内容",
+          "校验规则": {
+            "length": {
+              "min": 1,
+              "max": 20
+            }
+          }
+        },
+        {
+          "param_code": "verify_result",
+          "param_name": "验证结果",
+          "data_type": "string",
+          "is_required": true,
+          "description": "口令验证结果",
+          "enum_values": ["correct", "incorrect"]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "b": "easter_egg_show",
+      "c": "animation",
+      "d": "easter_egg_animation",
+      "d_cn": "彩蛋动画",
+      "event_type": "exposure",
+      "trigger": "彩蛋动画开始展示",
+      "params": [
+        {
+          "param_code": "animation_type",
+          "param_name": "动画类型",
+          "data_type": "string",
+          "is_required": true,
+          "description": "彩蛋动画类型",
+          "enum_values": ["stars", "confetti"]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "b": "easter_egg_show",
+      "c": "animation",
+      "d": "logo",
+      "d_cn": "品牌logo",
+      "event_type": "exposure",
+      "trigger": "logo展示",
+      "params": [
+        {
+          "param_code": "logo_name",
+          "param_name": "logo名称",
+          "data_type": "string",
+          "is_required": true,
+          "description": "展示的logo名称或标识",
+          "校验规则": {
+            "length": {
+              "min": 1,
+              "max": 50
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "b": "easter_egg_show",
+      "c": "close",
+      "d": "close_btn",
+      "d_cn": "关闭按钮",
+      "event_type": "click",
+      "trigger": "点击关闭按钮",
+      "params": []
+    }
+  ],
+  "param_definitions": {
+    "公共业务参数": [],
+    "事件特有参数": [
+      {
+        "param_code": "input_text",
+        "param_name": "输入的口令",
+        "data_type": "string",
+        "is_required": true,
+        "description": "用户输入的口令内容",
+        "校验规则": {
+          "length": {
+            "min": 1,
+            "max": 20
+          }
+        }
+      },
+      {
+        "param_code": "verify_result",
+        "param_name": "验证结果",
+        "data_type": "string",
+        "is_required": true,
+        "description": "口令验证结果",
+        "enum_values": ["correct", "incorrect"]
+      },
+      {
+        "param_code": "animation_type",
+        "param_name": "动画类型",
+        "data_type": "string",
+        "is_required": true,
+        "description": "彩蛋动画类型",
+        "enum_values": ["stars", "confetti"]
+      },
+      {
+        "param_code": "logo_name",
+        "param_name": "logo名称",
+        "data_type": "string",
+        "is_required": true,
+        "description": "展示的logo名称或标识",
+        "校验规则": {
+          "length": {
+            "min": 1,
+            "max": 50
+          }
+        }
+      }
+    ]
+  },
+  "new_definitions": {
+    "b级页面": [
+      {
+        "name": "easter_egg",
+        "cn_name": "口令彩蛋入口页",
+        "description": "我的页面中的口令彩蛋入口"
+      },
+      {
+        "name": "easter_egg_input",
+        "cn_name": "口令输入弹窗",
+        "description": "输入口令的弹窗"
+      },
+      {
+        "name": "easter_egg_show",
+        "cn_name": "彩蛋展示页",
+        "description": "彩蛋动画展示页面"
+      }
+    ],
+    "c级区块": [
+      {
+        "name": "entry",
+        "cn_name": "入口区域",
+        "description": "功能入口"
+      },
+      {
+        "name": "animation",
+        "cn_name": "动画区域",
+        "description": "彩蛋动画展示"
+      }
+    ],
+    "d级坑位": [
+      {
+        "name": "easter_egg_entrance",
+        "cn_name": "口令彩蛋入口",
+        "description": "入口点击"
+      },
+      {
+        "name": "input_field",
+        "cn_name": "口令输入框",
+        "description": "输入框交互"
+      },
+      {
+        "name": "easter_egg_animation",
+        "cn_name": "彩蛋动画",
+        "description": "动画曝光"
+      },
+      {
+        "name": "logo",
+        "cn_name": "品牌logo",
+        "description": "logo曝光"
+      }
+    ]
+  }
+}

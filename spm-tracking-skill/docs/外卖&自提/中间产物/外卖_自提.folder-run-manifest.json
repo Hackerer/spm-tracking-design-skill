@@ -1,0 +1,16 @@
+{
+  "mode": "task_from_folder",
+  "task_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提",
+  "input_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/输入",
+  "discovered": {
+    "source_manifest_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物/waimai_pickup.task-pipeline-manifest.json",
+    "requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物/waimai_pickup.requirement-context.json",
+    "extracted_from_markdown": null,
+    "design_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/输入/figma设计图",
+    "design_overrides_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物/waimai_pickup.design-overrides.json"
+  },
+  "outputs": {
+    "intermediate_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/中间产物",
+    "output_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/外卖&自提/输出"
+  }
+}

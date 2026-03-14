@@ -1,0 +1,261 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+.joyspace-wrap {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.joyspace-wrap.joyspace-portal {
+  flex-direction: column;
+}
+.joyspace-wrap.joyspace-portal .joyspace-content {
+  flex-direction: row;
+}
+.joyspace-content {
+  display: flex;
+  position: relative;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  flex-direction: column;
+}
+.joyspace-content-body {
+  display: flex;
+  position: relative;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+.joyspace-wrap-jsmf-sider [id='single-spa-application:@jd/jsmf_sider'] {
+  height: 100%;
+}
+.joyspace-portal-main-header {
+  height: 64px;
+}
+.joyspace-content > .joyspace-portal-main-header {
+  height: 60px;
+}
+.joyspace-portal-main-content > div {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.joyspace-content-body > .knowledge-base {
+  width: 100%;
+  height: 100%;
+}
+.joyspace-content-body > .knowledge-base .wrapper .search-wrap {
+  top: 80px !important;
+}
+.knowledge-base > div {
+  width: 100%;
+  height: 100%;
+  padding-top: 16px;
+}
+.joyspace-page-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+}
+.joyspace-page-main {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.joyspace-portal-main {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  flex-direction: column;
+}
+.joyspace-page-main > div {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.joyspace-portal-main-content {
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.joyspace-content .joyspace-page-main {
+  position: relative;
+  left: unset;
+  top: unset;
+  right: unset;
+  bottom: unset;
+  flex: 1;
+  overflow: hidden;
+}
+
+.windows-scrollbar ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.windows-scrollbar ::-webkit-scrollbar-thumb {
+  transition-property: background-color;
+  transition-duration: 10370ms;
+  border-radius: 10px;
+}
+.windows-scrollbar :hover::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #b9b9b9;
+}
+.read-drawer .ant-tabs-content-holder {
+  flex: 1 !important;
+}
+.imo-trigger {
+  margin: 30px !important;
+}
+.joyspace-portal-main-header .watermark {
+  z-index: 9999;
+}
+
+.joyspace-selector-wrap,
+.joyspace-selector-wrap > div {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.joyspace-wrap .joyspace-header {
+  z-index: 200;
+}
+.joyspace-wrap .global-search-container {
+  z-index: 111;
+}
+
+.joyspace-cjg-main {
+  position: static;
+  width: 100%;
+}
+
+.joyspace-main-wrap-content-body .joyspace-comps-refresh-list .null-data-picture {
+  flex: 1;
+  position: static !important;
+  top: unset !important;
+  left: unset !important;
+  -webkit-transform: unset !important;
+  transform: unset !important;
+}
+
+.joyspace-export-page {
+  height: unset !important;
+}
+
+.user-card-popover-class {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100000;
+  padding: 0px;
+  border-radius: 6px;
+}
+
+.user-card-popover-class .ant-popover-inner-content {
+  padding: 0;
+}
+.user-card-content {
+  min-height: 240px;
+}
+.user-card-content .preview-people-top {
+  display: flex;
+  width: 298px;
+  margin: 0 auto;
+  padding: 16px 0;
+  align-items: center;
+  box-sizing: border-box;
+}
+.user-card-content .preview-people-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.user-card-content .preview-people-container {
+  padding: 8px 16px;
+}
+.user-card-content .preview-people-name {
+  font-size: 16px;
+  color: #242931;
+  margin: 0 0 0 16px;
+  line-height: 1;
+}
+.user-card-content .preview-people-desc {
+  color: #8f959e;
+  font-size: 14px;
+  margin: 0 0 0 16px;
+  line-height: 1;
+  margin-top: 6px;
+}
+.user-card-content .preview-people-chat {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+.user-card-content .preview-people-chat .icon-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #4c7cff;
+}
+.user-card-content .preview-people-chat .icon-bg:hover {
+  opacity: 0.8;
+}
+.user-card-content .preview-people-chat .icon-bg .chat-icon {
+  width: 14px;
+  height: 14px;
+  color: #fff;
+}
+.user-card-content .people-item {
+  font-size: 14px;
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 8px 0;
+  margin-bottom: 0;
+}
+.user-card-content .people-item .title {
+  color: #62656d;
+  margin-right: 36px;
+}
+.user-card-content .people-item .content {
+  flex: 1;
+  color: #232930;
+}
+
+.editor .editor-body .editor-main .editor-main-container {
+  height: unset !important;
+}
+#ux-scene-research .ux-display-icon-wrapper {
+  top: initial !important;
+  bottom: 124px !important;
+}
+#ux-scene-research .ux-score-wrapper.pc .ux-overlay .ux-dialog {
+  bottom: 170px !important;
+}
+
+.joyspace-main-timline-selector-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.joyspace-main-timline-selector-wrap .jdee-fe-comps-joyspace-file-picker {
+  width: 100%;
+  height: 100%;
+}

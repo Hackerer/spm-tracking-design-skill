@@ -1,0 +1,75 @@
+{
+  "image_file": "8.png",
+  "summary": "该图是“口令模块”PRD说明页，重点描述了口令模块定位、口令生成/配置的基础规则、口令动作注册所需字段，以及“口令配置”的前置校验与规则控制。图中明确提到口令模块承载品牌用户向智控座舱系统及Action关联的能力；口令生成支持按配置维度生成口令，订单口令生成后可为具体订单配置领取口令的Action。页面主体还列出了口令描述、口令类型、口令动作、APP入口文案、APP弹窗素材、HMI显式/隐式素材、HMI sug、HMI标签、生效类型、生效时间、关联Action类型、具体关联Action、支持车型、支持人群、注册人、注册时间等配置字段。",
+  "pages": [
+    "口令模块",
+    "口令配置"
+  ],
+  "key_metrics": [],
+  "flow_hints": [
+    "注册口令动作时，需要录入口令描述、口令类型、口令动作、素材、生效规则、关联Action、适用车型和人群等信息",
+    "口令生成支持按配置维度生成口令",
+    "订单口令生成后，需要针对具体订单配置口令领取对应的Action",
+    "创建口令时会同步校验车型与人群的全关系映射",
+    "用户听到订单口令配置任务后，前端或接口会校验该订单是否可匹配口令配置"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "口令模块",
+      "element_name": "APP入口文案",
+      "position": "APP入口",
+      "element_type": "展示",
+      "description": "APP行程卡片入口的配置文案字段",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "口令模块",
+      "element_name": "APP弹窗素材",
+      "position": "APP弹窗",
+      "element_type": "展示",
+      "description": "APP使用弹窗时对应的展示素材字段",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "口令模块",
+      "element_name": "HMI显式素材",
+      "position": "HMI显式口令侧",
+      "element_type": "展示",
+      "description": "推荐提示口令词时使用的显式素材字段",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "口令模块",
+      "element_name": "HMI隐式素材",
+      "position": "HMI隐式口令侧",
+      "element_type": "展示",
+      "description": "推荐提示口令词时使用的隐式素材字段",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "口令模块",
+      "element_name": "HMI sug",
+      "position": "HMI建议区",
+      "element_type": "展示",
+      "description": "推荐提示口令词时使用的智能Sug字段",
+      "has_exposure_value": true,
+      "is_actionable": false
+    },
+    {
+      "page_name": "口令模块",
+      "element_name": "HMI标签",
+      "position": "HMI标签区",
+      "element_type": "展示",
+      "description": "权益提醒类展示所使用的标签字段",
+      "has_exposure_value": true,
+      "is_actionable": false
+    }
+  ],
+  "notes": [
+    "该图为规则与字段定义页，不是前台页面原型图；可确认的是模块、配置项和流程约束，无法确认具体界面布局与按钮样式。"
+  ]
+}

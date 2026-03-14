@@ -1,0 +1,16 @@
+{
+  "mode": "task_from_folder",
+  "task_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控",
+  "input_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入",
+  "discovered": {
+    "source_manifest_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物/vehicle_control.task-pipeline-manifest.json",
+    "requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物/vehicle_control.requirement-context.json",
+    "extracted_from_markdown": null,
+    "design_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma",
+    "design_overrides_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物/vehicle_control.design-overrides.json"
+  },
+  "outputs": {
+    "intermediate_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物",
+    "output_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输出"
+  }
+}

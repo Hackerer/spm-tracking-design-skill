@@ -1,0 +1,20 @@
+{
+  "mode": "task_design_enhanced",
+  "requirement_context_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物/vehicle_control.requirement-context.json",
+  "design_dir_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输入/智能车控figma",
+  "design_overrides_path": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物/vehicle_control.design-overrides.json",
+  "intermediate_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物",
+  "output_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输出",
+  "artifacts": {
+    "requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物/vehicle_control.requirement-context.json",
+    "design_overrides_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物/vehicle_control.design-overrides.json",
+    "design_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物/vehicle_control.design-context.json",
+    "merged_requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物/vehicle_control.merged.requirement-context.json",
+    "requirement_input_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/中间产物/vehicle_control.draft.requirement-input.json",
+    "requirement_plan_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输出/vehicle_control.generated.requirement-plan.json",
+    "requirement_plan_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输出/vehicle_control.generated.requirement-plan.md",
+    "test_scenarios_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输出/vehicle_control.generated.test-scenarios.md",
+    "validation_report_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输出/vehicle_control.generated.validation-report.json",
+    "validation_report_markdown": "/Users/zhujian112/Documents/SPM-Tracking-Design/智能车控/输出/vehicle_control.generated.validation-report.md"
+  }
+}

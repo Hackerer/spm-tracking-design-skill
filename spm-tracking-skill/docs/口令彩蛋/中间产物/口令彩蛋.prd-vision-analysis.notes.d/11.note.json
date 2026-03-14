@@ -1,0 +1,125 @@
+{
+  "image_file": "11.png",
+  "summary": "该图为 PRD 中“3.4.3 数据需求”表格，包含三列：指标名称、业务含义、详细指标说明。图中明确给出了口令彩蛋相关的数据指标方向，覆盖 APP/HMI 彩蛋入口曝光、弹层曝光、权益曝光/领取/核销、彩蛋播放与完播、用户互动率，以及语音意图触发次数等，并补充了部分指标的口径说明，如曝光定义、点击触发、按总成交或行程维度去重、按券类型拆分等。",
+  "pages": [
+    "APP预置卡片彩蛋入口",
+    "APP预置卡片彩蛋弹层",
+    "HMI彩蛋入口",
+    "规则弹层",
+    "推荐页",
+    "排行圈",
+    "行程结束页",
+    "首页",
+    "二级应用页",
+    "HMI侧入口"
+  ],
+  "key_metrics": [
+    "APP彩蛋入口曝光数",
+    "APP彩蛋弹层曝光数",
+    "HMI彩蛋入口曝光数",
+    "HMI彩蛋播放数",
+    "权益曝光次数",
+    "权益领取数",
+    "权益核销数",
+    "彩蛋曝光率",
+    "用户互动率",
+    "彩蛋完播率",
+    "权益领取率",
+    "权益核销率",
+    "语音意图触发次数"
+  ],
+  "flow_hints": [
+    "用户进入 APP 预置卡片彩蛋入口后可产生入口曝光",
+    "用户看到 APP 彩蛋规则弹层后可产生弹层曝光",
+    "用户从排行圈、推荐页或行程结束页入口进入彩蛋链路",
+    "用户可通过首页语音或二级应用页语音触发口令彩蛋相关流程",
+    "彩蛋播放后进入权益展示阶段",
+    "权益展示后存在领取行为",
+    "权益领取后存在核销行为",
+    "部分指标按总成交或行程维度去重统计",
+    "部分权益数据按券类型拆分统计，至少包含打车券、商品券、实物券"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "APP预置卡片彩蛋入口",
+      "element_name": "彩蛋入口",
+      "position": "APP预置卡片区域",
+      "element_type": "展示",
+      "description": "彩蛋入口有独立曝光统计",
+      "has_exposure_value": true
+    },
+    {
+      "page_name": "APP预置卡片彩蛋弹层",
+      "element_name": "规则弹层",
+      "position": "弹层区域",
+      "element_type": "展示",
+      "description": "规则弹层有独立曝光统计",
+      "has_exposure_value": true
+    },
+    {
+      "page_name": "HMI彩蛋入口",
+      "element_name": "彩蛋入口",
+      "position": "HMI入口区域",
+      "element_type": "展示",
+      "description": "HMI 彩蛋入口有独立曝光统计",
+      "has_exposure_value": true
+    },
+    {
+      "page_name": "推荐页",
+      "element_name": "彩蛋入口",
+      "position": "推荐页入口位",
+      "element_type": "展示",
+      "description": "推荐页入口同时统计曝光与点击触发次数",
+      "has_exposure_value": true,
+      "is_actionable": true
+    },
+    {
+      "page_name": "排行圈",
+      "element_name": "彩蛋入口",
+      "position": "排行圈入口位",
+      "element_type": "展示",
+      "description": "排行圈入口同时统计曝光与点击触发次数",
+      "has_exposure_value": true,
+      "is_actionable": true
+    },
+    {
+      "page_name": "行程结束页",
+      "element_name": "去彩蛋入口",
+      "position": "行程结束页入口位",
+      "element_type": "展示",
+      "description": "行程结束页存在去彩蛋入口曝光统计",
+      "has_exposure_value": true
+    },
+    {
+      "page_name": "首页",
+      "element_name": "语音入口",
+      "position": "首页语音入口区域",
+      "element_type": "输入框",
+      "description": "首页语音入口会统计语音触发次数，并区分彩蛋推荐有无等情形",
+      "has_exposure_value": false,
+      "is_actionable": true
+    },
+    {
+      "page_name": "二级应用页",
+      "element_name": "语音入口",
+      "position": "二级应用页语音入口区域",
+      "element_type": "输入框",
+      "description": "二级应用页语音入口会统计语音触发次数",
+      "has_exposure_value": false,
+      "is_actionable": true
+    },
+    {
+      "page_name": "权益弹层",
+      "element_name": "权益展示",
+      "position": "权益展示区域",
+      "element_type": "展示",
+      "description": "彩蛋成功激发完成后，权益完全展示会单独统计曝光",
+      "has_exposure_value": true,
+      "is_actionable": false
+    }
+  ],
+  "notes": [
+    "该图是数据需求表，不是页面设计稿；页面名与元素名仅采用表格中明确出现的入口、弹层、页面或展示位描述。",
+    "个别左侧指标名称在截图中清晰度有限，但不影响确认其所属主题：曝光、播放、领取、核销、互动、完播、语音触发。"
+  ]
+}

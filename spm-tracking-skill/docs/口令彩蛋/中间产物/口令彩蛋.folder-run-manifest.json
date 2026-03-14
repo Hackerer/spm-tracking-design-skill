@@ -1,0 +1,18 @@
+{
+  "mode": "task_from_folder",
+  "task_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋",
+  "input_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/输入",
+  "discovered": {
+    "source_manifest_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/中间产物/口令彩蛋.task-pipeline-manifest.json",
+    "requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/中间产物/口令彩蛋.requirement-context.json",
+    "extracted_from_markdown": null,
+    "extracted_from_prd_images_json": null,
+    "prd_image_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/输入/prd",
+    "design_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/输入/口令彩蛋figma",
+    "design_overrides_json": null
+  },
+  "outputs": {
+    "intermediate_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/中间产物",
+    "output_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/口令彩蛋/输出"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "mode": "task_from_folder",
+  "task_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌",
+  "input_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入",
+  "discovered": {
+    "source_manifest_json": null,
+    "requirement_context_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/中间产物/无麦k歌.requirement-context.json",
+    "extracted_from_markdown": null,
+    "design_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输入/无麦K歌figma",
+    "design_overrides_json": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/中间产物/无麦k歌.design-overrides.json"
+  },
+  "outputs": {
+    "intermediate_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/中间产物",
+    "output_dir": "/Users/zhujian112/Documents/SPM-Tracking-Design/无麦K歌/输出"
+  }
+}

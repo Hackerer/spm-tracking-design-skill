@@ -1,0 +1,248 @@
+{
+  "requirement_name": "Robotaxi 智能车控核心控制能力",
+  "business_line": "robotaxi",
+  "terminal_domain": "cabin_hmi",
+  "business_capability": "vehicle_control",
+  "business_background": "Robotaxi 智能座舱需要提供一套核心、易用的车控能力，覆盖空调与座椅、屏幕亮度、语音助手音量和媒体音量等高频控制能力。本需求里真正新增的页面只有空调控制页；桌面页底部导航栏承载一组固定的快捷控制与快捷入口，亮度和音量调节属于桌面 Dock 快捷操作，不单独视为新页面。车控能力在行程内发生，需要同时支持触屏和语音两种交互方式，并关注功能使用率、用户干预率和交互方式占比。",
+  "pages": [
+    {
+      "page_name": "桌面页",
+      "page_path": "/home/desktop",
+      "description": "座舱桌面页，底部导航栏中承载空调、亮度、媒体和就近停车等快捷控制入口。"
+    },
+    {
+      "page_name": "空调控制页",
+      "page_path": "/vehicle-control/climate-control",
+      "description": "空调、风量、送风模式、车窗和座椅加热的主控制页面。"
+    }
+  ],
+  "key_metrics": [
+    "车控功能使用率",
+    "用户干预率",
+    "交互方式占比",
+    "桌面底部导航栏点击率",
+    "空调温度调节行为分布",
+    "亮度调节行为分布",
+    "音量调节行为分布"
+  ],
+  "core_flow_steps": [
+    "进入桌面页",
+    "通过桌面底部导航栏触发空调、亮度、音量或媒体快捷操作",
+    "点击空调开关进入空调控制页",
+    "在空调控制页调节温度、风量、送风模式、车窗和座椅加热",
+    "在桌面页通过 Dock 快捷操作调节亮度、阅读灯、语音助手音量、媒体音量或静音",
+    "通过桌面底部导航栏触发空调、亮度、音量或媒体快捷控制"
+  ],
+  "interactive_elements": [
+    {
+      "page_name": "桌面页",
+      "element_name": "空调开关",
+      "position": "bottom_navigation",
+      "element_type": "按钮",
+      "description": "通过桌面底部导航栏快捷打开空调控制页。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "返回桌面",
+      "position": "bottom_navigation",
+      "element_type": "按钮",
+      "description": "返回桌面主页。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "亮度降低",
+      "position": "bottom_navigation",
+      "element_type": "按钮",
+      "description": "在底部导航栏中快捷降低亮度。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "亮度调节入口",
+      "position": "bottom_navigation",
+      "element_type": "按钮",
+      "description": "在底部导航栏中打开亮度弹窗。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "亮度升高",
+      "position": "bottom_navigation",
+      "element_type": "按钮",
+      "description": "在底部导航栏中快捷提高亮度。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "媒体下一个",
+      "position": "bottom_navigation",
+      "element_type": "按钮",
+      "description": "切换到下一媒体内容。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "媒体播放暂停",
+      "position": "bottom_navigation",
+      "element_type": "按钮",
+      "description": "播放或暂停当前媒体内容。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "就近停车入口",
+      "position": "bottom_navigation",
+      "element_type": "按钮",
+      "description": "进入就近停车能力。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "音量调节入口",
+      "position": "bottom_navigation",
+      "element_type": "按钮",
+      "description": "打开音量弹窗。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "副驾座椅加热",
+      "position": "seat_heating_controls",
+      "element_type": "按钮",
+      "description": "调节副驾座椅加热档位。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "左后座椅加热",
+      "position": "seat_heating_controls",
+      "element_type": "按钮",
+      "description": "调节左后座椅加热档位。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "右后座椅加热",
+      "position": "seat_heating_controls",
+      "element_type": "按钮",
+      "description": "调节右后座椅加热档位。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "关窗按钮",
+      "position": "window_controls",
+      "element_type": "按钮",
+      "description": "关闭全部车窗。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "透气按钮",
+      "position": "window_controls",
+      "element_type": "按钮",
+      "description": "切换车窗透气状态。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "空调电源按钮",
+      "position": "climate_power",
+      "element_type": "按钮",
+      "description": "开启或关闭空调系统。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "吹头模式",
+      "position": "airflow_modes",
+      "element_type": "按钮",
+      "description": "切换送风到吹头模式。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "吹脚模式",
+      "position": "airflow_modes",
+      "element_type": "按钮",
+      "description": "切换送风到吹脚模式。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "吹窗模式",
+      "position": "airflow_modes",
+      "element_type": "按钮",
+      "description": "切换送风到吹窗模式。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "风量减小按钮",
+      "position": "fan_speed_controls",
+      "element_type": "按钮",
+      "description": "调低当前风量。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "风量增大按钮",
+      "position": "fan_speed_controls",
+      "element_type": "按钮",
+      "description": "调高当前风量。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "你好东东，有点冷",
+      "position": "voice_suggestions",
+      "element_type": "按钮",
+      "description": "通过推荐词快捷发起温度调整。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "你好东东，打开右后座椅加热",
+      "position": "voice_suggestions",
+      "element_type": "按钮",
+      "description": "通过推荐词快捷发起右后座椅加热。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "你好东东，风小一点",
+      "position": "voice_suggestions",
+      "element_type": "按钮",
+      "description": "通过推荐词快捷调低风量。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "阅读灯开关",
+      "position": "brightness_panel",
+      "element_type": "按钮",
+      "description": "开启或关闭阅读灯。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "屏幕亮度滑动条",
+      "position": "brightness_panel",
+      "element_type": "按钮",
+      "description": "调节屏幕亮度。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "语音助手音量滑动条",
+      "position": "volume_panel",
+      "element_type": "按钮",
+      "description": "调节语音助手播报音量。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "媒体音量滑动条",
+      "position": "volume_panel",
+      "element_type": "按钮",
+      "description": "调节媒体音量。"
+    },
+    {
+      "page_name": "桌面页",
+      "element_name": "媒体静音按钮",
+      "position": "volume_panel",
+      "element_type": "按钮",
+      "description": "将媒体通道静音或恢复。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "温度降低按钮",
+      "position": "temperature_controls",
+      "element_type": "按钮",
+      "description": "将目标温度调低。"
+    },
+    {
+      "page_name": "空调控制页",
+      "element_name": "温度升高按钮",
+      "position": "temperature_controls",
+      "element_type": "按钮",
+      "description": "将目标温度调高。"
+    }
+  ]
+}

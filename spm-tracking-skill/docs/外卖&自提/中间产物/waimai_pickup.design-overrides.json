@@ -1,0 +1,455 @@
+{
+  "requirement_name": "Robotaxi 外卖自提交易能力",
+  "business_line": "robotaxi",
+  "terminal_domain": "cabin_hmi",
+  "business_capability": "takeaway_pickup",
+  "summary": "结合外卖自提 HMI 设计稿，对首页推荐入口、商品列表、确认支付、地址确认、订单详情和声纹开通弹窗进行结构化补充。",
+  "asset_overrides": [
+    {
+      "file_name": "首页.png",
+      "asset_type": "page_image",
+      "page_name": "首页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/home",
+      "description": "首页展示外卖自提推荐词入口。",
+      "confidence": 0.95,
+      "flow_hints": ["进入首页", "从首页推荐词进入商品列表页"],
+      "regions": [
+        {
+          "region_name_zh": "首页推荐词区",
+          "region_name_en": "home_suggestions",
+          "region_type": "promo",
+          "position_candidate": "home_suggestions",
+          "description": "首页中承载购物相关推荐词入口的区域。",
+          "elements": [
+            {"element_name": "查看附近的外卖", "element_type": "button", "description": "进入外卖推荐链路。", "is_actionable": true, "has_exposure_value": true, "interaction_modes": ["touch", "voice"], "confidence": 0.96},
+            {"element_name": "推荐咖啡", "element_type": "button", "description": "进入咖啡推荐链路。", "is_actionable": true, "has_exposure_value": true, "interaction_modes": ["touch", "voice"], "confidence": 0.94}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "语音-查看订单.png",
+      "asset_type": "page_image",
+      "page_name": "首页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/home",
+      "description": "首页中的订单挂件状态。",
+      "confidence": 0.93,
+      "regions": [
+        {
+          "region_name_zh": "首页订单卡片区",
+          "region_name_en": "home_order_card",
+          "region_type": "summary",
+          "position_candidate": "home_order_card",
+          "description": "首页浮出的订单状态卡片。",
+          "elements": [
+            {"element_name": "订单卡片", "element_type": "card", "description": "展示取餐码、订单状态和商品列表。", "is_actionable": true, "has_exposure_value": true, "interaction_modes": ["touch", "voice"], "confidence": 0.94}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "商品列表-方案二.png",
+      "asset_type": "page_image",
+      "page_name": "商品列表页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/product-list",
+      "description": "导购阶段的门店和商品列表页。",
+      "confidence": 0.96,
+      "flow_hints": ["进入商品列表页", "选择商品进入商品确认页"],
+      "regions": [
+        {
+          "region_name_zh": "门店头部区",
+          "region_name_en": "store_header",
+          "region_type": "summary",
+          "position_candidate": "store_header",
+          "description": "展示门店名、评分、距离、自提标签等信息。",
+          "elements": [
+            {"element_name": "门店头部卡片", "element_type": "display_card", "description": "展示门店摘要信息。", "is_actionable": false, "has_exposure_value": true, "confidence": 0.91}
+          ]
+        },
+        {
+          "region_name_zh": "商品列表区",
+          "region_name_en": "product_list",
+          "region_type": "content",
+          "position_candidate": "product_list",
+          "description": "展示推荐的商品卡片列表。",
+          "elements": [
+            {"element_name": "店带品卡片", "element_type": "card", "description": "选择某个商品进入确认或规格链路。", "is_actionable": true, "has_exposure_value": true, "interaction_modes": ["touch", "voice"], "confidence": 0.95}
+          ]
+        },
+        {
+          "region_name_zh": "列表快捷操作区",
+          "region_name_en": "list_actions",
+          "region_type": "actions",
+          "position_candidate": "list_actions",
+          "description": "承载换一批和快捷下单语音按钮。",
+          "elements": [
+            {"element_name": "换一批按钮", "element_type": "button", "description": "刷新下一批推荐。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.95},
+            {"element_name": "点第一个按钮", "element_type": "button", "description": "快捷选择当前列表的第一个商品。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["voice"], "confidence": 0.92}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "单品.png",
+      "asset_type": "page_image",
+      "page_name": "商品确认页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/item-confirm",
+      "description": "单品确认和快捷改配页面。",
+      "confidence": 0.96,
+      "regions": [
+        {
+          "region_name_zh": "商品确认区",
+          "region_name_en": "product_confirm",
+          "region_type": "summary",
+          "position_candidate": "product_confirm",
+          "description": "展示待支付的单商品信息。",
+          "elements": [
+            {"element_name": "商品确认卡片", "element_type": "display_card", "description": "展示商品图片、规格、价格和数量。", "is_actionable": false, "has_exposure_value": true, "confidence": 0.94}
+          ]
+        },
+        {
+          "region_name_zh": "确认快捷操作区",
+          "region_name_en": "confirm_actions",
+          "region_type": "actions",
+          "position_candidate": "confirm_actions",
+          "description": "承载快捷替换规格和履约方式按钮。",
+          "elements": [
+            {"element_name": "换成热的按钮", "element_type": "button", "description": "切换为热饮规格。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.95},
+            {"element_name": "换成自提按钮", "element_type": "button", "description": "切换为到店自提。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.95}
+          ]
+        },
+        {
+          "region_name_zh": "底部固定区域",
+          "region_name_en": "fixed_bottom",
+          "region_type": "actions",
+          "position_candidate": "fixed_bottom",
+          "description": "商品确认页底部支付操作区。",
+          "elements": [
+            {"element_name": "OK付款按钮", "element_type": "button", "description": "确认当前商品并进入支付。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.96}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "多品.png",
+      "asset_type": "page_image",
+      "page_name": "多品确认页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/multi-item-confirm",
+      "description": "多商品确认和统一支付页面。",
+      "confidence": 0.95,
+      "regions": [
+        {
+          "region_name_zh": "商品确认区",
+          "region_name_en": "product_confirm",
+          "region_type": "summary",
+          "position_candidate": "product_confirm",
+          "description": "展示多个待支付商品。",
+          "elements": [
+            {"element_name": "多商品确认卡片", "element_type": "display_card", "description": "展示多商品及其规格价格。", "is_actionable": false, "has_exposure_value": true, "confidence": 0.93}
+          ]
+        },
+        {
+          "region_name_zh": "确认快捷操作区",
+          "region_name_en": "confirm_actions",
+          "region_type": "actions",
+          "position_candidate": "confirm_actions",
+          "description": "承载批量快捷修改按钮。",
+          "elements": [
+            {"element_name": "换成热的按钮", "element_type": "button", "description": "批量切换为热饮规格。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.94},
+            {"element_name": "换成自提省2元按钮", "element_type": "button", "description": "切换到自提方式并提示优惠。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.95}
+          ]
+        },
+        {
+          "region_name_zh": "底部固定区域",
+          "region_name_en": "fixed_bottom",
+          "region_type": "actions",
+          "position_candidate": "fixed_bottom",
+          "description": "多品确认页底部支付操作区。",
+          "elements": [
+            {"element_name": "OK付款按钮", "element_type": "button", "description": "确认多商品并进入支付。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.96}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "规格页.png",
+      "asset_type": "page_image",
+      "page_name": "规格页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/spec-select",
+      "description": "商品规格选择页面。",
+      "confidence": 0.94,
+      "regions": [
+        {
+          "region_name_zh": "规格选择区",
+          "region_name_en": "spec_options",
+          "region_type": "actions",
+          "position_candidate": "spec_options",
+          "description": "承载规格和数量选项。",
+          "elements": [
+            {"element_name": "规格选项", "element_type": "button", "description": "切换规格、温度或数量。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.94}
+          ]
+        },
+        {
+          "region_name_zh": "底部固定区域",
+          "region_name_en": "fixed_bottom",
+          "region_type": "actions",
+          "position_candidate": "fixed_bottom",
+          "description": "规格页底部确认操作区。",
+          "elements": [
+            {"element_name": "确认规格按钮", "element_type": "button", "description": "确认规格并返回商品确认链路。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.95}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "新增地址.png",
+      "asset_type": "page_image",
+      "page_name": "地址确认页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/address-confirm",
+      "description": "新增或确认收货地址页面。",
+      "confidence": 0.95,
+      "regions": [
+        {
+          "region_name_zh": "地址表单区",
+          "region_name_en": "address_form",
+          "region_type": "summary",
+          "position_candidate": "address_form",
+          "description": "展示收货人、手机号、地址。",
+          "elements": [
+            {"element_name": "地址卡片", "element_type": "display_card", "description": "展示待确认地址信息。", "is_actionable": false, "has_exposure_value": true, "confidence": 0.94}
+          ]
+        },
+        {
+          "region_name_zh": "地址操作区",
+          "region_name_en": "address_actions",
+          "region_type": "actions",
+          "position_candidate": "address_actions",
+          "description": "承载地址修改相关按钮。",
+          "elements": [
+            {"element_name": "改收货人按钮", "element_type": "button", "description": "修改收货人姓名。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.92},
+            {"element_name": "改手机号按钮", "element_type": "button", "description": "修改手机号。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.92},
+            {"element_name": "改地址按钮", "element_type": "button", "description": "修改详细地址。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.94}
+          ]
+        },
+        {
+          "region_name_zh": "底部固定区域",
+          "region_name_en": "fixed_bottom",
+          "region_type": "actions",
+          "position_candidate": "fixed_bottom",
+          "description": "地址确认页底部确认操作区。",
+          "elements": [
+            {"element_name": "确认地址按钮", "element_type": "button", "description": "确认地址后回到结算链路。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.96}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "修改地址.png",
+      "asset_type": "page_image",
+      "page_name": "地址修改页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/address-edit",
+      "description": "地址信息修改成功后的页面状态。",
+      "confidence": 0.89,
+      "regions": [
+        {
+          "region_name_zh": "地址表单区",
+          "region_name_en": "address_form",
+          "region_type": "summary",
+          "position_candidate": "address_form",
+          "description": "展示修改后的地址信息。",
+          "elements": [
+            {"element_name": "地址卡片", "element_type": "display_card", "description": "展示修改后的地址结果。", "is_actionable": false, "has_exposure_value": true, "confidence": 0.88}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "01 结算页.png",
+      "asset_type": "page_image",
+      "page_name": "结算页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/checkout",
+      "description": "订单结算和支付确认页面。",
+      "confidence": 0.96,
+      "flow_hints": ["进入结算页并点击去支付按钮"],
+      "regions": [
+        {
+          "region_name_zh": "商品确认区",
+          "region_name_en": "product_confirm",
+          "region_type": "summary",
+          "position_candidate": "product_confirm",
+          "description": "展示当前待支付商品信息。",
+          "elements": [
+            {"element_name": "商品确认卡片", "element_type": "display_card", "description": "展示商品图片、规格、数量和价格。", "is_actionable": false, "has_exposure_value": true, "confidence": 0.94}
+          ]
+        },
+        {
+          "region_name_zh": "结算信息区",
+          "region_name_en": "settlement_panel",
+          "region_type": "summary",
+          "position_candidate": "settlement_panel",
+          "description": "展示地址、履约方式和应付金额。",
+          "elements": [
+            {"element_name": "地址卡片", "element_type": "display_card", "description": "展示当前配送地址和履约方式。", "is_actionable": false, "has_exposure_value": true, "confidence": 0.93}
+          ]
+        },
+        {
+          "region_name_zh": "支付方式区",
+          "region_name_en": "payment_section",
+          "region_type": "actions",
+          "position_candidate": "payment_section",
+          "description": "展示并切换支付方式。",
+          "elements": [
+            {"element_name": "支付方式入口", "element_type": "button", "description": "查看或切换当前支付方式。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.94}
+          ]
+        },
+        {
+          "region_name_zh": "底部固定区域",
+          "region_name_en": "fixed_bottom",
+          "region_type": "actions",
+          "position_candidate": "fixed_bottom",
+          "description": "结算页底部支付操作区。",
+          "elements": [
+            {"element_name": "去支付按钮", "element_type": "button", "description": "提交支付请求。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.96}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "02 支付中.png",
+      "asset_type": "page_image",
+      "page_name": "支付中页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/paying",
+      "description": "支付处理中状态页。",
+      "confidence": 0.92,
+      "flow_hints": ["进入支付中页"],
+      "regions": [
+        {
+          "region_name_zh": "支付状态区",
+          "region_name_en": "payment_status",
+          "region_type": "status",
+          "position_candidate": "payment_status",
+          "description": "展示支付进行中状态。",
+          "elements": [
+            {"element_name": "支付中状态", "element_type": "status_visual", "description": "展示支付处理中的状态反馈。", "is_actionable": false, "has_exposure_value": true, "confidence": 0.93}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "03 支付成功.png",
+      "asset_type": "page_image",
+      "page_name": "支付成功页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/pay-success",
+      "description": "支付成功结果页。",
+      "confidence": 0.95,
+      "flow_hints": ["进入支付成功页", "进入订单详情页"],
+      "regions": [
+        {
+          "region_name_zh": "支付状态区",
+          "region_name_en": "payment_status",
+          "region_type": "status",
+          "position_candidate": "payment_status",
+          "description": "展示支付成功和订单状态摘要。",
+          "elements": [
+            {"element_name": "支付成功状态", "element_type": "status_visual", "description": "展示支付成功状态和订单摘要。", "is_actionable": false, "has_exposure_value": true, "confidence": 0.9}
+          ]
+        },
+        {
+          "region_name_zh": "结果操作区",
+          "region_name_en": "result_actions",
+          "region_type": "actions",
+          "position_candidate": "result_actions",
+          "description": "承载查看订单和继续推荐按钮。",
+          "elements": [
+            {"element_name": "查看订单按钮", "element_type": "button", "description": "进入订单详情页。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.95},
+            {"element_name": "推荐终点附近的美食", "element_type": "button", "description": "继续推荐终点附近商品。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.93}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "订单详情.png",
+      "asset_type": "page_image",
+      "page_name": "订单详情页",
+      "page_type": "page",
+      "page_path_candidate": "/takeaway-pickup/order-detail",
+      "description": "订单详情和取餐码页面。",
+      "confidence": 0.95,
+      "regions": [
+        {
+          "region_name_zh": "结算信息区",
+          "region_name_en": "settlement_panel",
+          "region_type": "summary",
+          "position_candidate": "settlement_panel",
+          "description": "展示取餐码、订单状态、地址和商品明细。",
+          "elements": [
+            {"element_name": "订单卡片", "element_type": "display_card", "description": "展示取餐码、订单状态和商品内容。", "is_actionable": false, "has_exposure_value": true, "confidence": 0.94}
+          ]
+        },
+        {
+          "region_name_zh": "详情操作区",
+          "region_name_en": "detail_actions",
+          "region_type": "actions",
+          "position_candidate": "detail_actions",
+          "description": "承载继续推荐入口。",
+          "elements": [
+            {"element_name": "推荐终点附近的美食", "element_type": "button", "description": "继续推荐终点附近商品。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.92}
+          ]
+        }
+      ]
+    },
+    {
+      "file_name": "声纹弹窗.png",
+      "asset_type": "modal_image",
+      "page_name": "声纹开通弹窗",
+      "page_type": "modal",
+      "page_path_candidate": "/takeaway-pickup/voiceprint-open",
+      "description": "支付前的声纹开通弹窗。",
+      "confidence": 0.96,
+      "regions": [
+        {
+          "region_name_zh": "弹窗关闭区",
+          "region_name_en": "modal_close",
+          "region_type": "actions",
+          "position_candidate": "modal_close",
+          "description": "弹窗右上角关闭控件。",
+          "elements": [
+            {"element_name": "关闭按钮", "element_type": "icon_button", "description": "关闭声纹开通弹窗。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch"], "confidence": 0.96}
+          ]
+        },
+        {
+          "region_name_zh": "弹窗正文区",
+          "region_name_en": "modal_body",
+          "region_type": "content",
+          "position_candidate": "modal_body",
+          "description": "展示开通说明与协议链接。",
+          "elements": [
+            {"element_name": "相关协议链接", "element_type": "link", "description": "查看声纹支付开通相关协议。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch"], "confidence": 0.93}
+          ]
+        },
+        {
+          "region_name_zh": "操作弹窗区",
+          "region_name_en": "modal_actions",
+          "region_type": "actions",
+          "position_candidate": "modal_actions",
+          "description": "承载声纹开通主操作按钮。",
+          "elements": [
+            {"element_name": "暂不按钮", "element_type": "button", "description": "暂不启用声纹支付。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.95},
+            {"element_name": "开通声纹支付按钮", "element_type": "button", "description": "确认开通声纹支付。", "is_actionable": true, "has_exposure_value": false, "interaction_modes": ["touch", "voice"], "confidence": 0.96}
+          ]
+        }
+      ]
+    }
+  ]
+}
